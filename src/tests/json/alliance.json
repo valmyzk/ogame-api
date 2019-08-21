@@ -1,0 +1,15 @@
+{
+  "timestamp": "1337",
+  "serverId": "en800",
+  "alliance": {
+    "id": "1",
+    "name": "Foo",
+    "tag": "BAR",
+    "founder": "137",
+    "foundDate": "1337",
+    "logo": "https://example.com/favicon.ico",
+    "open": "0",
+    "homepage": "https://example.com",
+    "player": { "id": "137" }
+  }
+}

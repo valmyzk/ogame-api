@@ -1,0 +1,30 @@
+{
+  "name": "ogame-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/index.js",
+  "files": [
+    "out/**/*"
+  ],
+  "typings": "out/index.d.ts",
+  "dependencies": {
+    "fast-xml-parser": "^3.12.20",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "0.0.35",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "ava": "^2.3.0",
+    "eslint": "^5.16.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "lint": "eslint ./src/**/*.ts",
+    "build": "tsc",
+    "test": "ava -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

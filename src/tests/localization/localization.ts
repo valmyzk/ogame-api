@@ -1,0 +1,9 @@
+import test from "ava";
+
+test.serial.todo("constructor");
+
+test.serial.todo("properties");
+
+test.serial.todo("getLocalizationType");
+
+test.serial.todo("LocaleConstEnum");
