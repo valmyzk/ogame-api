@@ -6,9 +6,14 @@ export default class Planet<T extends IDResolvable> extends UniverseObject<T> {
 
     public readonly moon?: Moon<T>;
 
-    public constructor(encodedData: XMLPlanet, universe: Universe<T>, timestamp: string) {
+    public constructor(encodedData: XMLUniversePlanet, universe: Universe<T>, timestamp: string);
+    public constructor(encodedData: XMLPlayerPlanet, universe: Universe<T>, timestamp: string, player: string);
 
-        super(encodedData, universe, timestamp);
+    public constructor(encodedData: XMLPlanet, universe: Universe<T>, timestamp: string, player?: string) {
+
+        (encodedData as XMLUniversePlanet).player = (encodedData as XMLUniversePlanet).player || player as string; 
+
+        super(encodedData as XMLUniversePlanet, universe, timestamp);
 
         if (encodedData.moon) {
 
@@ -20,6 +25,11 @@ export default class Planet<T extends IDResolvable> extends UniverseObject<T> {
 
 }
 
-export interface XMLPlanet extends XMLUniverseObject {
+export interface XMLUniversePlanet extends XMLUniverseObject {
+
     moon?: XMLMoon;
+
 }
+
+export type XMLPlayerPlanet = Omit<XMLUniversePlanet, "player">;
+export type XMLPlanet = XMLUniversePlanet | XMLPlayerPlanet;

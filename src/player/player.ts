@@ -1,7 +1,7 @@
 import { XMLPosition, ReferencedPosition } from "../position/position";
-import Planet, { XMLPlanet } from "../planet/planet";
+import Planet, { XMLPlayerPlanet, XMLUniversePlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
-import { Writable } from "../typings/util";
+import { Writable, Solo } from "../typings/util";
 import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
@@ -43,7 +43,7 @@ export default class Player<T extends IDResolvable> {
         //Legor
         if(positions) {
 
-            (this as Writable<this>).positions = positions.map(position => {
+            (this as Writable<this>).positions = positions.map((position): ReferencedPosition<T, this> => {
         
                 return new ReferencedPosition<T, this>(position, this.universe, this.timestamp, this);
         
@@ -53,13 +53,13 @@ export default class Player<T extends IDResolvable> {
 
     }
 
-    private parsePlanets(planets: XMLPlanet[] | XMLPlanet): void {
+    private parsePlanets(planets: Solo<XMLPlayerPlanet>): void {
 
         const planetArray = Array.isArray(planets) ? planets : [planets];
 
         (this as Writable<this>).planets = planetArray.map((planet): Planet<T> => {
 
-            return new Planet(planet, this.universe, this.timestamp);
+            return new Planet(planet, this.universe, this.timestamp, this.id);
 
         });
 
@@ -114,7 +114,7 @@ export interface XMLPlayer extends APIAttributes {
     };
 
     planets: {
-        planet: XMLPlanet[];
+        planet: XMLPlayerPlanet[];
     };
 
     alliance?: XMLLazyAlliance;
