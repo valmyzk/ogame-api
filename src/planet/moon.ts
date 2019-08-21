@@ -1,14 +1,17 @@
 import { Universe, IDResolvable } from "../universe/universe";
-import { XMLPlanet } from "./planet";
-import UniverseObject from "./object";
+import { XMLUniversePlanet } from "./planet";
+import UniverseObject, { XMLUniverseObject } from "./object";
 
 export default class Moon<T extends IDResolvable> extends UniverseObject<T> {
 
     public readonly size: string;
 
-    public constructor(encodedData: XMLMoon, planet: XMLPlanet, universe: Universe<T>, timestamp: string) {
+    public constructor(encodedData: XMLMoon, planet: XMLUniversePlanet, universe: Universe<T>, timestamp: string) {
 
-        super(planet, universe, timestamp);
+        (encodedData as XMLMoon & XMLUniverseObject).coords = planet.coords;
+        (encodedData as XMLMoon & XMLUniverseObject).player = planet.player;
+
+        super(encodedData as unknown as XMLUniverseObject, universe, timestamp);
         this.size = encodedData.size;
     
     }
