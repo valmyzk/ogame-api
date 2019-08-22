@@ -1,62 +1,72 @@
-import { Universe, IDResolvable, RegionResolvable } from "./universe";
+import { RegionResolvable } from "./universe";
 
-export default class ServerData<T extends IDResolvable> {
+export default class {
 
-    public readonly timestamp!: number;
-    public readonly serverId!: string;
-    public readonly name!: string;
-    public readonly number!: number;
-    public readonly language!: RegionResolvable;
-    public readonly timezone!: string;
-    public readonly timezoneOffset!: string;
-    public readonly domain!: string;
-    public readonly version!: string;
-    public readonly speed!: number;
-    public readonly speedFleet!: number;
-    public readonly galaxies!: number;
-    public readonly systems!: number;
-    public readonly acs!: boolean;
-    public readonly rapidFire!: boolean;
-    public readonly defToTF!: number;
-    public readonly debrisFactor!: number;
-    public readonly debrisFactorDef!: number;
-    public readonly repairFactor!: number;
-    public readonly newbieProtectionLimit!: number;
-    public readonly newbieProtectionHigh!: number;
-    public readonly topScore!: number;
-    public readonly bonusFields!: number;
-    public readonly donutGalaxy!: boolean;
-    public readonly donutSystem!: boolean;
-    public readonly wfEnabled!: boolean;
-    public readonly wfMinimumRessLost!: number;
-    public readonly wfMinimumLossPercentage!: number;
-    public readonly wfBasicPercentageRepairable!: number;
-    public readonly globalDeuteriumSaveFactor!: number;
-    public readonly bashLimit!: number;
-    public readonly probeCargo!: number;
-    public readonly researchDurationDivisor!: number;
-    public readonly darkMatterNewAccount!: number;
+    private static parseXml(encodedData: XMLServerData): ServerMap {
 
-    public constructor(encodedData: XMLServerData, public readonly universe: Universe<T>) {
+        const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>, string, string | number>;
 
-        this.acs = !!encodedData.acs;
-        this.rapidFire = !!encodedData.rapidFire;
-        this.donutGalaxy = !!encodedData.donutGalaxy;
-        this.donutSystem = !!encodedData.donutSystem;
-        this.wfEnabled = !!encodedData.wfEnabled;
+        encodedData.acs = !!encodedData.acs;
+        encodedData.rapidFire = !!encodedData.rapidFire;
+        encodedData.donutGalaxy = !!encodedData.donutGalaxy;
+        encodedData.donutSystem = !!encodedData.donutSystem;
+        encodedData.wfEnabled = !!encodedData.wfEnabled;
 
-        this.parseData(encodedData);
-    
-    }
+        for(const entry in encodedData) {
 
-    private parseData(data: XMLServerData): void {
+            const value = encodedData[entry];
 
-        Object.assign(this, data);
+            serverMap.set(entry as keyof ServerData, value);
+
+        }
+
+        return serverMap;
 
     }
+
+}
+
+interface ServerData {
+
+    timestamp: number;
+    serverId: string;
+    name: string;
+    number: number;
+    language: RegionResolvable;
+    timezone: string;
+    timezoneOffset: string;
+    domain: string;
+    version: string;
+    speed: number;
+    speedFleet: number;
+    galaxies: number;
+    systems: number;
+    acs: boolean;
+    rapidFire: boolean;
+    defToTF: number;
+    debrisFactor: number;
+    debrisFactorDef: number;
+    repairFactor: number;
+    newbieProtectionLimit: number;
+    newbieProtectionHigh: number;
+    topScore: number;
+    bonusFields: number;
+    donutGalaxy: boolean;
+    donutSystem: boolean;
+    wfEnabled: boolean;
+    wfMinimumRessLost: number;
+    wfMinimumLossPercentage: number;
+    wfBasicPercentageRepairable: number;
+    globalDeuteriumSaveFactor: number;
+    bashLimit: number;
+    probeCargo: number;
+    researchDurationDivisor: number;
+    darkMatterNewAccount: number;
 
 }
 
 export interface XMLServerData {
     [key: string]: string | boolean | number;
 }
+
+export type ServerMap = FlexibleMap<ReadonlyCustomMap<ServerData>, string, string | number>;

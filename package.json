@@ -2,6 +2,7 @@
   "name": "ogame-api",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": "none",
   "main": "out/index.js",
   "files": [
     "out/**/*"
@@ -26,5 +27,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

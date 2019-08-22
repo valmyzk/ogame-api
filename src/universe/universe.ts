@@ -5,7 +5,7 @@ import { ExtendedLazyPlayer } from "../player/lazyplayer";
 import PlayerData, { XMLPlayerData } from "../player/playerdata";
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData } from "../alliance/alliancedata";
-import ServerData, { XMLServerData } from "./serverData";
+import ServerData, { XMLServerData, ServerMap } from "./serverData";
 import LocalizationData, { XMLLocalizationData } from "../localization/localizationData";
 import parsePlayerPositions, { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
@@ -74,11 +74,11 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    public async getServerData(): Promise<ServerData<T>> {
+    public async getServerData(): Promise<ServerMap> {
 
         const serverData = await this.fetchApi<XMLServerData>("serverData");
 
-        return new ServerData(serverData, this);
+        return ServerData["parseXml"](serverData);
     
     }
 

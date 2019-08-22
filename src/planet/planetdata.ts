@@ -1,5 +1,5 @@
 import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
-import Planet, { XMLPlanet } from "./planet";
+import Planet, { XMLPlanet, XMLUniversePlanet } from "./planet";
 import { Writable } from "../typings/util";
 
 export default class PlanetData<T extends IDResolvable> {
@@ -14,7 +14,7 @@ export default class PlanetData<T extends IDResolvable> {
     
     }
 
-    private parsePlanets(planets: XMLPlanet[], timestamp: string): void {
+    private parsePlanets(planets: XMLUniversePlanet[], timestamp: string): void {
 
         (this as Writable<this>).planets = planets.map(planet => {
 
@@ -39,5 +39,5 @@ export default class PlanetData<T extends IDResolvable> {
 }
 
 export interface XMLPlanetData extends APIAttributes {
-    planet: XMLPlanet[];
+    planet: XMLUniversePlanet[];
 }
