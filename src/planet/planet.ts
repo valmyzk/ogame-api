@@ -17,7 +17,7 @@ export default class Planet<T extends IDResolvable> extends UniverseObject<T> {
 
         if (encodedData.moon) {
 
-            this.moon = new Moon(encodedData.moon, encodedData, this.universe, timestamp);
+            this.moon = new Moon(encodedData.moon, encodedData as XMLUniversePlanet, this.universe, timestamp);
         
         }
     

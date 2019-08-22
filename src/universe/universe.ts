@@ -2,7 +2,7 @@ import { parse } from "fast-xml-parser";
 import Planet from "../planet/planet";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
-import PlayerData, { XMLPlayerData } from "../player/playerdata";
+import PlayerData, { XMLPlayerData, PlayerData as PlayerArray } from "../player/playerdata";
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
@@ -33,11 +33,11 @@ export class Universe<T extends IDResolvable> {
 
     }
 
-    public async getPlayerData(): Promise<PlayerData<T>> {
+    public async getPlayerData(): Promise<PlayerArray<T>> {
 
         const playerData = await this.fetchApi<XMLPlayerData>("players");
         
-        return new PlayerData(playerData, this);
+        return PlayerData["parseXml"](playerData, this);
     
     }
 

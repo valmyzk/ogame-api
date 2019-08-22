@@ -79,9 +79,10 @@ export default class Player<T extends IDResolvable> {
 
     public async getStatus(): Promise<string | undefined> {
 
-        const data = await this.universe.getPlayerData();
-        
-        return (data.getPlayerById(this.id) as ExtendedLazyPlayer<T>).status;
+        const playerData = await this.universe.getPlayerData();
+        const player = playerData.filter(player => player.id === this.id)[0];
+
+        return player.status;
     
     }
 
