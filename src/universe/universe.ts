@@ -42,11 +42,11 @@ export class Universe<T extends ID> {
     
     }
 
-    public async getPlanetData(): Promise<PlanetData<T>> {
+    public async getPlanetData(): Promise<Planet<T>[]> {
 
         const planetData = await this.fetchApi<XMLPlanetData>("universe");
         
-        return new PlanetData(planetData, this);
+        return PlanetData["parseXml"](planetData, this);
     
     }
 

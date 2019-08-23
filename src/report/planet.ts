@@ -89,7 +89,7 @@ export class PlanetReport<T extends ID> {
 
         const planetData = await this.universe.getPlanetData();
 
-        const planet = planetData.planets.filter(planet => {
+        const planet = planetData.filter(planet => {
             
             return planet.coords.equals(this.coords);
 
