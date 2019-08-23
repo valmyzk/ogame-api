@@ -1,7 +1,7 @@
 import ReferencedPosition, { XMLPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
-import { Writable, Solo } from "../typings/util";
+import { Writable, Solo } from "../../typings/util";
 import Universe, { ID, APIAttributes } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";

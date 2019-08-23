@@ -4,7 +4,7 @@ import Localization, { LocalizationType } from "../localization/localization";
 import OGameAPI from "..";
 import { LocalizationMap } from "../localization/localizationData";
 import Planet from "../planet/planet";
-import { Writable } from "../typings/util";
+import { Writable } from "../../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
 

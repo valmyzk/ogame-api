@@ -1,5 +1,6 @@
 import Universe, { ID, APIAttributes } from "../universe/universe";
 import Localization, { XMLLocalization } from "./localization";
+import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
 
 export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 

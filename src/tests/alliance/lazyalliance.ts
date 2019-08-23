@@ -6,7 +6,7 @@ import OGameAPI from "../..";
 import { readFile as readFileCb } from "fs";
 import AllianceData, { XMLAllianceData } from "../../alliance/alliancedata";
 import Alliance from "../../alliance/alliance";
-import { Writable } from "../../typings/util";
+import { Writable } from "../../../typings/util";
 
 const readFile = promisify(readFileCb);
 

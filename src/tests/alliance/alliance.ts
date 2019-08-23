@@ -6,7 +6,7 @@ import { join } from "path";
 import OGameAPI from "../..";
 import { XMLAllianceData } from "../../alliance/alliancedata";
 import { XMLLazyPlayer } from "../../player/lazyplayer";
-import { Solo } from "../../typings/util";
+import { Solo } from "../../../typings/util";
 
 const readFile = promisify(readFileCb);
 

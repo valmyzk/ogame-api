@@ -1,4 +1,5 @@
 import { Region } from "./universe";
+import { FlexibleMap, CustomMap, ReadonlyCustomMap } from "../../typings/map";
 
 export default function parseXml(encodedData: XMLServerData) {
 

@@ -1,5 +1,5 @@
 ﻿import Universe, { ID, Region } from "./universe/universe";
-import { Writable } from "./typings/util";
+import { Writable } from "../typings/util";
 
 //"Static" class
 export default abstract class OGameAPI {

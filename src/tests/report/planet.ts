@@ -4,7 +4,7 @@ import OGameAPI from "../..";
 import LocalizationData from "../../localization/localizationData";
 import { UniverseCoords } from "../../universe/coords";
 import PlanetData from "../../planet/planetdata";
-import { Writable } from "../../typings/util";
+import { Writable } from "../../../typings/util";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
 const universe = OGameAPI.getUniverse(800, "en");

@@ -10,7 +10,7 @@ import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../local
 import { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
-import { ResolveSolo } from "../typings/util";
+import { ResolveSolo } from "../../typings/util";
 import PositionData from "../position/playerPosition";
 
 export type ID = number | string;
