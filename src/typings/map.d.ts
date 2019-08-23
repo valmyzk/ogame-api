@@ -13,9 +13,12 @@ interface ReadonlyCustomMap<T> {
 
 }
 
-type FlexibleMap<T, K, V> = T & {
+type MapValueType<T> = T extends ReadonlyCustomMap<infer I> ? I[keyof I] : T extends Map<unknown, infer V> ? V : never;
+type MapKeyType<T> = T extends ReadonlyCustomMap<any> ? string : T extends Map<infer K, unknown> ? K : never;
 
-    get(key: K): V;
+type FlexibleMap<T> = T & {
+
+    get(key: MapKeyType<T>): MapValueType<T>;
 
 }
 

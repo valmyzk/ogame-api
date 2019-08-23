@@ -2,78 +2,44 @@ import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
 import { Writable } from "../typings/util";
 import Localization, { XMLLocalization } from "./localization";
 
-export default class LocalizationData<T extends IDResolvable> {
+export default class {
 
-    public readonly techs!: Localization<T>[];
-    public readonly missions!: Localization<T>[];
-    public readonly unknown: {
-        [key: string]: Localization<T>[] | undefined;
-    } = {};
-    public readonly timestamp: string;
+    private static parseXml<T extends IDResolvable>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
-    public constructor(encodedData: XMLLocalizationData, public readonly universe: Universe<T>) {
+        const localizationMap = new Map<string, Localization<T>[]>();
 
-        this.timestamp = encodedData.timestamp;
-        this.parseLocalizations(encodedData);
-    
-    }
+        for(const group in encodedData) {
 
-    private parseLocalizations(localizations: XMLLocalizationData): void {
-
-        for(const group in localizations) {
-
-            const value = localizations[group];
+            const value = encodedData[group];
 
             if(typeof value === "object") {
 
                 const instancedLocalizations = value.name.map(localization => {
 
-                    return new Localization<T>(localization, this.universe, this.timestamp);
+                    return new Localization<T>(localization, universe, encodedData.timestamp);
 
                 });
 
-                if(group === "techs" || group === "missions") {
-
-                    (this as Writable<this>)[group] = instancedLocalizations;
-
-                }
-
-                else {
-
-                    this.unknown[group] = instancedLocalizations;
-
-                }
+                localizationMap.set(group, instancedLocalizations);                
 
             }
 
         }
 
-    }
+        return localizationMap as LocalizationMap<T>;
 
-    public getLocalization(id: string): Localization<T> | undefined {
-
-        //Scan known
-        const localizations = [...this.techs, ...this.missions, ...this.getUnknown()];
-
-        return localizations.filter(l => l.id === id)[0];
-    
-    }
-
-    private getUnknown(): Localization<T>[] {
-
-        const r = [];
-        for (const entry in this.unknown) {
-
-            const val: Localization<T>[] | undefined = this.unknown[entry];
-            val && r.push(...val);
-        
-        }
-
-        return r;
-    
     }
 
 }
+
+interface LocalizationGroups<T extends IDResolvable> {
+
+    techs: Localization<T>[];
+    missions: Localization<T>[];
+    
+}
+
+export type LocalizationMap<T extends IDResolvable> = FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>>
 
 export interface XMLLocalizationData extends APIAttributes {
     [key: string]:

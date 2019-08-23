@@ -4,7 +4,7 @@ export default class {
 
     private static parseXml(encodedData: XMLServerData): ServerMap {
 
-        const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>, string, string | number>;
+        const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
 
         encodedData.acs = !!encodedData.acs;
         encodedData.rapidFire = !!encodedData.rapidFire;
@@ -69,4 +69,4 @@ export interface XMLServerData {
     [key: string]: string | boolean | number;
 }
 
-export type ServerMap = FlexibleMap<ReadonlyCustomMap<ServerData>, string, string | number>;
+export type ServerMap = FlexibleMap<ReadonlyCustomMap<ServerData>>;

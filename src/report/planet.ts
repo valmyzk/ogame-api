@@ -2,7 +2,7 @@ import { UniverseCoords } from "../universe/coords";
 import { Universe, IDResolvable, RegionResolvable } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
 import OGameAPI from "..";
-import LocalizationData from "../localization/localizationData";
+import { LocalizationMap } from "../localization/localizationData";
 import Planet from "../planet/planet";
 import { Writable } from "../typings/util";
 
@@ -48,19 +48,19 @@ export class PlanetReport<T extends IDResolvable> {
 
     }
 
-    protected getUniverseLocalizations<I extends IDResolvable>(id: I, region: RegionResolvable): Promise<LocalizationData<I>> {
+    protected getUniverseLocalizations<I extends IDResolvable>(id: I, region: RegionResolvable): Promise<LocalizationMap<I>> {
 
         return OGameAPI.getUniverse(id, region)
             .getLocalizations();
 
     }
 
-    private getLocalizationName<I extends IDResolvable>(reportValue: LazyReportValue, localizationData: LocalizationData<I>): string {
+    private getLocalizationName<I extends IDResolvable>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>): string {
 
-        const localization = localizationData.techs
-            .filter((localization): boolean => localization.id === reportValue.id)[0]
-            || localizationData["getUnknown"]()
-                .filter((localization): boolean => localization.id === reportValue.id)[0];
+        const localization = localizationData.get("techs")
+            .filter((localization): boolean => localization.id === reportValue.id)[0];
+
+        //TODO: Add support for unknown localizations
 
         return localization.name;
 

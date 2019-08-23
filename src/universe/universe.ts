@@ -6,11 +6,11 @@ import PlayerData, { XMLPlayerData, PlayerData as PlayerArray } from "../player/
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
-import LocalizationData, { XMLLocalizationData } from "../localization/localizationData";
+import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
 import parsePlayerPositions, { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
 import { PlanetReport } from "../report/planet";
-import { Solo, ResolveSolo } from "../typings/util";
+import { ResolveSolo } from "../typings/util";
 
 export type IDResolvable = number | string;
 
@@ -83,11 +83,11 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    public async getLocalizations(): Promise<LocalizationData<T>> {
+    public async getLocalizations(): Promise<LocalizationMap<T>> {
 
         const localizationData = await this.fetchApi<XMLLocalizationData>("localization");
 
-        return new LocalizationData(localizationData, this);
+        return LocalizationData["parseXml"](localizationData, this);
     
     }
 
