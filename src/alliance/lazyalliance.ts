@@ -19,7 +19,7 @@ export default class LazyAlliance<T extends IDResolvable> {
 
         const allianceData = await this.universe.getAllianceData();
         
-        return allianceData.getAllianceById(this.id);
+        return allianceData.filter(alliance => alliance.id === this.id)[0];
     
     }
 

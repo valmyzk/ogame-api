@@ -4,12 +4,13 @@ import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
 import PlayerData, { XMLPlayerData, PlayerData as PlayerArray } from "../player/playerdata";
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
-import AllianceData, { XMLAllianceData } from "../alliance/alliancedata";
+import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
 import LocalizationData, { XMLLocalizationData } from "../localization/localizationData";
 import parsePlayerPositions, { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
 import { PlanetReport } from "../report/planet";
+import { Solo, ResolveSolo } from "../typings/util";
 
 export type IDResolvable = number | string;
 
@@ -49,11 +50,11 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    public async getAllianceData(): Promise<AllianceData<T>> {
+    public async getAllianceData(): Promise<AllianceArray<T>> {
 
         const allianceData = await this.fetchApi<XMLAllianceData>("alliances");
         
-        return new AllianceData(allianceData, this);
+        return AllianceData["parseXml"](allianceData, this);
     
     };
 
@@ -132,6 +133,13 @@ export async function downloadXml<T>(request: RequestInfo): Promise<T> {
         .then(parseXml);
 
     return apiResponse as T;
+
+};
+
+
+export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
+
+    return Array.isArray(solo) ? solo : [solo] as ResolveSolo<T>;
 
 };
 

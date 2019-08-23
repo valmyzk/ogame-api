@@ -1,43 +1,23 @@
-import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
+import { Universe, IDResolvable, APIAttributes, resolveSolo } from "../universe/universe";
 import Alliance, { XMLAlliance } from "./alliance";
-import { Writable, Solo } from "../typings/util";
+import { Solo } from "../typings/util";
 
-export default class AllianceData<T extends IDResolvable> {
+export default class {
 
-    public readonly alliances: Alliance<T>[] = [];
-    public readonly timestamp: string;
+    private static parseXml<T extends IDResolvable>(encodedData: XMLAllianceData, universe: Universe<T>) {
 
-    public constructor(encodedData: XMLAllianceData, public readonly universe: Universe<T>) {
+        const allianceArray = resolveSolo(encodedData.alliance);
+        return allianceArray.map(alliance => 
+          
+            new Alliance(alliance, universe, encodedData.timestamp)
 
-        this.timestamp = encodedData.timestamp;
-        this.parseAlliances(encodedData.alliance);
-    
-    }
+        );
 
-    private parseAlliances(alliances: Solo<XMLAlliance>): void {
-
-        const allianceArray = Array.isArray(alliances) ? alliances : [alliances];
-        (this as Writable<this>).alliances = allianceArray.map(alliance => {
-
-            return new Alliance(alliance, this.universe, this.timestamp);
-
-        });
-
-    }
-
-    public getAllianceById(id: string): Alliance<T> | undefined {
-
-        return this.alliances.filter(a => a.id === id)[0];
-    
-    }
-
-    public getAlliancesByName(name: string): Alliance<T>[] {
-
-        return this.alliances.filter(a => a.name === name);
-    
     }
 
 }
+
+export type AllianceData<T extends IDResolvable> = Alliance<T>[];
 
 export interface XMLAllianceData extends APIAttributes {
     alliance: Solo<XMLAlliance>;

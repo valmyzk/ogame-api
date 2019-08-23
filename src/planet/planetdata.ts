@@ -1,5 +1,5 @@
 import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
-import Planet, { XMLPlanet, XMLUniversePlanet } from "./planet";
+import Planet, { XMLUniversePlanet } from "./planet";
 import { Writable } from "../typings/util";
 
 export default class PlanetData<T extends IDResolvable> {

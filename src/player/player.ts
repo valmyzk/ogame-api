@@ -4,7 +4,6 @@ import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Writable, Solo } from "../typings/util";
 import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
 import Alliance from "../alliance/alliance";
-import { ExtendedLazyPlayer } from "./lazyplayer";
 
 export default class Player<T extends IDResolvable> {
 
@@ -95,7 +94,7 @@ export default class Player<T extends IDResolvable> {
 
             const data = await this.universe.getAllianceData();
             
-            return data.getAllianceById(id);
+            return data.filter(alliance => alliance.id === id)[0];
         
         }
     

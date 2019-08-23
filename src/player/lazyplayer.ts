@@ -70,7 +70,7 @@ export class ExtendedLazyPlayer<T extends IDResolvable> extends LazyPlayer<T> {
         if (this.allianceId) {
 
             const allianceData = await this.universe.getAllianceData();
-            const alliance = allianceData.getAllianceById(this.id);
+            const alliance = allianceData.filter(alliance => alliance.id === this.id)[0];
             
             return alliance;
         
