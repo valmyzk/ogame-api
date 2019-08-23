@@ -38,7 +38,7 @@ export default class Alliance<T extends IDResolvable> {
     
     }
 
-    private parseMembers(members: Solo<XMLLazyPlayer>): void {
+    private parseMembers(members: Solo<XMLLazyPlayer>) {
 
         if(Array.isArray(members)) {
 

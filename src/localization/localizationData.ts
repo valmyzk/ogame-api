@@ -32,7 +32,7 @@ export default class {
 
 }
 
-interface LocalizationGroups<T extends IDResolvable> {
+export interface LocalizationGroups<T extends IDResolvable> {
 
     techs: Localization<T>[];
     missions: Localization<T>[];

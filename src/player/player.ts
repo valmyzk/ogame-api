@@ -4,6 +4,7 @@ import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Writable, Solo } from "../typings/util";
 import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
 import Alliance from "../alliance/alliance";
+import { ExtendedLazyPlayer } from "./lazyplayer";
 
 export default class Player<T extends IDResolvable> {
 
@@ -37,12 +38,12 @@ export default class Player<T extends IDResolvable> {
     
     }
 
-    private parsePositions(positions: XMLPosition[]): void {
+    private parsePositions(positions: XMLPosition[]) {
 
         //Legor
         if(positions) {
 
-            (this as Writable<this>).positions = positions.map((position): ReferencedPosition<T, this> => {
+            (this as Writable<this>).positions = positions.map(position => {
         
                 return new ReferencedPosition<T, this>(position, this.universe, this.timestamp, this);
         
@@ -52,11 +53,11 @@ export default class Player<T extends IDResolvable> {
 
     }
 
-    private parsePlanets(planets: Solo<XMLPlayerPlanet>): void {
+    private parsePlanets(planets: Solo<XMLPlayerPlanet>) {
 
         const planetArray = Array.isArray(planets) ? planets : [planets];
 
-        (this as Writable<this>).planets = planetArray.map((planet): Planet<T> => {
+        (this as Writable<this>).planets = planetArray.map(planet => {
 
             return new Planet(planet, this.universe, this.timestamp, this.id);
 
@@ -66,7 +67,7 @@ export default class Player<T extends IDResolvable> {
 
     }
 
-    private parseAlliance(alliance?: XMLLazyAlliance): void {
+    private parseAlliance(alliance?: XMLLazyAlliance) {
 
         if(alliance) {
 
@@ -76,10 +77,10 @@ export default class Player<T extends IDResolvable> {
 
     }
 
-    public async getStatus(): Promise<string | undefined> {
+    public async getStatus() {
 
         const playerData = await this.universe.getPlayerData();
-        const player = playerData.filter(player => player.id === this.id)[0];
+        const player = playerData.filter(player => player.id === this.id)[0] as ExtendedLazyPlayer<T>;
 
         return player.status;
     
@@ -94,13 +95,13 @@ export default class Player<T extends IDResolvable> {
 
             const data = await this.universe.getAllianceData();
             
-            return data.filter(alliance => alliance.id === id)[0];
+            return data.filter(alliance => alliance.id === id)[0] as Alliance<T>;
         
         }
     
     }
 
-    public static getHomeplanet<T extends IDResolvable>(planets: Planet<T>[]): Planet<T> {
+    public static getHomeplanet<T extends IDResolvable>(planets: Planet<T>[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];
 

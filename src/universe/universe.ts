@@ -21,7 +21,7 @@ export class Universe<T extends IDResolvable> {
     public readonly planets: Planet<T>[] = [];
     public readonly alliances: Alliance<IDResolvable>[] = [];
     public readonly players: ExtendedLazyPlayer<T>[] = [];
-    public get endpoint(): string {
+    public get endpoint() {
 
         return Universe.parseEndpoint(this.id, this.region); 
 
@@ -91,13 +91,13 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    public createPlanetReport(encodedData: string): PlanetReport<T> {
+    public createPlanetReport(encodedData: string) {
 
         return new PlanetReport<T>(encodedData, this);
 
     } 
 
-    protected async fetchApi<T>(file: string, query: string = ""): Promise<T> {
+    protected async fetchApi<T>(file: string, query: string = "") {
 
         const downloadPromise = await downloadXml(`${this.endpoint}/${file}.xml${query && "?"}${query}`) as {[key: string]: unknown};
         
@@ -105,7 +105,7 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    private static parseEndpoint(id: number | string, region: RegionResolvable): string {
+    private static parseEndpoint(id: number | string, region: RegionResolvable) {
 
         const _id = typeof id === "number" ? `s${id}` : id.toLowerCase();
 
@@ -115,17 +115,17 @@ export class Universe<T extends IDResolvable> {
 
 }
 
-export const parseXml = <T>(xmlContent: string): T => {
+export const parseXml = <T>(xmlContent: string) => {
 
     return parse(xmlContent, {
         textNodeName: "text",
         attributeNamePrefix: "",
         ignoreAttributes: false
-    });
+    }) as T;
 
 };
 
-export async function downloadXml<T>(request: RequestInfo): Promise<T> {
+export async function downloadXml<T>(request: RequestInfo) {
 
     //console.log("Fetching " + request + "...");
     const apiResponse = await ifetch(request)

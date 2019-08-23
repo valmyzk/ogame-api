@@ -14,7 +14,7 @@ export default class PlanetData<T extends IDResolvable> {
     
     }
 
-    private parsePlanets(planets: XMLUniversePlanet[], timestamp: string): void {
+    private parsePlanets(planets: XMLUniversePlanet[], timestamp: string) {
 
         (this as Writable<this>).planets = planets.map(planet => {
 
@@ -24,13 +24,13 @@ export default class PlanetData<T extends IDResolvable> {
 
     }
 
-    public getPlanetById(id: string): Planet<T> {
+    public getPlanetById(id: string) {
 
         return this.planets.filter(v => v.id === id)[0];
     
     }
 
-    public getPlanetsByName(name: string): Planet<T>[] {
+    public getPlanetsByName(name: string) {
 
         return this.planets.filter(v => v.name === name);
     

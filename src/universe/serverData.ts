@@ -2,7 +2,7 @@ import { RegionResolvable } from "./universe";
 
 export default class {
 
-    private static parseXml(encodedData: XMLServerData): ServerMap {
+    private static parseXml(encodedData: XMLServerData) {
 
         const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
 

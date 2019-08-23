@@ -4,7 +4,7 @@ import { Solo } from "../typings/util";
 
 export default class {
 
-    private static parseXml<T extends IDResolvable>(encodedData: XMLPlayerData, universe: Universe<T>): PlayerData<T> {
+    private static parseXml<T extends IDResolvable>(encodedData: XMLPlayerData, universe: Universe<T>) {
 
         const playerArray = Array.isArray(encodedData.player) ? encodedData.player : [encodedData.player];
         return playerArray.map(player => 

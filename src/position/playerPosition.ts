@@ -3,7 +3,7 @@ import { ReferencedPosition } from "./position";
 
 export type PlayerPosition<T extends IDResolvable> = ReferencedPosition<T, string>;
 
-export default function parse<T extends IDResolvable>(encodedData: XMLPlayerPositions, universe: Universe<T>): PlayerPosition<T>[] {
+export default function parse<T extends IDResolvable>(encodedData: XMLPlayerPositions, universe: Universe<T>) {
     
     return encodedData.player.map(position => 
 

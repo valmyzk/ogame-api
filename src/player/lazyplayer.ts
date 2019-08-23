@@ -17,7 +17,7 @@ export default class LazyPlayer<T extends IDResolvable> {
     
     }
 
-    public async getPlayer(): Promise<Player<T>> {
+    public async getPlayer() {
 
         const playerData = await this.universe["fetchApi"]<XMLPlayer>("playerData", `id=${this.id}`);
 
@@ -49,7 +49,7 @@ export class ExtendedLazyPlayer<T extends IDResolvable> extends LazyPlayer<T> {
     
     }
 
-    public async getPlayer(): Promise<Player<T>> {
+    public async getPlayer() {
 
         const player: Player<T> = await super.getPlayer();
 
@@ -65,12 +65,12 @@ export class ExtendedLazyPlayer<T extends IDResolvable> extends LazyPlayer<T> {
     }
 
     /**@description Uses alliances API */
-    public async getAlliance(): Promise<Alliance<T> | undefined> {
+    public async getAlliance() {
 
         if (this.allianceId) {
 
             const allianceData = await this.universe.getAllianceData();
-            const alliance = allianceData.filter(alliance => alliance.id === this.id)[0];
+            const alliance = allianceData.filter(alliance => alliance.id === this.id)[0] as Alliance<T>;
             
             return alliance;
         

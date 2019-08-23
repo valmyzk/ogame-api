@@ -23,7 +23,7 @@ export class PlanetReport<T extends IDResolvable> {
 
     }
 
-    private parseString(raw: string): void {
+    private parseString(raw: string) {
 
         const sectioned = raw.split("|");
         const rawCoords = (sectioned.shift() as string).slice(7);
@@ -48,17 +48,17 @@ export class PlanetReport<T extends IDResolvable> {
 
     }
 
-    protected getUniverseLocalizations<I extends IDResolvable>(id: I, region: RegionResolvable): Promise<LocalizationMap<I>> {
+    protected getUniverseLocalizations<I extends IDResolvable>(id: I, region: RegionResolvable) {
 
         return OGameAPI.getUniverse(id, region)
             .getLocalizations();
 
     }
 
-    private getLocalizationName<I extends IDResolvable>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>): string {
+    private getLocalizationName<I extends IDResolvable>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>) {
 
         const localization = localizationData.get("techs")
-            .filter((localization): boolean => localization.id === reportValue.id)[0];
+            .filter(localization => localization.id === reportValue.id)[0] as Localization<I>;
 
         //TODO: Add support for unknown localizations
 
@@ -66,11 +66,11 @@ export class PlanetReport<T extends IDResolvable> {
 
     }
 
-    public async mapLocalizations<I extends IDResolvable>(id?: I, region: RegionResolvable = "en"): Promise<this> {
+    public async mapLocalizations<I extends IDResolvable>(id?: I, region: RegionResolvable = "en") {
 
         const localizationData = await this.getUniverseLocalizations(id || 800, region);
         
-        this.props.forEach((value): void => {
+        this.props.forEach(value => {
 
             const name = this.getLocalizationName(value, localizationData);
 
@@ -85,24 +85,24 @@ export class PlanetReport<T extends IDResolvable> {
 
     }
 
-    public async getPlanet(): Promise<Planet<T>> {
+    public async getPlanet() {
 
         const planetData = await this.universe.getPlanetData();
 
-        const planet = planetData.planets.filter((planet): boolean => {
+        const planet = planetData.planets.filter(planet => {
             
             return planet.coords.equals(this.coords);
 
-        })[0];
+        })[0] as Planet<T>;
 
         return planet;
 
     }
 
-    public toString(): string {
+    public toString() {
 
         const coordsHeader = `coords;${this.coords.toString()}`;
-        const props = [...this.props.values()].map((report): string => `${report.id};${report.value}`);
+        const props = [...this.props.values()].map(report => `${report.id};${report.value}`);
 
         return `${coordsHeader}|${props.join("|")}`;
 
