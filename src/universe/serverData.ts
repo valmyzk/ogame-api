@@ -1,28 +1,24 @@
 import { Region } from "./universe";
 
-export default class {
+export default function parseXml(encodedData: XMLServerData) {
 
-    private static parseXml(encodedData: XMLServerData) {
+    const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
 
-        const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
+    encodedData.acs = !!encodedData.acs;
+    encodedData.rapidFire = !!encodedData.rapidFire;
+    encodedData.donutGalaxy = !!encodedData.donutGalaxy;
+    encodedData.donutSystem = !!encodedData.donutSystem;
+    encodedData.wfEnabled = !!encodedData.wfEnabled;
 
-        encodedData.acs = !!encodedData.acs;
-        encodedData.rapidFire = !!encodedData.rapidFire;
-        encodedData.donutGalaxy = !!encodedData.donutGalaxy;
-        encodedData.donutSystem = !!encodedData.donutSystem;
-        encodedData.wfEnabled = !!encodedData.wfEnabled;
+    for(const entry in encodedData) {
 
-        for(const entry in encodedData) {
+        const value = encodedData[entry];
 
-            const value = encodedData[entry];
-
-            serverMap.set(entry as keyof ServerData, value);
-
-        }
-
-        return serverMap;
+        serverMap.set(entry as keyof ServerData, value);
 
     }
+
+    return serverMap;
 
 }
 

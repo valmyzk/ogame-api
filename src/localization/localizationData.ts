@@ -1,34 +1,29 @@
-import { Universe, ID, APIAttributes } from "../universe/universe";
-import { Writable } from "../typings/util";
+import Universe, { ID, APIAttributes } from "../universe/universe";
 import Localization, { XMLLocalization } from "./localization";
 
-export default class {
+export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
-    private static parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
+    const localizationMap = new Map<string, Localization<T>[]>();
 
-        const localizationMap = new Map<string, Localization<T>[]>();
+    for(const group in encodedData) {
 
-        for(const group in encodedData) {
+        const value = encodedData[group];
 
-            const value = encodedData[group];
+        if(typeof value === "object") {
 
-            if(typeof value === "object") {
+            const instancedLocalizations = value.name.map(localization => {
 
-                const instancedLocalizations = value.name.map(localization => {
+                return new Localization<T>(localization, universe, encodedData.timestamp);
 
-                    return new Localization<T>(localization, universe, encodedData.timestamp);
+            });
 
-                });
-
-                localizationMap.set(group, instancedLocalizations);                
-
-            }
+            localizationMap.set(group, instancedLocalizations);                
 
         }
 
-        return localizationMap as LocalizationMap<T>;
-
     }
+
+    return localizationMap as LocalizationMap<T>;
 
 }
 

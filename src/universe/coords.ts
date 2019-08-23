@@ -1,4 +1,4 @@
-import { ID, Universe } from "./universe";
+import Universe, { ID } from "./universe";
 
 export class Coords {
 

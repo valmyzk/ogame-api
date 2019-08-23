@@ -7,14 +7,15 @@ import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
-import parsePlayerPositions, { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
+import { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
-import { PlanetReport } from "../report/planet";
+import PlanetReport from "../report/planet";
 import { ResolveSolo } from "../typings/util";
+import PositionData from "../position/playerPosition";
 
 export type ID = number | string;
 
-export class Universe<T extends ID> {
+export default class Universe<T extends ID> {
 
     public readonly id: T;
     public readonly region: Region;
@@ -38,7 +39,7 @@ export class Universe<T extends ID> {
 
         const playerData = await this.fetchApi<XMLPlayerData>("players");
         
-        return PlayerData["parseXml"](playerData, this);
+        return PlayerData(playerData, this);
     
     }
 
@@ -46,7 +47,7 @@ export class Universe<T extends ID> {
 
         const planetData = await this.fetchApi<XMLPlanetData>("universe");
         
-        return PlanetData["parseXml"](planetData, this);
+        return PlanetData<T>(planetData, this);
     
     }
 
@@ -54,14 +55,14 @@ export class Universe<T extends ID> {
 
         const allianceData = await this.fetchApi<XMLAllianceData>("alliances");
         
-        return AllianceData["parseXml"](allianceData, this);
+        return AllianceData<T>(allianceData, this);
     
     };
 
     public async getPlayerPositions(type: number): Promise<PlayerPosition<T>[]> {
 
         const positionsData = await this.fetchApi<XMLPlayerPositions>("highscore", `category=1&type=${type}`);
-        const highscores = parsePlayerPositions(positionsData, this);
+        const highscores = PositionData(positionsData, this);
 
         return highscores;
 
@@ -79,7 +80,7 @@ export class Universe<T extends ID> {
 
         const serverData = await this.fetchApi<XMLServerData>("serverData");
 
-        return ServerData["parseXml"](serverData);
+        return ServerData(serverData);
     
     }
 
@@ -87,7 +88,7 @@ export class Universe<T extends ID> {
 
         const localizationData = await this.fetchApi<XMLLocalizationData>("localization");
 
-        return LocalizationData["parseXml"](localizationData, this);
+        return LocalizationData(localizationData, this);
     
     }
 

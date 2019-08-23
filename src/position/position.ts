@@ -1,4 +1,4 @@
-import { Universe, ID } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 
 abstract class Position<T extends ID> {
 
@@ -23,7 +23,7 @@ abstract class Position<T extends ID> {
 
 };
 
-export class ReferencedPosition<U extends ID, R> extends Position<U> {
+export default class ReferencedPosition<U extends ID, R> extends Position<U> {
 
     public constructor(encodedData: XMLPosition, public readonly universe: Universe<U>, public readonly timestamp: string, public readonly reference: R) {
 

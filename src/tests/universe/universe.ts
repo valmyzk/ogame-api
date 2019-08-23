@@ -1,12 +1,12 @@
 import test from "ava";
-import { Universe, downloadXml, parseXml } from "../../universe/universe";
+import Universe, { downloadXml, parseXml } from "../../universe/universe";
 import OGameAPI from "../..";
 import PlayerData from "../../player/playerdata";
 import PlanetData from "../../planet/planetdata";
 import AllianceData from "../../alliance/alliancedata";
-import { ReferencedPosition } from "../../position/position";
+import ReferencedPosition from "../../position/position";
 import ServerData from "../../universe/serverData";
-import { PlanetReport } from "../../report/planet";
+import PlanetReport from "../../report/planet";
 
 const universe = OGameAPI.getUniverse(800, "en");
 

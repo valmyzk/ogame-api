@@ -1,4 +1,4 @@
-import { Universe, ID } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 import Alliance from "./alliance";
 
 export default class LazyAlliance<T extends ID> {
@@ -18,8 +18,9 @@ export default class LazyAlliance<T extends ID> {
     public async getAlliance() {
 
         const allianceData = await this.universe.getAllianceData();
-        
-        return allianceData.filter(alliance => alliance.id === this.id)[0];
+        const alliance = allianceData.filter(alliance => alliance.id === this.id)[0] as Alliance<T>;
+
+        return alliance;
     
     }
 

@@ -1,5 +1,5 @@
 import UniverseObject, { XMLUniverseObject } from "./object";
-import { Universe, ID } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 import Moon, { XMLMoon } from "./moon";
 
 export default class Planet<T extends ID> extends UniverseObject<T> {

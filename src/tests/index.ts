@@ -1,6 +1,6 @@
 import test from "ava";
 import OGameAPI from "..";
-import { Universe } from "../universe/universe";
+import Universe from "../universe/universe";
 
 
 test("getUniverse", t => {

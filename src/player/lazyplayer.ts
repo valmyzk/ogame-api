@@ -1,5 +1,5 @@
 import Player, { XMLPlayer } from "./player";
-import { Universe, ID } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 
 /**@description Player Reference */

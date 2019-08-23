@@ -1,4 +1,4 @@
-import { Universe, ID } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 import { XMLUniversePlanet } from "./planet";
 import UniverseObject, { XMLUniverseObject } from "./object";
 

@@ -1,4 +1,4 @@
-﻿import { Universe, ID, Region } from "./universe/universe";
+﻿import Universe, { ID, Region } from "./universe/universe";
 import { Writable } from "./typings/util";
 
 //"Static" class

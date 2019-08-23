@@ -1,9 +1,9 @@
-import { ID, Universe, APIAttributes } from "../universe/universe";
-import { ReferencedPosition } from "./position";
+import Universe, { ID, APIAttributes } from "../universe/universe";
+import ReferencedPosition from "./position";
 
 export type PlayerPosition<T extends ID> = ReferencedPosition<T, string>;
 
-export default function parse<T extends ID>(encodedData: XMLPlayerPositions, universe: Universe<T>) {
+export default function parseXml<T extends ID>(encodedData: XMLPlayerPositions, universe: Universe<T>) {
     
     return encodedData.player.map(position => 
 

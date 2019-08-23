@@ -1,5 +1,5 @@
 import { UniverseCoords } from "../universe/coords";
-import { Universe, ID, Region } from "../universe/universe";
+import Universe, { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
 import OGameAPI from "..";
 import { LocalizationMap } from "../localization/localizationData";
@@ -8,7 +8,7 @@ import { Writable } from "../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
 
-export class PlanetReport<T extends ID> {
+export default class PlanetReport<T extends ID> {
 
     public readonly coords!: UniverseCoords<T>;
     public readonly props: Map<number, LazyReportValue> = new Map();

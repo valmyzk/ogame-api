@@ -1,4 +1,4 @@
-import { ID, Universe } from "../universe/universe";
+import Universe, { ID } from "../universe/universe";
 
 export const enum Locale {
 

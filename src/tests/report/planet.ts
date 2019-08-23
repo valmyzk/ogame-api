@@ -1,5 +1,5 @@
-import test, { ExecutionContext } from "ava";
-import { PlanetReport } from "../../report/planet";
+import test from "ava";
+import PlanetReport from "../../report/planet";
 import OGameAPI from "../..";
 import LocalizationData from "../../localization/localizationData";
 import { UniverseCoords } from "../../universe/coords";
