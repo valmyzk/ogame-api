@@ -1,6 +1,6 @@
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 
-abstract class Position<T extends IDResolvable> {
+abstract class Position<T extends ID> {
 
     public readonly type: string;
     public readonly score: string;
@@ -23,7 +23,7 @@ abstract class Position<T extends IDResolvable> {
 
 };
 
-export class ReferencedPosition<U extends IDResolvable, R> extends Position<U> {
+export class ReferencedPosition<U extends ID, R> extends Position<U> {
 
     public constructor(encodedData: XMLPosition, public readonly universe: Universe<U>, public readonly timestamp: string, public readonly reference: R) {
 

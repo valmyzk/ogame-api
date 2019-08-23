@@ -12,14 +12,14 @@ import ifetch from "isomorphic-fetch";
 import { PlanetReport } from "../report/planet";
 import { ResolveSolo } from "../typings/util";
 
-export type IDResolvable = number | string;
+export type ID = number | string;
 
-export class Universe<T extends IDResolvable> {
+export class Universe<T extends ID> {
 
     public readonly id: T;
-    public readonly region: RegionResolvable;
+    public readonly region: Region;
     public readonly planets: Planet<T>[] = [];
-    public readonly alliances: Alliance<IDResolvable>[] = [];
+    public readonly alliances: Alliance<ID>[] = [];
     public readonly players: ExtendedLazyPlayer<T>[] = [];
     public get endpoint() {
 
@@ -30,7 +30,7 @@ export class Universe<T extends IDResolvable> {
     public constructor(encodedData: XMLUniverse) {
 
         this.id = encodedData.id as T;
-        this.region = encodedData.href.substr(13, 2) as RegionResolvable;
+        this.region = encodedData.href.substr(13, 2) as Region;
 
     }
 
@@ -105,7 +105,7 @@ export class Universe<T extends IDResolvable> {
     
     }
 
-    private static parseEndpoint(id: number | string, region: RegionResolvable) {
+    private static parseEndpoint(id: number | string, region: Region) {
 
         const _id = typeof id === "number" ? `s${id}` : id.toLowerCase();
 
@@ -154,7 +154,7 @@ interface XMLUniverse {
     href: string;
 }
 
-export type RegionResolvable = "es" | "en" | "de" | "fr";
+export type Region = "es" | "en" | "de" | "fr";
 
 export interface APIAttributes {
     "xmlns:xsi": string;

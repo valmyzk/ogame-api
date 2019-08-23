@@ -1,9 +1,9 @@
 import Player, { XMLPlayer } from "./player";
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 
 /**@description Player Reference */
-export default class LazyPlayer<T extends IDResolvable> {
+export default class LazyPlayer<T extends ID> {
 
     public readonly id: string;
     public readonly universe: Universe<T>;
@@ -28,7 +28,7 @@ export default class LazyPlayer<T extends IDResolvable> {
 }
 
 /**@description Player reference with additional features such as status and alliance */
-export class ExtendedLazyPlayer<T extends IDResolvable> extends LazyPlayer<T> {
+export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
 
     public readonly name: string;
     public readonly allianceId?: string;

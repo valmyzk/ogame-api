@@ -1,8 +1,8 @@
-import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
+import { Universe, ID, APIAttributes } from "../universe/universe";
 import Planet, { XMLUniversePlanet } from "./planet";
 import { Writable } from "../typings/util";
 
-export default class PlanetData<T extends IDResolvable> {
+export default class PlanetData<T extends ID> {
 
     public readonly planets: Planet<T>[] = [];
     public readonly timestamp: string;

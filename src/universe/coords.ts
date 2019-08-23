@@ -1,4 +1,4 @@
-import { IDResolvable, Universe } from "./universe";
+import { ID, Universe } from "./universe";
 
 export class Coords {
 
@@ -27,7 +27,7 @@ export class Coords {
 
 };
 
-export class UniverseCoords<T extends IDResolvable> extends Coords {
+export class UniverseCoords<T extends ID> extends Coords {
 
     public constructor(public readonly galaxy: number, public readonly system: number, public readonly position: number, public readonly universe: Universe<T>) {
 
@@ -35,7 +35,7 @@ export class UniverseCoords<T extends IDResolvable> extends Coords {
 
     };
 
-    public static parse<T extends IDResolvable>(coords: string, universe: Universe<T>) {
+    public static parse<T extends ID>(coords: string, universe: Universe<T>) {
 
         const split = coords.split(":", 3)
             .map(v => parseInt(v)) as [number, number, number];

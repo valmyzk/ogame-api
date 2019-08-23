@@ -1,8 +1,8 @@
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 import LazyPlayer from "../player/lazyplayer";
 import { UniverseCoords } from "../universe/coords";
 
-export default abstract class UniverseObject<T extends IDResolvable> {
+export default abstract class UniverseObject<T extends ID> {
 
     public readonly coords: UniverseCoords<T>;
     public readonly id: string;

@@ -1,4 +1,4 @@
-import { RegionResolvable } from "./universe";
+import { Region } from "./universe";
 
 export default class {
 
@@ -32,7 +32,7 @@ interface ServerData {
     serverId: string;
     name: string;
     number: number;
-    language: RegionResolvable;
+    language: Region;
     timezone: string;
     timezoneOffset: string;
     domain: string;

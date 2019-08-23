@@ -1,10 +1,10 @@
-import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
+import { Universe, ID, APIAttributes } from "../universe/universe";
 import { Writable } from "../typings/util";
 import Localization, { XMLLocalization } from "./localization";
 
 export default class {
 
-    private static parseXml<T extends IDResolvable>(encodedData: XMLLocalizationData, universe: Universe<T>) {
+    private static parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
         const localizationMap = new Map<string, Localization<T>[]>();
 
@@ -32,14 +32,14 @@ export default class {
 
 }
 
-export interface LocalizationGroups<T extends IDResolvable> {
+export interface LocalizationGroups<T extends ID> {
 
     techs: Localization<T>[];
     missions: Localization<T>[];
     
 }
 
-export type LocalizationMap<T extends IDResolvable> = FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>>
+export type LocalizationMap<T extends ID> = FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>>
 
 export interface XMLLocalizationData extends APIAttributes {
     [key: string]:

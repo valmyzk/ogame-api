@@ -2,11 +2,11 @@ import { XMLPosition, ReferencedPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet, XMLUniversePlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Writable, Solo } from "../typings/util";
-import { Universe, IDResolvable, APIAttributes } from "../universe/universe";
+import { Universe, ID, APIAttributes } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
 
-export default class Player<T extends IDResolvable> {
+export default class Player<T extends ID> {
 
     public readonly name: string;
     public readonly id: string;
@@ -101,7 +101,7 @@ export default class Player<T extends IDResolvable> {
     
     }
 
-    public static getHomeplanet<T extends IDResolvable>(planets: Planet<T>[]) {
+    public static getHomeplanet<T extends ID>(planets: Planet<T>[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];
 

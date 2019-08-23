@@ -1,8 +1,8 @@
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 import { XMLUniversePlanet } from "./planet";
 import UniverseObject, { XMLUniverseObject } from "./object";
 
-export default class Moon<T extends IDResolvable> extends UniverseObject<T> {
+export default class Moon<T extends ID> extends UniverseObject<T> {
 
     public readonly size: string;
 

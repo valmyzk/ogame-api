@@ -1,4 +1,4 @@
-import { IDResolvable, Universe } from "../universe/universe";
+import { ID, Universe } from "../universe/universe";
 
 export const enum Locale {
 
@@ -81,7 +81,7 @@ export const enum Locale {
 }
 
 
-export default class Localization<T extends IDResolvable> {
+export default class Localization<T extends ID> {
 
     public readonly id: string;
     public readonly name: string;

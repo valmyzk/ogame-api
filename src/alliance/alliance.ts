@@ -1,8 +1,8 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 import { Solo, Writable } from "../typings/util";
 
-export default class Alliance<T extends IDResolvable> {
+export default class Alliance<T extends ID> {
 
     public readonly id: string;
     public readonly name: string;

@@ -1,7 +1,7 @@
-import { Universe, IDResolvable } from "../universe/universe";
+import { Universe, ID } from "../universe/universe";
 import Alliance from "./alliance";
 
-export default class LazyAlliance<T extends IDResolvable> {
+export default class LazyAlliance<T extends ID> {
 
     public readonly name: string;
     public readonly tag: string;
@@ -15,7 +15,7 @@ export default class LazyAlliance<T extends IDResolvable> {
     
     }
 
-    public async getAlliance(): Promise<Alliance<T> | undefined> {
+    public async getAlliance() {
 
         const allianceData = await this.universe.getAllianceData();
         
