@@ -1,5 +1,5 @@
 import test from "ava";
-import { Coords, UniverseCoords } from "../../universe/coords";
+import { Coords } from "../../universe/coords";
 
 test("constructor", t => {
 

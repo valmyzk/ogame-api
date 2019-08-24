@@ -2,9 +2,7 @@ import test from "ava";
 import PlanetReport from "../../report/planet";
 import OGameAPI from "../..";
 import LocalizationData from "../../localization/localizationData";
-import { UniverseCoords } from "../../universe/coords";
-import PlanetData from "../../planet/planetdata";
-import { Writable } from "../../../typings/util";
+import { Coords } from "../../universe/coords";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
 const universe = OGameAPI.getUniverse(800, "en");
@@ -21,7 +19,7 @@ test.serial("parseString", t => {
     const parseString = PlanetReport.prototype["parseString"].bind(report);
     
     t.notThrows(() => parseString(sampleData));
-    t.deepEqual(report.coords as unknown as UniverseCoords<800>, new UniverseCoords(0, 0, 0, universe));
+    t.deepEqual(report.coords as unknown as Coords, new Coords(0, 0, 0));
     
     const [firstValue, secondValue] = [report.props.get(0), report.props.get(1)];
 
@@ -64,7 +62,7 @@ test.serial("getPlanet", async t => {
 
     const patchedUniverse = OGameAPI.getUniverse(800, "en");
     const planet = {
-        coords: UniverseCoords.fromString("0:0:0")
+        coords: Coords.fromString("0:0:0")
     } as any;
 
     patchedUniverse.getPlanetData = async () => {

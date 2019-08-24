@@ -1,4 +1,4 @@
-import { UniverseCoords } from "../universe/coords";
+import { Coords } from "../universe/coords";
 import Universe, { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
 import OGameAPI from "..";
@@ -10,7 +10,7 @@ type ReportMap = Map<string, ReportValue>;
 
 export default class PlanetReport<T extends ID> {
 
-    public readonly coords!: UniverseCoords<T>;
+    public readonly coords!: Coords;
     public readonly props: Map<number, LazyReportValue> = new Map();
     public readonly techs: ReportMap = new Map();
     public readonly defense: ReportMap = new Map();
@@ -28,7 +28,7 @@ export default class PlanetReport<T extends ID> {
         const sectioned = raw.split("|");
         const rawCoords = (sectioned.shift() as string).slice(7);
 
-        (this as Writable<this>).coords = UniverseCoords.parse(rawCoords, this.universe);
+        (this as Writable<this>).coords = Coords.fromString(rawCoords);
 
         //Fill this.props
         for(const valuePair of sectioned) {
