@@ -69,10 +69,7 @@ test.serial("getPlanet", async t => {
 
     patchedUniverse.getPlanetData = async () => {
 
-        const planetData = Object.create(PlanetData.prototype) as PlanetData<800>;
-        (planetData as Writable<PlanetData<800>>).planets = [planet];
-
-        return planetData;
+        return [planet];
 
     };
 

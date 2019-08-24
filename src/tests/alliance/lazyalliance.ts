@@ -4,9 +4,6 @@ import { join } from "path";
 import LazyAlliance, { XMLLazyAlliance } from "../../alliance/lazyalliance";
 import OGameAPI from "../..";
 import { readFile as readFileCb } from "fs";
-import AllianceData, { XMLAllianceData } from "../../alliance/alliancedata";
-import Alliance from "../../alliance/alliance";
-import { Writable } from "../../../typings/util";
 
 const readFile = promisify(readFileCb);
 
@@ -66,10 +63,7 @@ test.serial("getAlliance", t => {
 
     patchedUniverse.getAllianceData = async () => {
 
-        const allianceData = Object.create(AllianceData.prototype) as AllianceData<800>;
-        (allianceData as Writable<AllianceData<800>>).alliances = [alliance];
-
-        return allianceData;
+        return [alliance];
 
     };
     const lazyAlliance = new LazyAlliance(encodedData, patchedUniverse, "1337");
