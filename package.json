@@ -2,12 +2,12 @@
   "name": "ogame-api",
   "version": "1.0.0",
   "description": "",
-  "sideEffects": "none",
+  "sideEffects": false,
   "main": "out/index.js",
   "files": [
     "out/**/*"
   ],
-  "typings": "typings/index.d.ts",
+  "typings": "out/index.d.ts",
   "dependencies": {
     "fast-xml-parser": "^3.12.20",
     "isomorphic-fetch": "^2.2.1"

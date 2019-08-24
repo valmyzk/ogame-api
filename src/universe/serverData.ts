@@ -66,4 +66,4 @@ export interface XMLServerData {
     [key: string]: string | boolean | number;
 }
 
-export type ServerMap = FlexibleMap<ReadonlyCustomMap<ServerData>>;
+export interface ServerMap extends FlexibleMap<ReadonlyCustomMap<ServerData>> {};

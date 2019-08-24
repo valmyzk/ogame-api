@@ -34,7 +34,8 @@ module.exports =  {
       "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": false, "variables": true }],
       "@typescript-eslint/no-parameter-properties": "off",
       "@typescript-eslint/interface-name-prefix": "off",
-      "@typescript-eslint/explicit-function-return-type": "off"
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-empty-interface": "off"
     },
     settings:  {
       react:  {

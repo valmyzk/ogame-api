@@ -35,7 +35,8 @@ export interface LocalizationGroups<T extends ID> {
     
 }
 
-export type LocalizationMap<T extends ID> = FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>>
+//Simplify type name
+export interface LocalizationMap<T extends ID> extends FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>> {};
 
 export interface XMLLocalizationData extends APIAttributes {
     [key: string]:
