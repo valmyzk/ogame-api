@@ -5,12 +5,13 @@ import { Writable, Solo } from "../../typings/util";
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
+import Position from "../position/position";
 
 export default class Player<T extends ID> {
 
     public readonly name: string;
     public readonly id: string;
-    public readonly positions: ReferencedPosition<T, this>[] = [];
+    public readonly positions: Position<T>[] = [];
     public readonly planets: Planet<T>[] = [];
     public readonly home!: Planet<T>;
     public readonly alliance?: LazyAlliance<T>;
@@ -33,7 +34,7 @@ export default class Player<T extends ID> {
 
         (this as Writable<this>).positions = positions && positions.map(position => {
         
-            return new ReferencedPosition<T, this>(position, this.universe, this.timestamp, this);
+            return new ReferencedPosition<T>(position, this.universe, this.timestamp);
         
         });
 

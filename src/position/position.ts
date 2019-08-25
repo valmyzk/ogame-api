@@ -1,6 +1,6 @@
 import Universe, { ID } from "../universe/universe";
 
-abstract class Position<T extends ID> {
+export default class Position<T extends ID> {
 
     public readonly type: string;
     public readonly score: string;
@@ -12,25 +12,9 @@ abstract class Position<T extends ID> {
         this.type = encodedData.type;
         this.score = encodedData.score;
         this.ranking = encodedData.text;
-
-        if (encodedData.ships) {
-
-            this.ships = encodedData.ships;
-        
-        }
+        this.ships = encodedData.ships;
     
     }
-
-};
-
-export default class ReferencedPosition<U extends ID, R> extends Position<U> {
-
-    public constructor(encodedData: XMLPosition, public readonly universe: Universe<U>, public readonly timestamp: string, public readonly reference: R) {
-
-        super(encodedData, universe, timestamp);
-        this.reference = reference;
-
-    };
 
 };
 

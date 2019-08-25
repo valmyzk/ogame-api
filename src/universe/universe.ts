@@ -7,11 +7,11 @@ import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
-import { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
+import PositionData, { XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
 import { ResolveSolo, Solo } from "../../typings/util";
-import PositionData from "../position/playerPosition";
+import Position from "../position/position";
 
 export type ID = number | string;
 export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
@@ -65,7 +65,7 @@ export default class Universe<T extends ID> {
     
     };
 
-    public async getPlayerPositions(type: number): Promise<PlayerPosition<T>[]> {
+    public async getPlayerPositions(type: number): Promise<Position<T>[]> {
 
         const positionsData = await this.fetchApi<XMLPlayerPositions>("highscore", `category=1&type=${type}`);
         const highscores = PositionData(positionsData, this);
