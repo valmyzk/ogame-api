@@ -101,7 +101,7 @@ export interface XMLPlayer extends APIAttributes {
     };
 
     planets: {
-        planet: XMLPlayerPlanet[];
+        planet: Solo<XMLPlayerPlanet>;
     };
 
     alliance?: XMLLazyAlliance;

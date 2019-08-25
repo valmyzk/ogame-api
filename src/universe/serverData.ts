@@ -19,7 +19,7 @@ export default function parseXml(encodedData: XMLServerData) {
 
     }
 
-    return serverMap;
+    return serverMap as ServerMap;
 
 }
 

@@ -1,6 +1,7 @@
-import Universe, { ID, APIAttributes } from "../universe/universe";
+import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import Localization, { XMLLocalization } from "./localization";
 import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
+import { Solo } from "../../typings/util";
 
 export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
@@ -12,7 +13,8 @@ export default function parseXml<T extends ID>(encodedData: XMLLocalizationData,
 
         if(typeof value === "object") {
 
-            const instancedLocalizations = value.name.map(localization => {
+            const array = resolveSolo(value.name);
+            const instancedLocalizations = array.map(localization => {
 
                 return new Localization<T>(localization, universe, encodedData.timestamp);
 
@@ -42,7 +44,7 @@ export interface XMLLocalizationData extends APIAttributes {
     [key: string]:
     | (
         | {
-            name: XMLLocalization[];
+            name: Solo<XMLLocalization>;
 				  }
         | string)
     | undefined;

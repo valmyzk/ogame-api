@@ -10,10 +10,16 @@ import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../local
 import { PlayerPosition, XMLPlayerPositions } from "../position/playerPosition";
 import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
-import { ResolveSolo } from "../../typings/util";
+import { ResolveSolo, Solo } from "../../typings/util";
 import PositionData from "../position/playerPosition";
 
 export type ID = number | string;
+export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
+
+    return Array.isArray(solo) ? solo : [solo] as ResolveSolo<T>;
+
+};
+
 
 export default class Universe<T extends ID> {
 
@@ -71,8 +77,9 @@ export default class Universe<T extends ID> {
     public async getNearbyUniverses(): Promise<Universe<number>[]> {
 
         const universesData = await this.fetchApi<XMLUniverses>("universes");
+        const array = resolveSolo(universesData.universe);
 
-        return universesData.universe.map((universe): Universe<number> => new Universe<number>(universe));
+        return array.map(universe => new Universe<number>(universe));
     
     }
 
@@ -98,7 +105,7 @@ export default class Universe<T extends ID> {
 
     } 
 
-    protected async fetchApi<T>(file: string, query: string = "") {
+    protected async fetchApi<T>(file: string, query = "") {
 
         const downloadPromise = await downloadXml(`${this.endpoint}/${file}.xml${query && "?"}${query}`) as {[key: string]: unknown};
         
@@ -137,17 +144,8 @@ export async function downloadXml<T>(request: RequestInfo) {
 
 };
 
-
-export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
-
-    return Array.isArray(solo) ? solo : [solo] as ResolveSolo<T>;
-
-};
-
-
-
 interface XMLUniverses {
-    universe: XMLUniverse[];
+    universe: Solo<XMLUniverse>;
 }
 
 interface XMLUniverse {

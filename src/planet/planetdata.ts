@@ -1,5 +1,6 @@
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import Planet, { XMLUniversePlanet } from "./planet";
+import { Solo } from "../../typings/util";
 
 export default function parseXml<T extends ID>(encodedData: XMLPlanetData, universe: Universe<T>) {
 
@@ -14,5 +15,7 @@ export default function parseXml<T extends ID>(encodedData: XMLPlanetData, unive
 }
 
 export interface XMLPlanetData extends APIAttributes {
-    planet: XMLUniversePlanet[];
+
+    planet: Solo<XMLUniversePlanet>;
+    
 }
