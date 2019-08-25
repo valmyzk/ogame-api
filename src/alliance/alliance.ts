@@ -1,5 +1,5 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
-import Universe, { ID } from "../universe/universe";
+import Universe, { ID, resolveSolo } from "../universe/universe";
 import { Solo, Writable } from "../../typings/util";
 
 export default class Alliance<T extends ID> {
@@ -31,8 +31,6 @@ export default class Alliance<T extends ID> {
         this.logo = encodedData.logo;
         this.open = !!encodedData.open;
         this.homepage = encodedData.homepage;
-        this.universe = universe;
-        this.timestamp = timestamp;
 
         this.parseMembers(encodedData.player);
     
@@ -40,28 +38,20 @@ export default class Alliance<T extends ID> {
 
     private parseMembers(members: Solo<XMLLazyPlayer>) {
 
-        if(Array.isArray(members)) {
+        const array = resolveSolo(members);
 
-            (this as Writable<this>).members = members.map(member => {
+        (this as Writable<this>).members = array.map(member => {
 
-                return new LazyPlayer<T>(this.universe, member, this.timestamp);
+            return new LazyPlayer<T>(this.universe, member, this.timestamp);
 
-            });
-
-        }
-
-        else {
-
-            (this as Writable<this>).members = [new LazyPlayer<T>(this.universe, members, this.timestamp)];
-
-        }
+        });
 
     }
 
 }
 
 export interface XMLAlliance {
-    player: XMLLazyPlayer | XMLLazyPlayer[];
+    player: Solo<XMLLazyPlayer>;
     id: string;
     name: string;
     tag: string;

@@ -39,12 +39,7 @@ export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
         super(universe, data, timestamp);
         this.name = data.name;
 
-        if (data.alliance) {
-
-            this.allianceId = data.alliance;
-        
-        }
-
+        this.allianceId = data.alliance;
         this.status = data.status;
     
     }

@@ -5,6 +5,7 @@ import { Solo } from "../../typings/util";
 export default function parseXml<T extends ID>(encodedData: XMLAllianceData, universe: Universe<T>) {
 
     const allianceArray = resolveSolo(encodedData.alliance);
+    
     return allianceArray.map(alliance => 
       
         new Alliance(alliance, universe, encodedData.timestamp)

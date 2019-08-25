@@ -2,7 +2,7 @@ import ReferencedPosition, { XMLPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Writable, Solo } from "../../typings/util";
-import Universe, { ID, APIAttributes } from "../universe/universe";
+import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
 
@@ -10,18 +10,9 @@ export default class Player<T extends ID> {
 
     public readonly name: string;
     public readonly id: string;
-
-    /**@description playerData's API positions */
     public readonly positions: ReferencedPosition<T, this>[] = [];
-
-    /**@description playerData's API planets */
     public readonly planets: Planet<T>[] = [];
-
-    /**@description playerData's API home planet */
-    //@ts-ignore
-    public readonly home: Planet<T>;
-
-    /**@description playerData's API alliance */
+    public readonly home!: Planet<T>;
     public readonly alliance?: LazyAlliance<T>;
     public readonly timestamp: string;
     private syncAllianceId: string | null = null;
@@ -40,22 +31,17 @@ export default class Player<T extends ID> {
 
     private parsePositions(positions: XMLPosition[]) {
 
-        //Legor
-        if(positions) {
-
-            (this as Writable<this>).positions = positions.map(position => {
+        (this as Writable<this>).positions = positions && positions.map(position => {
         
-                return new ReferencedPosition<T, this>(position, this.universe, this.timestamp, this);
+            return new ReferencedPosition<T, this>(position, this.universe, this.timestamp, this);
         
-            });
-        
-        }
+        });
 
     }
 
     private parsePlanets(planets: Solo<XMLPlayerPlanet>) {
 
-        const planetArray = Array.isArray(planets) ? planets : [planets];
+        const planetArray = resolveSolo(planets);
 
         (this as Writable<this>).planets = planetArray.map(planet => {
 
