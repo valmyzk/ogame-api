@@ -6,12 +6,14 @@ export default class Position<T extends ID> {
     public readonly score: string;
     public readonly ranking: string;
     public readonly ships?: string;
+    public readonly id: string;
 
     public constructor(encodedData: XMLPosition, public readonly universe: Universe<T>, public readonly timestamp: string) {
 
         this.type = encodedData.type;
         this.score = encodedData.score;
         this.ranking = encodedData.position;
+        this.id = encodedData.id;
 
         if(encodedData.ships) {
 
@@ -28,6 +30,7 @@ export interface XMLPosition {
     ships?: string;
     type: string;
     score: string;
+    id: string;
 }
 
 export const enum PositionType {

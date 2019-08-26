@@ -14,7 +14,8 @@ export default function parseXml<T extends ID, C extends PositionCategory, K ext
             score: position.score,
             position: position.position,
             type: encodedData.type,
-            ships: position.ships
+            ships: position.ships,
+            id: position.id
 
         }, universe, encodedData.timestamp)
 

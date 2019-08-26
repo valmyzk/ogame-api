@@ -74,6 +74,15 @@ export default class Universe<T extends ID> {
 
     };
 
+    public async getAlliancePositions<Type extends PositionTypeEnum>(type: Type) {
+
+        const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.ALLIANCE, Type>>("highscore", `category=2&type=${type}`);
+        const positions = PositionData(positionsData, this) as PositionType<T, PositionCategory.ALLIANCE, Type>[];
+
+        return positions;
+        
+    }
+
     public async getNearbyUniverses(): Promise<Universe<number>[]> {
 
         const universesData = await this.fetchApi<XMLUniverses>("universes");

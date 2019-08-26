@@ -34,6 +34,7 @@ export default class Player<T extends ID> {
         (this as Writable<this>).positions = positions && positions.map(playerPosition => {
         
             (playerPosition as unknown as XMLPosition).position = playerPosition.text;
+            (playerPosition as unknown as XMLPosition).id = this.id;
 
             return new Position<T>(playerPosition as unknown as XMLPosition, this.universe, this.timestamp);
         
