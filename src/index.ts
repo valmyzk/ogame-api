@@ -1,18 +1,8 @@
-﻿import Universe, { ID, Region } from "./universe/universe";
-import { Writable } from "../typings/util";
+﻿import Universe from "./universe/universe";
+import { Locale } from "./localization/localization";
+import { PositionType } from "./position/position";
+import { PositionCategory } from "./position/positionData";
+import { Coords } from "./universe/coords";
 
-//"Static" class
-export default abstract class OGameAPI {
-
-    public static getUniverse<T extends ID>(id: T, region: Region) {
-
-        const universe = Object.create(Universe.prototype) as Writable<Universe<T>>;
-
-        universe.id = id;
-        universe.region = region;
-
-        return universe as Universe<T>;
-
-    }
-
-}
+export { Universe, Locale, PositionType, PositionCategory, Coords };
+export default Universe;
