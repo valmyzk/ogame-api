@@ -50,24 +50,3 @@ test.serial("properties", t => {
     t.deepEqual(alliance.universe, universe);
 
 });
-
-test.serial("getAlliance", t => {
-
-    const encodedData = (t.context as Context).sampleData;
-    const patchedUniverse = OGameAPI.getUniverse(800, "en");
-    const alliance = {
-
-        id: "1337"
-
-    } as any;
-
-    patchedUniverse.getAllianceData = async () => {
-
-        return [alliance];
-
-    };
-    const lazyAlliance = new LazyAlliance(encodedData, patchedUniverse, "1337");
-    
-    t.notThrows(() => lazyAlliance.getAlliance());
-
-});

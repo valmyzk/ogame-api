@@ -15,15 +15,6 @@ export default class LazyAlliance<T extends ID> {
     
     }
 
-    public async getAlliance() {
-
-        const allianceData = await this.universe.getAllianceData();
-        const alliance = allianceData.filter(alliance => alliance.id === this.id)[0] as Alliance<T>;
-
-        return alliance;
-    
-    }
-
 }
 
 export interface XMLLazyAlliance {

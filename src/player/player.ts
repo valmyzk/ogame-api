@@ -75,21 +75,6 @@ export default class Player<T extends ID> {
     
     }
 
-    /**Prefers ExtendedLazyPlayer's alliance id in case of API desynchronisation */
-    public async getSyncAlliance(): Promise<Alliance<T> | undefined> {
-
-        const id = this.syncAllianceId || (this.alliance && this.alliance.id);
-
-        if (id) {
-
-            const data = await this.universe.getAllianceData();
-            
-            return data.filter(alliance => alliance.id === id)[0] as Alliance<T>;
-        
-        }
-    
-    }
-
     public static getHomeplanet<T extends ID>(planets: Planet<T>[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];

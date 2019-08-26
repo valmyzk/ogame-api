@@ -1,6 +1,7 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
 import Universe, { ID, resolveSolo } from "../universe/universe";
 import { Solo, Writable } from "../../typings/util";
+import { PositionType } from "../position/position";
 
 export default class Alliance<T extends ID> {
 

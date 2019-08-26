@@ -17,14 +17,6 @@ export default class LazyPlayer<T extends ID> {
     
     }
 
-    public async getPlayer() {
-
-        const playerData = await this.universe["fetchApi"]<XMLPlayer>("playerData", `id=${this.id}`);
-
-        return new Player<T>(playerData, this.universe);
-    
-    }
-
 }
 
 /**@description Player reference with additional features such as status and alliance */
@@ -41,35 +33,6 @@ export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
 
         this.allianceId = data.alliance;
         this.status = data.status;
-    
-    }
-
-    public async getPlayer() {
-
-        const player: Player<T> = await super.getPlayer();
-
-        //In case of API desync, update player alliance
-        if (player.timestamp < this.timestamp) {
-
-            player["syncAllianceId"] = this.allianceId || null;
-        
-        }
-
-        return player;
-    
-    }
-
-    /**@description Uses alliances API */
-    public async getAlliance() {
-
-        if (this.allianceId) {
-
-            const allianceData = await this.universe.getAllianceData();
-            const alliance = allianceData.filter(alliance => alliance.id === this.id)[0] as Alliance<T>;
-            
-            return alliance;
-        
-        }
     
     }
 
