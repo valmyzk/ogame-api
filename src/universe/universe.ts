@@ -174,7 +174,14 @@ interface XMLUniverse {
     href: string;
 }
 
-export type Region = "es" | "en" | "de" | "fr";
+export const enum Region {
+
+    SPANISH = "es",
+    ENGLISH = "en",
+    GERMAN = "de",
+    FRENCH = "fr"
+
+}
 
 export interface APIAttributes {
     "xmlns:xsi": string;

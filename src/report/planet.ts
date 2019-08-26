@@ -50,7 +50,7 @@ export default class PlanetReport<T extends ID> {
 
     protected getUniverseLocalizations<I extends ID>(id: I, region: Region) {
 
-        return OGameAPI.getUniverse(id, region)
+        return new Universe(id, region)
             .getLocalizations();
 
     }
@@ -66,7 +66,7 @@ export default class PlanetReport<T extends ID> {
 
     }
 
-    public async mapLocalizations<I extends ID>(id?: I, region: Region = "en") {
+    public async mapLocalizations<I extends ID>(id?: I, region: Region = Region.ENGLISH) {
 
         const localizationData = await this.getUniverseLocalizations(id || 800, region);
         
