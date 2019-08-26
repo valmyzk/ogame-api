@@ -1,17 +1,16 @@
-import ReferencedPosition, { XMLPosition } from "../position/position";
+import Position, { XMLPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Writable, Solo } from "../../typings/util";
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
-import Position from "../position/position";
 
 export default class Player<T extends ID> {
 
     public readonly name: string;
     public readonly id: string;
-    public readonly positions: Position<T>[] = [];
+    public readonly positions!: PlayerPositions<T>;
     public readonly planets: Planet<T>[] = [];
     public readonly home!: Planet<T>;
     public readonly alliance?: LazyAlliance<T>;
@@ -30,13 +29,15 @@ export default class Player<T extends ID> {
     
     }
 
-    private parsePositions(positions: XMLPosition[]) {
+    private parsePositions(positions: XMLPlayerPosition[]) {
 
-        (this as Writable<this>).positions = positions && positions.map(position => {
+        (this as Writable<this>).positions = positions && positions.map(playerPosition => {
         
-            return new ReferencedPosition<T>(position, this.universe, this.timestamp);
+            (playerPosition as unknown as XMLPosition).position = playerPosition.text;
+
+            return new Position<T>(playerPosition as unknown as XMLPosition, this.universe, this.timestamp);
         
-        });
+        }) as PlayerPositions<T>;
 
     }
 
@@ -98,7 +99,7 @@ export default class Player<T extends ID> {
 
 export interface XMLPlayer extends APIAttributes {
     positions: {
-        position: XMLPosition[];
+        position: XMLPlayerPosition[];
     };
 
     planets: {
@@ -109,3 +110,20 @@ export interface XMLPlayer extends APIAttributes {
     id: string;
     name: string;
 }
+
+export interface XMLPlayerPosition {
+
+    text: string;
+    type: string;
+    score: string;
+
+};
+
+export interface XMLMilitaryPlayerPosition extends XMLPosition {
+
+    ships: string;
+
+}
+
+export type MilitaryPosition<T extends ID> = Position<T> & XMLMilitaryPlayerPosition;
+type PlayerPositions<T extends ID> = [Position<T>, Position<T>, Position<T>, MilitaryPosition<T>, Position<T>, Position<T>, Position<T>];

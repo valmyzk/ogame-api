@@ -4,9 +4,9 @@ import OGameAPI from "../..";
 import PlayerData from "../../player/playerdata";
 import PlanetData from "../../planet/planetdata";
 import AllianceData from "../../alliance/alliancedata";
-import ReferencedPosition from "../../position/position";
 import ServerData from "../../universe/serverData";
 import PlanetReport from "../../report/planet";
+import Position from "../../position/position";
 
 const universe = OGameAPI.getUniverse(800, "en");
 
@@ -88,7 +88,7 @@ test.serial("getPlayerPositions", async t => {
 
     universe.getPlayerData().then(data => {
 
-        if(!Array.isArray(data) || !(data[0] instanceof ReferencedPosition)) {
+        if(!Array.isArray(data) || !(data[0] instanceof Position)) {
 
             t.fail();
 

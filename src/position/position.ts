@@ -11,16 +11,34 @@ export default class Position<T extends ID> {
 
         this.type = encodedData.type;
         this.score = encodedData.score;
-        this.ranking = encodedData.text;
-        this.ships = encodedData.ships;
+        this.ranking = encodedData.position;
+
+        if(encodedData.ships) {
+
+            this.ships = encodedData.ships;
+
+        }
     
     }
 
 };
 
 export interface XMLPosition {
-    text: string;
+    position: string;
     ships?: string;
     type: string;
     score: string;
+}
+
+export const enum PositionType {
+
+    TOTAL = "0",
+    ECONOMY = "1",
+    RESEARCH = "2",
+    MILITARY = "3",
+    MILITARY_BUILT = "5",
+    MILITARY_DESTROYED = "6",
+    MILITARY_LOST = "4",
+    HONOR = "7"
+
 }

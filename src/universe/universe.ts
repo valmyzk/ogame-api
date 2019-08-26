@@ -7,16 +7,16 @@ import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
 import ServerData, { XMLServerData, ServerMap } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
-import PositionData, { XMLPlayerPositions } from "../position/playerPosition";
+import PositionData, { XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
 import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
 import { ResolveSolo, Solo } from "../../typings/util";
-import Position from "../position/position";
+import { PositionType as PositionTypeEnum } from "../position/position";
 
 export type ID = number | string;
 export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
 
-    return Array.isArray(solo) ? solo : [solo] as ResolveSolo<T>;
+    return (Array.isArray(solo) ? solo : [solo]) as ResolveSolo<T>;
 
 };
 
@@ -65,12 +65,12 @@ export default class Universe<T extends ID> {
     
     };
 
-    public async getPlayerPositions(type: number): Promise<Position<T>[]> {
+    public async getPlayerPositions<Type extends PositionTypeEnum>(type: Type) {
 
-        const positionsData = await this.fetchApi<XMLPlayerPositions>("highscore", `category=1&type=${type}`);
-        const highscores = PositionData(positionsData, this);
+        const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.PLAYER, Type>>("highscore", `category=1&type=${type}`);
+        const positions = PositionData(positionsData, this) as PositionType<T, PositionCategory.PLAYER, Type>[];
 
-        return highscores;
+        return positions;
 
     };
 
