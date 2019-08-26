@@ -12,6 +12,7 @@ import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
 import { ResolveSolo, Solo } from "../../typings/util";
 import { PositionType as PositionTypeEnum } from "../position/position";
+import Player, { XMLPlayer } from "../player/player";
 
 export type ID = number | string;
 export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
@@ -34,10 +35,13 @@ export default class Universe<T extends ID> {
 
     }
 
-    public constructor(encodedData: XMLUniverse) {
+    public constructor(id: ID, region: Region);
+    public constructor(encodedData: XMLUniverse);
 
-        this.id = encodedData.id as T;
-        this.region = encodedData.href.substr(13, 2) as Region;
+    public constructor(encodedData: ID | XMLUniverse, arg1?: Region) {
+
+        this.id = ((encodedData as XMLUniverse).id || encodedData) as T;
+        this.region = arg1 || (encodedData as XMLUniverse).href.substr(13, 2) as Region;
 
     }
 
@@ -112,7 +116,15 @@ export default class Universe<T extends ID> {
 
         return new PlanetReport<T>(encodedData, this);
 
-    } 
+    }
+    
+    public async getPlayer(id: string) {
+
+        const playerData = await this.fetchApi<XMLPlayer>("playerData", `id=${id}`);
+
+        return new Player<T>(playerData, this);
+
+    }
 
     protected async fetchApi<T>(file: string, query = "") {
 

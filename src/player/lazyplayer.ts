@@ -1,6 +1,5 @@
 import Player, { XMLPlayer } from "./player";
 import Universe, { ID } from "../universe/universe";
-import Alliance from "../alliance/alliance";
 
 /**@description Player Reference */
 export default class LazyPlayer<T extends ID> {
@@ -16,6 +15,8 @@ export default class LazyPlayer<T extends ID> {
         this.timestamp = timestamp;
     
     }
+
+    public getPlayer = () => this.universe.getPlayer(this.id);
 
 }
 
