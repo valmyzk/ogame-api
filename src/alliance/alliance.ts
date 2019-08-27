@@ -48,11 +48,11 @@ export default class Alliance<T extends ID> {
 
         const array = resolveSolo(members);
 
-        return array.map(member => {
+        return array.length ? array.map(member => {
 
             return new LazyPlayer<T>(this.universe, member, this.timestamp);
 
-        });
+        }) : [];
 
     }
 
