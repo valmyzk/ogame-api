@@ -1,21 +1,19 @@
 import Position, { XMLPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
-import { Writable, Solo } from "../../typings/util";
+import { Solo } from "../../typings/util";
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
-import Alliance from "../alliance/alliance";
 import { ExtendedLazyPlayer } from "./lazyplayer";
 
 export default class Player<T extends ID> {
 
     public readonly name: string;
     public readonly id: string;
-    public readonly positions!: PlayerPositions<T>;
-    public readonly planets: Planet<T>[] = [];
-    public readonly home!: Planet<T>;
+    public readonly positions: PlayerPositions<T>;
+    public readonly planets: Planet<T>[];
+    public readonly home: Planet<T>;
     public readonly alliance?: LazyAlliance<T>;
     public readonly timestamp: string;
-    private syncAllianceId: string | null = null;
 
     public constructor(encodedData: XMLPlayer, public universe: Universe<T>) {
 
@@ -23,15 +21,16 @@ export default class Player<T extends ID> {
         this.id = encodedData.id;
         this.timestamp = encodedData.timestamp;
 
-        this.parsePositions(encodedData.positions.position);
-        this.parsePlanets(encodedData.planets.planet);
-        this.parseAlliance(encodedData.alliance);
+        this.positions = this.parsePositions(encodedData.positions.position) as PlayerPositions<T>;
+        this.planets = this.parsePlanets(encodedData.planets.planet);
+        this.home = Player.getHomeplanet(this.planets);
+        this.alliance = this.parseAlliance(encodedData.alliance);
     
     }
 
-    private parsePositions(positions: XMLPlayerPosition[]) {
+    private parsePositions(positions?: XMLPlayerPosition[]) {
 
-        (this as Writable<this>).positions = positions && positions.map(playerPosition => {
+        return positions && positions.map(playerPosition => {
         
             (playerPosition as unknown as XMLPosition).position = playerPosition.text;
             (playerPosition as unknown as XMLPosition).id = this.id;
@@ -42,27 +41,21 @@ export default class Player<T extends ID> {
 
     }
 
-    private parsePlanets(planets: Solo<XMLPlayerPlanet>) {
+    private parsePlanets(planets: Solo<XMLPlayerPlanet>): Planet<T>[] {
 
         const planetArray = resolveSolo(planets);
 
-        (this as Writable<this>).planets = planetArray.map(planet => {
+        return planetArray.map(planet => {
 
             return new Planet(planet, this.universe, this.timestamp, this.id);
 
-        });
-
-        (this as Writable<this>).home = Player.getHomeplanet(this.planets);
+        }) as Planet<T>[];
 
     }
 
     private parseAlliance(alliance?: XMLLazyAlliance) {
 
-        if(alliance) {
-
-            (this as Writable<this>).alliance = new LazyAlliance<T>(alliance, this.universe, this.timestamp);
-
-        }
+        return alliance && new LazyAlliance<T>(alliance, this.universe, this.timestamp);
 
     }
 
@@ -75,6 +68,7 @@ export default class Player<T extends ID> {
     
     }
 
+    /**Returns the earliest created planet of an array */
     public static getHomeplanet<T extends ID>(planets: Planet<T>[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];

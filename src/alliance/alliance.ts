@@ -1,19 +1,26 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
 import Universe, { ID, resolveSolo } from "../universe/universe";
-import { Solo, Writable } from "../../typings/util";
-import { PositionType } from "../position/position";
+import { Solo } from "../../typings/util";
 
 export default class Alliance<T extends ID> {
 
     public readonly id: string;
+
     public readonly name: string;
+
     public readonly tag: string;
+
     public readonly founder: LazyPlayer<T>;
+
     public readonly foundDate: string;
+
     public readonly logo?: string;
+    
     public readonly open?: boolean;
+
     public readonly homepage?: string;
-    public readonly members: LazyPlayer<T>[] = [];
+
+    public readonly members: LazyPlayer<T>[];
 
     public constructor(encodedData: XMLAlliance, public readonly universe: Universe<T>, public readonly timestamp: string) {
 
@@ -33,7 +40,7 @@ export default class Alliance<T extends ID> {
         this.open = !!encodedData.open;
         this.homepage = encodedData.homepage;
 
-        this.parseMembers(encodedData.player);
+        this.members = this.parseMembers(encodedData.player);
     
     }
 
@@ -41,7 +48,7 @@ export default class Alliance<T extends ID> {
 
         const array = resolveSolo(members);
 
-        (this as Writable<this>).members = array.map(member => {
+        return array.map(member => {
 
             return new LazyPlayer<T>(this.universe, member, this.timestamp);
 
