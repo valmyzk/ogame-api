@@ -1,7 +1,5 @@
 import { parse } from "fast-xml-parser";
 import Planet from "../planet/planet";
-import Alliance from "../alliance/alliance";
-import { ExtendedLazyPlayer } from "../player/lazyplayer";
 import PlayerData, { XMLPlayerData, PlayerData as PlayerArray } from "../player/playerdata";
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData, AllianceData as AllianceArray } from "../alliance/alliancedata";
@@ -37,8 +35,14 @@ export default class Universe<T extends ID> {
 
     public constructor(encodedData: ID | XMLUniverse, arg1?: Region) {
 
-        this.id = ((encodedData as XMLUniverse).id || encodedData) as T;
-        this.region = arg1 || (encodedData as XMLUniverse).href.substr(13, 2) as Region;
+        this.id = encodedData as T;
+        if((encodedData as XMLUniverse).id) {
+
+            const parsed = Number.parseInt((encodedData as XMLUniverse).id);
+            this.id = (!Number.isNaN(parsed) ? parsed : (encodedData as XMLUniverse).id) as T;
+
+        } 
+        this.region = arg1 || (encodedData as XMLUniverse).href.split("-")[1].substr(0, 2) as Region;
 
     }
 
