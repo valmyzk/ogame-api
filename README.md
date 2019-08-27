@@ -3,15 +3,16 @@
 [![Build status](https://api.travis-ci.com/ValentiMS/ogame-api.svg?token=F5jCp4vCHzxxsKLe9WrU&branch=master)](https://travis-ci.com/ValentiMS/ogame-api)
 
 ogame-api is a lightweight (~10kb gzipped) abstraction layer written in Typescript that allows you to easily use [OGame's XML API](https://board.origin.ogame.gameforge.com/index.php/Thread/3927-OGame-API/) by providing full coverage of it, including:
-    - **Player API**
-    - **Universe API**
-    - **Positions (highscore) API**
-    - **Alliance API**
-    - **Server Data API**
-    - **Player Data API**
-    - **Localization API**
-    - **Universes API**
-    - **Planet Report API**
+
+   - **Player API**
+   - **Universe API**
+   - **Positions (highscore) API**
+   - **Alliance API**
+   - **Server Data API**
+   - **Player Data API**
+   - **Localization API**
+   - **Universes API**
+   - **Planet Report API**
 
 ## Installation
 Installing with npm:
@@ -70,4 +71,3 @@ report.mapLocalizations().then(report => {
 
 ## License
 This project is licensed under the MIT license
-

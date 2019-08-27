@@ -1,13 +1,15 @@
 {
   "name": "ogame-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "OGame XML API parser written in Typescript",
   "sideEffects": false,
   "main": "out/index.js",
   "files": [
     "out/**/*"
   ],
   "typings": "out/index.d.ts",
+  "repository": "ValentiMS/ogame-api",
+  "bugs": "https://github.com/ValentiMS/ogame-api/issues",
   "dependencies": {
     "fast-xml-parser": "^3.12.20",
     "isomorphic-fetch": "^2.2.1"
@@ -19,14 +21,21 @@
     "@typescript-eslint/parser": "^2.0.0",
     "ava": "^2.3.0",
     "eslint": "^6.2.2",
+    "typedoc": "^0.15.0",
     "typescript": "^3.5.3"
   },
   "scripts": {
     "lint": "eslint ./src/**/*.ts",
     "build": "tsc",
+    "build:docs": "typedoc --out docs --exclude src/tests/**/*.ts",
     "test": "ava -v"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ogame",
+    "api",
+    "xml",
+    "universe"
+  ],
+  "author": "ValentiMS",
   "license": "MIT"
 }

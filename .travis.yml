@@ -6,5 +6,16 @@ node_js:
   - node
 script: 
   - npm run build
+  - npm run build:docs
   - npm test
+deploy:
+  provider: pages
+  local_dir: docs
+  skip_cleanup: true
+  github_token: $GH_PAGES_TOKEN
+  keep_history: true
+  name: Graviton Bot
+  on:
+    node_js: 12
+
 
