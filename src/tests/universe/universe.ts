@@ -1,6 +1,6 @@
 import test from "ava";
-import Universe, { downloadXml, parseXml } from "../../universe/universe";
-import OGameAPI from "../..";
+import { downloadXml, parseXml } from "../../universe/universe";
+import Universe from "../..";
 import PlayerData from "../../player/playerdata";
 import PlanetData from "../../planet/planetdata";
 import AllianceData from "../../alliance/alliancedata";
@@ -8,7 +8,7 @@ import ServerData from "../../universe/serverData";
 import PlanetReport from "../../report/planet";
 import Position from "../../position/position";
 
-const universe = OGameAPI.getUniverse(800, "en");
+const universe = new Universe(800, "en");
 
 test.todo("constructor");
 
@@ -65,8 +65,6 @@ test.serial("getPlanetData", async t => {
 });
 
 test.serial("getAllianceData", async t => {
-
-    const universe = OGameAPI.getUniverse(800, "en");
 
     await t.notThrowsAsync(() => universe.getAllianceData());
 
@@ -141,3 +139,5 @@ test.serial("createPlanetReport", t => {
     }
 
 });
+
+test.serial.todo("getPlayer");

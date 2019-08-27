@@ -50,7 +50,7 @@ export default class PlanetReport<T extends ID> {
 
     protected getUniverseLocalizations<I extends ID>(id: I, region: Region) {
 
-        return OGameAPI.getUniverse(id, region)
+        return new Universe(id, region)
             .getLocalizations();
 
     }
@@ -102,7 +102,7 @@ export default class PlanetReport<T extends ID> {
     public toString() {
 
         const coordsHeader = `coords;${this.coords.toString()}`;
-        const props = [...this.props.values()].map(report => `${report.id};${report.value}`);
+        const props = Array.from(this.props, ([,report]) => `${report.id};${report.value}`);
 
         return `${coordsHeader}|${props.join("|")}`;
 

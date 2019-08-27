@@ -1,11 +1,11 @@
 import test from "ava";
 import PlanetReport from "../../report/planet";
-import OGameAPI from "../..";
+import Universe from "../..";
 import LocalizationData from "../../localization/localizationData";
 import { Coords } from "../../universe/coords";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
-const universe = OGameAPI.getUniverse(800, "en");
+const universe = new Universe(800, "en");
 
 test.serial("constructor", t => {
 
@@ -60,7 +60,7 @@ test.serial("getUniverseLocalizations", async t => {
 
 test.serial("getPlanet", async t => {
 
-    const patchedUniverse = OGameAPI.getUniverse(800, "en");
+    const patchedUniverse = new Universe(800, "en");
     const planet = {
         coords: Coords.fromString("0:0:0")
     } as any;

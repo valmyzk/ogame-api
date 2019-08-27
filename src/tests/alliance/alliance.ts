@@ -3,7 +3,7 @@ import { promisify } from "util";
 import { readFile as readFileCb } from "fs";
 import Alliance, { XMLAlliance } from "../../alliance/alliance";
 import { join } from "path";
-import OGameAPI from "../..";
+import Universe from "../..";
 import { XMLAllianceData } from "../../alliance/alliancedata";
 import { XMLLazyPlayer } from "../../player/lazyplayer";
 import { Solo } from "../../../typings/util";
@@ -19,7 +19,7 @@ interface Context {
 
 }
 
-const universe = OGameAPI.getUniverse(800, "en");
+const universe = new Universe(800, "en");
 
 test.serial.before(async t => {
 
@@ -70,20 +70,6 @@ test.serial("parseMembersSolo", t => {
     const parseMembers = Alliance.prototype["parseMembers"].bind(alliance);
 
     parseMembers(encAlliance.player);
-
-    t.truthy(alliance.members.length);
-    t.deepEqual(alliance.members[0].id, (encAlliance.player as XMLLazyPlayer).id);
-
-});
-
-test.serial("parseMembersMultiple", t => {
-
-    const encodedData = (t.context as Context).sampleData;
-    const encAlliance = encodedData.alliance as XMLAlliance;
-    const alliance = {members: [] as XMLLazyPlayer[]};
-    const parseMembers = Alliance.prototype["parseMembers"].bind(alliance);
-
-    parseMembers([encAlliance.player, encAlliance.player] as Solo<XMLLazyPlayer>);
 
     t.truthy(alliance.members.length);
     t.deepEqual(alliance.members[0].id, (encAlliance.player as XMLLazyPlayer).id);
