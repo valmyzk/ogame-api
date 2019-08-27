@@ -10,7 +10,7 @@ script:
   - npm test
 deploy:
   provider: pages
-  local_dir: docs
+  local_dir: ./docs
   skip_cleanup: true
   github_token: $GH_PAGES_TOKEN
   keep_history: true
