@@ -26,9 +26,6 @@ export default class Universe<T extends ID> {
 
     public readonly id: T;
     public readonly region: Region;
-    public readonly planets: Planet<T>[] = [];
-    public readonly alliances: Alliance<ID>[] = [];
-    public readonly players: ExtendedLazyPlayer<T>[] = [];
     public get endpoint() {
 
         return Universe.parseEndpoint(this.id, this.region); 

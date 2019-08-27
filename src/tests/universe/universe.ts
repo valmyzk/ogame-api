@@ -26,9 +26,6 @@ test.serial("properties", t => {
 
     t.truthy(universe.id);
     t.truthy(universe.region);
-    t.falsy(universe.planets);
-    t.falsy(universe.alliances);
-    t.falsy(universe.players);
 
 });
 
