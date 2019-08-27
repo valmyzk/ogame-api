@@ -2,7 +2,7 @@ import test from "ava";
 import { promisify } from "util";
 import { join } from "path";
 import LazyAlliance, { XMLLazyAlliance } from "../../alliance/lazyalliance";
-import OGameAPI, { Universe, Region } from "../..";
+import OGameAPI from "../..";
 import { readFile as readFileCb } from "fs";
 
 const readFile = promisify(readFileCb);
@@ -16,7 +16,7 @@ interface Context {
 
 }
 
-const universe = new Universe(800, Region.ENGLISH);
+const universe = OGameAPI.getUniverse(800, "en");
 
 test.serial.before(async t => {
 
