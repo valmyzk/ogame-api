@@ -25,11 +25,12 @@ yarn add ogame-api
 ```
 
 ## Features
-    - Complete coverage of OGame's XML API
-    - Planet report parsing
-    - Advanced Typescript typings
-    - const enum helpers
-    - Works in both node and browser environments
+
+   - Complete coverage of OGame's XML API
+   - Planet report parsing
+   - Advanced Typescript typings
+   - const enum helpers
+   - Works in both node and browser environments
 
 ## Getting started
 To get started with ogame-api, check out our [auto-generated docs](https://valentims.github.io/ogame-api)!
