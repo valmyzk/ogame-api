@@ -1,7 +1,7 @@
 import { Coords } from "../universe/coords";
 import { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
-import Universe from "..";
+import Universe from "../universe/universe";
 import { LocalizationMap } from "../localization/localizationData";
 import Planet from "../planet/planet";
 import { Writable } from "../../typings/util";

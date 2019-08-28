@@ -6,7 +6,6 @@ import { join } from "path";
 import Universe from "../..";
 import { XMLAllianceData } from "../../alliance/alliancedata";
 import { XMLLazyPlayer } from "../../player/lazyplayer";
-import { Solo } from "../../../typings/util";
 
 const readFile = promisify(readFileCb);
 
@@ -62,16 +61,14 @@ test.serial("properties", t => {
 
 });
 
-test.serial("parseMembersSolo", t => {
+test.serial("parseMembers", t => {
 
     const encodedData = (t.context as Context).sampleData;
     const encAlliance = encodedData.alliance as XMLAlliance;
-    const alliance = {members: [] as XMLLazyPlayer[]};
-    const parseMembers = Alliance.prototype["parseMembers"].bind(alliance);
 
-    parseMembers(encAlliance.player);
+    const members = Alliance.prototype["parseMembers"](encAlliance.player);
 
-    t.truthy(alliance.members.length);
-    t.deepEqual(alliance.members[0].id, (encAlliance.player as XMLLazyPlayer).id);
+    t.truthy(members.length);
+    t.deepEqual(members[0].id, (encAlliance.player as XMLLazyPlayer).id);
 
 });
