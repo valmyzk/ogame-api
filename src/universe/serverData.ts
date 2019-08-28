@@ -1,6 +1,9 @@
 import { Region } from "./universe";
 import { FlexibleMap, CustomMap, ReadonlyCustomMap } from "../../typings/map";
 
+/**Parses XML Localization root file to ES6 LocalizationMap
+ * @category serverData
+ */
 export default function parseXml(encodedData: XMLServerData) {
 
     const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
@@ -62,8 +65,10 @@ interface ServerData {
 
 }
 
+/**@internal */
 export interface XMLServerData {
     [key: string]: string | boolean | number;
 }
 
+/**ES6 Map mapped by server property to server value */
 export interface ServerMap extends FlexibleMap<ReadonlyCustomMap<ServerData>> {};

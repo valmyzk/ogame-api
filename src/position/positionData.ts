@@ -3,6 +3,9 @@ import Position, { PositionType as PositionTypeEnum, XMLPosition } from "./posit
 import { Solo } from "../../typings/util";
 import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../../src/player/player";
 
+/**Parses XML Position root file to a Position array
+ * @category positions
+ */
 export default function parseXml<T extends ID, C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe<T>) {
     
     const array = resolveSolo(encodedData.player) as unknown as PositionInterface<C, K>[];
@@ -24,8 +27,11 @@ export default function parseXml<T extends ID, C extends PositionCategory, K ext
 };
 
 type PositionInterface<C extends PositionCategory, K extends PositionTypeEnum> = C extends PositionCategory.PLAYER ? K extends PositionTypeEnum.MILITARY ? XMLMilitaryPlayerPosition : XMLPosition : XMLPosition;
+
+/**@internal */
 export type PositionType<T extends ID, C extends PositionCategory, K extends PositionTypeEnum> = PositionInterface<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition<T> : Position<T>;
 
+/**@internal */
 export interface XMLPositionData<C extends PositionCategory, K extends PositionTypeEnum> extends APIAttributes {
 
     category: C;
@@ -34,6 +40,10 @@ export interface XMLPositionData<C extends PositionCategory, K extends PositionT
 
 };
 
+/**
+ * @category positions
+ * @utility
+ */
 export const enum PositionCategory {
 
     PLAYER = "1",

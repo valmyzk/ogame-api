@@ -3,6 +3,9 @@ import Localization, { XMLLocalization } from "./localization";
 import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
 import { Solo } from "../../typings/util";
 
+/**Parses XML Localization root file to ES6 LocalizationMap
+ * @category localization
+ */
 export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
     const localizationMap = new Map<string, Localization<T>[]>();
@@ -37,9 +40,12 @@ export interface LocalizationGroups<T extends ID> {
     
 }
 
-//Simplify type name
+/**ES6 Map mapped by localization group to localization array. Identical to Map<string, Localization<T>[]>
+ * @category localization
+ */
 export interface LocalizationMap<T extends ID> extends FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>> {};
 
+/**@internal */
 export interface XMLLocalizationData extends APIAttributes {
     [key: string]:
     | (

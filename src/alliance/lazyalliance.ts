@@ -1,10 +1,17 @@
 import Universe, { ID } from "../universe/universe";
-import Alliance from "./alliance";
 
+/**Reference to an alliance
+ * @category alliance
+  */
 export default class LazyAlliance<T extends ID> {
 
+    /**Alliance's name */
     public readonly name: string;
+
+    /**Alliance's public string identifier */
     public readonly tag: string;
+
+    /**Alliance's identifier */
     public readonly id: string;
 
     public constructor(encodedData: XMLLazyAlliance, public readonly universe: Universe<T>, public readonly timestamp: string) {

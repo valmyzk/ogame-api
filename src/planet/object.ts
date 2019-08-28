@@ -2,11 +2,19 @@ import Universe, { ID } from "../universe/universe";
 import LazyPlayer from "../player/lazyplayer";
 import { Coords } from "../universe/coords";
 
+/**@internal */
 export default abstract class UniverseObject<T extends ID> {
 
+    /**Object's coordinates */
     public readonly coords: Coords;
+
+    /**Object's identifier */
     public readonly id: string;
+
+    /**Object's name */
     public readonly name: string;
+
+    /**Reference to the object's player */
     public readonly player: LazyPlayer<T>;
 
     public constructor(encodedData: XMLUniverseObject, public readonly universe: Universe<T>, public readonly timestamp: string) {
@@ -26,6 +34,7 @@ export default abstract class UniverseObject<T extends ID> {
 
 }
 
+/**@internal */
 export interface XMLUniverseObject {
     id: string;
     player: string;

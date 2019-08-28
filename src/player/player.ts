@@ -5,14 +5,26 @@ import { Solo } from "../../typings/util";
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import { ExtendedLazyPlayer } from "./lazyplayer";
 
+/**@category player */
 export default class Player<T extends ID> {
 
+    /**Player's name */
     public readonly name: string;
+
+    /**Player's identifier */
     public readonly id: string;
+
+    /**Player positions tuple. Index 3 will always be a military position */
     public readonly positions: PlayerPositions<T>;
+
+    /**Player's planets. First element will always be the homeplanet */
     public readonly planets: Planet<T>[];
     public readonly home: Planet<T>;
+
+    /**Reference to the player's alliance. May be undefined */
     public readonly alliance?: LazyAlliance<T>;
+
+    /**UNIX timestamp of when the object was parsed */
     public readonly timestamp: string;
 
     public constructor(encodedData: XMLPlayer, public universe: Universe<T>) {
@@ -59,6 +71,7 @@ export default class Player<T extends ID> {
 
     }
 
+    /**@returns Player's account status */
     public async getStatus() {
 
         const playerData = await this.universe.getPlayerData();
@@ -68,7 +81,7 @@ export default class Player<T extends ID> {
     
     }
 
-    /**Returns the earliest created planet of an array */
+    /**@returns Earliest created planet of an array */
     public static getHomeplanet<T extends ID>(planets: Planet<T>[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];
@@ -77,6 +90,7 @@ export default class Player<T extends ID> {
 
 }
 
+/**@internal */
 export interface XMLPlayer extends APIAttributes {
     positions: {
         position: XMLPlayerPosition[];
@@ -91,6 +105,7 @@ export interface XMLPlayer extends APIAttributes {
     name: string;
 }
 
+/**@internal */
 export interface XMLPlayerPosition {
 
     text: string;
@@ -99,11 +114,14 @@ export interface XMLPlayerPosition {
 
 };
 
+/**@internal */
 export interface XMLMilitaryPlayerPosition extends XMLPosition {
 
     ships: string;
 
 }
 
+/**@internal */
 export type MilitaryPosition<T extends ID> = Position<T> & XMLMilitaryPlayerPosition;
+
 type PlayerPositions<T extends ID> = [Position<T>, Position<T>, Position<T>, MilitaryPosition<T>, Position<T>, Position<T>, Position<T>];

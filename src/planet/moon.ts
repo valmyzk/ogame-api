@@ -2,8 +2,12 @@ import Universe, { ID } from "../universe/universe";
 import { XMLUniversePlanet } from "./planet";
 import UniverseObject, { XMLUniverseObject } from "./object";
 
+/**Planet's moon
+ * @category planet
+ */
 export default class Moon<T extends ID> extends UniverseObject<T> {
 
+    /**Moon's size */
     public readonly size: string;
 
     public constructor(encodedData: XMLMoon, planet: XMLUniversePlanet, universe: Universe<T>, timestamp: string) {
@@ -18,6 +22,7 @@ export default class Moon<T extends ID> extends UniverseObject<T> {
 
 }
 
+/**@internal */
 export interface XMLMoon {
     id: string;
     name: string;

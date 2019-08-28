@@ -1,20 +1,40 @@
 import { Coords } from "../universe/coords";
-import Universe, { ID, Region } from "../universe/universe";
+import { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
-import OGameAPI from "..";
+import Universe from "..";
 import { LocalizationMap } from "../localization/localizationData";
 import Planet from "../planet/planet";
 import { Writable } from "../../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
 
+/**@category report */
 export default class PlanetReport<T extends ID> {
 
+    /**Report's planet coordinates */
     public readonly coords!: Coords;
+
+    /**Report properties mapped by localization id (not parsed) */
     public readonly props: Map<number, LazyReportValue> = new Map();
+
+    /**Report's planet technology
+     * @parsed
+     */
     public readonly techs: ReportMap = new Map();
+
+    /**Report's planet defense
+     * @parsed
+     */
     public readonly defense: ReportMap = new Map();
+
+    /**Report's planet fleet
+     * @parsed
+     */
     public readonly fleet: ReportMap = new Map();
+
+    /**Unknown report entries
+     * @parsed
+     */
     public readonly unknown: ReportMap = new Map();
 
     public constructor(encodedData: string, public readonly universe: Universe<T>) {
@@ -23,6 +43,7 @@ export default class PlanetReport<T extends ID> {
 
     }
 
+    /**Parses a raw encoded string into LazyReportValues + coords */
     private parseString(raw: string) {
 
         const sectioned = raw.split("|");
@@ -48,6 +69,9 @@ export default class PlanetReport<T extends ID> {
 
     }
 
+    /**Used for getting universe localizations
+     * @todo Unlink planet report from Universe
+     */
     protected getUniverseLocalizations<I extends ID>(id: I, region: Region) {
 
         return new Universe(id, region)
@@ -55,17 +79,21 @@ export default class PlanetReport<T extends ID> {
 
     }
 
+    /**Filters LocalizationData to get requestes Localization entry
+     * @todo Add support for unknown localizations
+     */
     private getLocalizationName<I extends ID>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>) {
 
         const localization = localizationData.get("techs")
             .filter(localization => localization.id === reportValue.id)[0] as Localization<I>;
 
-        //TODO: Add support for unknown localizations
-
         return localization.name;
 
     }
 
+    /**Parses the properties and assigns them on a group using LocalizationData
+     * @important
+     */
     public async mapLocalizations<I extends ID>(id?: I, region: Region = "en") {
 
         const localizationData = await this.getUniverseLocalizations(id || 800, region);
@@ -85,6 +113,9 @@ export default class PlanetReport<T extends ID> {
 
     }
 
+    /**Gets planet of the report
+     * @deprecated
+     */
     public async getPlanet() {
 
         const planetData = await this.universe.getPlanetData();
@@ -99,6 +130,7 @@ export default class PlanetReport<T extends ID> {
 
     }
 
+    /**Parses **this.props** into an encoded raw string */
     public toString() {
 
         const coordsHeader = `coords;${this.coords.toString()}`;

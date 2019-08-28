@@ -27,7 +27,7 @@
   "scripts": {
     "lint": "eslint ./src/**/*.ts",
     "build": "tsc",
-    "build:docs": "typedoc --out docs --exclude src/tests/**/*.ts",
+    "build:docs": "typedoc",
     "test": "ava -v"
   },
   "keywords": [

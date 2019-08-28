@@ -21,9 +21,17 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@typings/*": ["typings/*"]
     }
+  },
+  "typedocOptions": {
+    "mode": "modules",
+    "out": "docs",
+    "exclude": "src/tests/**/*.ts",
+    "categorizeByGroup": true,
+    "excludeNotExported": true,
+    "excludeExternals": true
   }
 }

@@ -1,5 +1,9 @@
 import Universe, { ID } from "../universe/universe";
 
+/**Helper const enum with localization IDs
+ * @category localization
+ * @utility
+ */
 export const enum Locale {
 
     ATTACK = "1",
@@ -80,10 +84,15 @@ export const enum Locale {
 
 }
 
-
+/**Single entry of the Localization API
+ * @category localization
+ */
 export default class Localization<T extends ID> {
 
+    /**Localization's identifier */
     public readonly id: string;
+
+    /**Localization's name */
     public readonly name: string;
 
     public constructor(encodedData: XMLLocalization, public readonly universe: Universe<T>, public readonly timestamp: string) {
@@ -95,6 +104,7 @@ export default class Localization<T extends ID> {
     
     }
 
+    /**@returns Type of the localization */
     public static getLocalizationType(id: string): LocalizationType {
 
         const i = parseInt(id);
