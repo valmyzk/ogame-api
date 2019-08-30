@@ -45,7 +45,7 @@ export interface LocalizationGroups<T extends ID> {
  */
 export interface LocalizationMap<T extends ID> extends FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>> {};
 
-/**@internal */
+/**@ignore */
 export interface XMLLocalizationData extends APIAttributes {
     [key: string]:
     | (

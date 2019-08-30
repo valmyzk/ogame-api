@@ -17,7 +17,7 @@ export default function parseXml<T extends ID>(encodedData: XMLPlayerData, unive
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLPlayerData extends APIAttributes {
 
     player: Solo<XMLExtendedLazyPlayer>;

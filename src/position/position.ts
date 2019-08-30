@@ -37,7 +37,7 @@ export default class Position<T extends ID> {
 
 };
 
-/**@internal */
+/**@ignore */
 export interface XMLPosition {
     position: string;
     ships?: string;

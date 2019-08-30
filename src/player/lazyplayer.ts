@@ -47,14 +47,14 @@ export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLExtendedLazyPlayer extends XMLLazyPlayer {
     name: string;
     alliance?: string;
     status?: string;
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLLazyPlayer {
     id: string;
 }

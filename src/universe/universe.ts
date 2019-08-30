@@ -204,7 +204,7 @@ interface XMLUniverse {
  */
 export type Region = "es" | "en" | "de" | "fr";
 
-/**@internal */
+/**@ignore */
 export interface APIAttributes {
     "xmlns:xsi": string;
     "xsi:noNamespaceSchemaLocation": string;

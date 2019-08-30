@@ -22,7 +22,7 @@ export default class Moon<T extends ID> extends UniverseObject<T> {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLMoon {
     id: string;
     name: string;

@@ -17,7 +17,7 @@ export default function parseXml<T extends ID>(encodedData: XMLPlanetData, unive
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLPlanetData extends APIAttributes {
 
     planet: Solo<XMLUniversePlanet>;

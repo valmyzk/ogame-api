@@ -28,10 +28,10 @@ export default function parseXml<T extends ID, C extends PositionCategory, K ext
 
 type PositionInterface<C extends PositionCategory, K extends PositionTypeEnum> = C extends PositionCategory.PLAYER ? K extends PositionTypeEnum.MILITARY ? XMLMilitaryPlayerPosition : XMLPosition : XMLPosition;
 
-/**@internal */
+/**@ignore */
 export type PositionType<T extends ID, C extends PositionCategory, K extends PositionTypeEnum> = PositionInterface<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition<T> : Position<T>;
 
-/**@internal */
+/**@ignore */
 export interface XMLPositionData<C extends PositionCategory, K extends PositionTypeEnum> extends APIAttributes {
 
     category: C;

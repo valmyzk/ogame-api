@@ -2,7 +2,7 @@ import Universe, { ID } from "../universe/universe";
 import LazyPlayer from "../player/lazyplayer";
 import { Coords } from "../universe/coords";
 
-/**@internal */
+/**@ignore */
 export default abstract class UniverseObject<T extends ID> {
 
     /**Object's coordinates */
@@ -34,7 +34,7 @@ export default abstract class UniverseObject<T extends ID> {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLUniverseObject {
     id: string;
     player: string;

@@ -67,7 +67,7 @@ export default class Alliance<T extends ID> {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLAlliance {
     player: Solo<XMLLazyPlayer>;
     id: string;

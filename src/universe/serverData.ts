@@ -65,7 +65,7 @@ interface ServerData {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLServerData {
     [key: string]: string | boolean | number;
 }

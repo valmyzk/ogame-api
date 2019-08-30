@@ -90,7 +90,7 @@ export default class Player<T extends ID> {
 
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLPlayer extends APIAttributes {
     positions: {
         position: XMLPlayerPosition[];
@@ -105,7 +105,7 @@ export interface XMLPlayer extends APIAttributes {
     name: string;
 }
 
-/**@internal */
+/**@ignore */
 export interface XMLPlayerPosition {
 
     text: string;
@@ -114,14 +114,14 @@ export interface XMLPlayerPosition {
 
 };
 
-/**@internal */
+/**@ignore */
 export interface XMLMilitaryPlayerPosition extends XMLPosition {
 
     ships: string;
 
 }
 
-/**@internal */
+/**@ignore */
 export type MilitaryPosition<T extends ID> = Position<T> & XMLMilitaryPlayerPosition;
 
 type PlayerPositions<T extends ID> = [Position<T>, Position<T>, Position<T>, MilitaryPosition<T>, Position<T>, Position<T>, Position<T>];
