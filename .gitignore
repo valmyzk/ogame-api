@@ -1,0 +1,25 @@
+
+/**
+
+#Whitelist project files
+!package.json
+!package-lock.json
+!tsconfig.json
+!.eslintrc.js
+!travis.yml
+
+#Whitelist code
+!src/**/**
+
+#Whitelist ignore files
+!.gitignore
+!.npmignore
+!.eslintignore
+
+#Whitelist files in docs/.gitignore
+!docs
+
+#Ignore installation/output files
+node_modules
+out
+.vscode

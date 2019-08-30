@@ -1,0 +1,8 @@
+.vscode
+src
+node_modules
+.gitignore
+docs
+.eslintignore
+.eslintrc.js
+.travis.yml

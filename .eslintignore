@@ -1,0 +1,7 @@
+*.js
+*.d.ts
+*.jsx
+*.js.map
+*.ts.map
+tests
+/index.ts
