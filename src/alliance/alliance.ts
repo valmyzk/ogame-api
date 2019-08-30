@@ -55,9 +55,9 @@ export default class Alliance<T extends ID> {
 
     private parseMembers(members: Solo<XMLLazyPlayer>) {
 
-        const array = resolveSolo(members);
+        const array = members && resolveSolo(members);
 
-        return array.length ? array.map(member => {
+        return array ? array.map(member => {
 
             return new LazyPlayer<T>(this.universe, member, this.timestamp);
 
