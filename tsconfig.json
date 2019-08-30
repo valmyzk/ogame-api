@@ -29,6 +29,7 @@
   "typedocOptions": {
     "mode": "modules",
     "out": "docs",
+    "disableOutputCheck": true,
     "exclude": "src/tests/**/*.ts",
     "categorizeByGroup": true,
     "excludeNotExported": true,
