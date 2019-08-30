@@ -23,7 +23,7 @@ export default class Alliance<T extends ID> {
 
     /**Alliance's logo URL */
     public readonly logo?: string;
-    public readonly open?: boolean;
+    public readonly open: boolean;
 
     /**Alliance's homepage */
     public readonly homepage?: string;
