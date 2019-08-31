@@ -1,5 +1,5 @@
 
-/**
+/*
 
 #Whitelist project files
 !package.json
@@ -9,7 +9,7 @@
 !travis.yml
 
 #Whitelist code
-!src/**/**
+!/src
 
 #Whitelist ignore files
 !.gitignore
