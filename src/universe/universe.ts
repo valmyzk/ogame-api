@@ -26,11 +26,7 @@ export default class Universe<T extends ID> {
 
     public readonly id: T;
     public readonly region: Region;
-    public get endpoint() {
-
-        return Universe.parseEndpoint(this.id, this.region); 
-
-    }
+    public readonly endpoint: string;
 
     public constructor(id: ID, region: Region);
     public constructor(encodedData: XMLUniverse);
@@ -45,6 +41,7 @@ export default class Universe<T extends ID> {
 
         } 
         this.region = arg1 || (encodedData as XMLUniverse).href.split("-")[1].substr(0, 2) as Region;
+        this.endpoint = Universe.parseEndpoint(this.id, this.region); 
 
     }
 
