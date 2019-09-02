@@ -1,7 +1,8 @@
 import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
-import Position, { PositionType as PositionTypeEnum, XMLPosition } from "./position";
+import Position, { XMLPosition } from "./position";
 import { Solo } from "../../typings/util";
 import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../player/player";
+import { PositionType as PositionTypeEnum, PositionCategory } from "../constenum";
 
 /**Parses XML Position root file to a Position array
  * @category positions
@@ -40,13 +41,3 @@ export interface XMLPositionData<C extends PositionCategory, K extends PositionT
 
 };
 
-/**
- * @category positions
- * @utility
- */
-export const enum PositionCategory {
-
-    PLAYER = "1",
-    ALLIANCE = "2"
-
-}

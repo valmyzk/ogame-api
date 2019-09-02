@@ -1,4 +1,5 @@
 import Universe, { ID } from "../universe/universe";
+import { PositionType } from "../constenum";
 
 /**Highscore entry
  * @catagory positions
@@ -46,19 +47,3 @@ export interface XMLPosition {
     id: string;
 }
 
-/**Helper const enum of Position Types
- * @category positions
- * @utility
- */
-export const enum PositionType {
-
-    TOTAL = "0",
-    ECONOMY = "1",
-    RESEARCH = "2",
-    MILITARY = "3",
-    MILITARY_BUILT = "5",
-    MILITARY_DESTROYED = "6",
-    MILITARY_LOST = "4",
-    HONOR = "7"
-
-}
