@@ -8,28 +8,13 @@ import { Solo } from "../../typings/util";
  */
 export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
 
-    const localizationMap = new Map<string, Localization<T>[]>();
+    const parsed = Object.entries(encodedData)
+        .filter(([, value]) => typeof value === "object")
+        .map(([key, value]) => [key, resolveSolo((value as XMLLocalizationGroup).name)] as const)
+        .map(([key, value]) => [key, value.map(l => new Localization<T>(l, universe, encodedData.timestamp))]);
 
-    for(const group in encodedData) {
 
-        const value = encodedData[group];
-
-        if(typeof value === "object") {
-
-            const array = resolveSolo(value.name);
-            const instancedLocalizations = array.map(localization => {
-
-                return new Localization<T>(localization, universe, encodedData.timestamp);
-
-            });
-
-            localizationMap.set(group, instancedLocalizations);                
-
-        }
-
-    }
-
-    return localizationMap as LocalizationMap<T>;
+    return new Map<string, Localization<T>[]>(parsed as ([string, Localization<T>[]])[]) as LocalizationMap<T>;
 
 }
 
@@ -47,12 +32,12 @@ export interface LocalizationMap<T extends ID> extends FlexibleMap<ReadonlyCusto
 
 /**@ignore */
 export interface XMLLocalizationData extends APIAttributes {
-    [key: string]:
-    | (
-        | {
-            name: Solo<XMLLocalization>;
-				  }
-        | string)
-    | undefined;
-    timestamp: string;
+    [key: string]: XMLLocalizationGroup | string;
+}
+
+/**@ignore */
+export interface XMLLocalizationGroup {
+
+    name: Solo<XMLLocalization>;
+
 }
