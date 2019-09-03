@@ -1,6 +1,7 @@
 # ogame-api
 
 [![Build status](https://api.travis-ci.com/ValentiMS/ogame-api.svg?token=F5jCp4vCHzxxsKLe9WrU&branch=master)](https://travis-ci.com/ValentiMS/ogame-api)
+[![Package size (minified+gzipped)](https://img.shields.io/bundlephobia/minzip/ogame-api)](https://bundlephobia.com/result?p=ogame-api)
 
 ogame-api is a lightweight (~10kb gzipped) abstraction layer written in Typescript that allows you to easily use [OGame's XML API](https://board.origin.ogame.gameforge.com/index.php/Thread/3927-OGame-API/) by providing full coverage of it, including:
 
@@ -59,7 +60,7 @@ universe.getPlayerData().then(async playerData => {
 Parsing a planet report:
 ```ts
 import Universe, { Region } from "ogame-api";
-const universe = new Universe(800, Region.ENGLISH);
+const universe = new Universe(800, "en");
 const report = universe.createPlanetReport(reportString);
 report.mapLocalizations().then(report => {
     const launchers = report.defense.get("Rocket Launcher");
