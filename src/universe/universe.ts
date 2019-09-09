@@ -186,11 +186,11 @@ export async function downloadXml<T>(request: RequestInfo) {
 
 };
 
-interface XMLUniverses {
+export interface XMLUniverses {
     universe: Solo<XMLUniverse>;
 }
 
-interface XMLUniverse {
+export interface XMLUniverse {
     id: string;
     href: string;
 }
@@ -199,7 +199,7 @@ interface XMLUniverse {
  * @todo Investigate adding more regions
  * @utility
  */
-export type Region = "es" | "en" | "de" | "fr";
+export type Region = "ar" | "br" | "dk" | "de" | "es" | "fr" | "hr" | "it" | "hu" | "mx" | "nl" | "no" | "pl" | "pt" | "ro" | "si" | "sk" | "fi" | "se" | "tr" | "us" | "en" | "cz" | "gr" | "ru" | "tw" | "jp";
 
 /**@ignore */
 export interface APIAttributes {
