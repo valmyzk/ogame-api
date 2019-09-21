@@ -3,12 +3,13 @@ import { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
 import Universe from "../universe/universe";
 import { LocalizationMap } from "../localization/localizationData";
+import Planet from "../planet/planet";
 import { Writable } from "../../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
 
 /**@category report */
-export default class PlanetReport {
+export default class PlanetReport<T extends ID> {
 
     /**Report's planet coordinates */
     public readonly coords!: Coords;
@@ -36,7 +37,7 @@ export default class PlanetReport {
      */
     public readonly unknown: ReportMap = new Map();
 
-    public constructor(encodedData: string) {
+    public constructor(encodedData: string, public readonly universe: Universe<T>) {
 
         this.parseString(encodedData);
 
@@ -69,6 +70,7 @@ export default class PlanetReport {
     }
 
     /**Used for getting universe localizations
+     * @todo Unlink planet report from Universe
      */
     protected getUniverseLocalizations<I extends ID>(id: I, region: Region) {
 
@@ -80,18 +82,10 @@ export default class PlanetReport {
     /**Filters LocalizationData to get requestes Localization entry
      * @todo Add support for unknown localizations
      */
-    private getLocalizationName<I extends ID>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>): string {
+    private getLocalizationName<I extends ID>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>) {
 
         const localization = localizationData.get("techs")
             .filter(localization => localization.id === reportValue.id)[0] as Localization<I>;
-
-        if(!localization) {
-
-            return [...localizationData.entries()]
-                    .filter(([key, _]) => key !== "techs" && key !== "missions")
-                    .map(([_, value]) => value.filter(localization => localization.id === reportValue.id))[0][1].name;
-
-        }
 
         return localization.name;
 
@@ -116,6 +110,23 @@ export default class PlanetReport {
         });
 
         return this;
+
+    }
+
+    /**Gets planet of the report
+     * @deprecated
+     */
+    public async getPlanet() {
+
+        const planetData = await this.universe.getPlanetData();
+
+        const planet = planetData.filter(planet => {
+            
+            return planet.coords.equals(this.coords);
+
+        })[0] as Planet<T>;
+
+        return planet;
 
     }
 
