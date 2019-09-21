@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2017",
     "module": "commonjs",
-    "lib": ["es2015", "es2016", "dom"],
+    "lib": ["es2015", "es2016", "es2019.object", "dom"],
     "declaration": true,
     "sourceMap": true,
     "outDir": "./out",
@@ -20,11 +20,7 @@
     "rootDirs": ["src/**"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-      "@typings/*": ["typings/*"]
-    }
+    "experimentalDecorators": true
   },
   "typedocOptions": {
     "mode": "modules",

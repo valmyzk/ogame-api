@@ -1,0 +1,22 @@
+{
+    "timestamp": "1337",
+    "serverId": "en800",
+    "techs": {
+        "name": {
+            "text": "Astrophysics",
+            "id": "1"
+        }
+    },
+    "missions": {
+        "name": [
+            {
+                "text": "Attack",
+                "id": "2"
+            },
+            {
+                "text": "Destroy",
+                "id": "3"
+            }
+        ]
+    }
+}

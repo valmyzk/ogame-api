@@ -1,21 +1,18 @@
 import test from "ava";
 import PlanetReport from "../../report/planet";
-import Universe from "../..";
 import LocalizationData from "../../localization/localizationData";
 import { Coords } from "../../universe/coords";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
-const universe = new Universe(800, "en");
-
 test.serial("constructor", t => {
 
-    t.notThrows(() => new PlanetReport(sampleData, universe));
+    t.notThrows(() => new PlanetReport(sampleData));
 
 });
 
 test.serial("parseString", t => {
 
-    const report = {props: new Map(), universe, coords: null};
+    const report = {props: new Map(), coords: null};
     const parseString = PlanetReport.prototype["parseString"].bind(report);
     
     t.notThrows(() => parseString(sampleData));
@@ -58,33 +55,9 @@ test.serial("getUniverseLocalizations", async t => {
 
 });
 
-test.serial("getPlanet", async t => {
-
-    const patchedUniverse = new Universe(800, "en");
-    const planet = {
-        coords: Coords.fromString("0:0:0")
-    } as any;
-
-    patchedUniverse.getPlanetData = async () => {
-
-        return [planet];
-
-    };
-
-    const report = patchedUniverse.createPlanetReport(sampleData);
-    
-    await t.notThrowsAsync(async () => {
-
-        const reportPlanet = await report.getPlanet();
-        t.deepEqual(reportPlanet, planet);
-
-    });
-
-});
-
 test.serial("toString", t => {
 
-    const report = universe.createPlanetReport(sampleData);
+    const report = new PlanetReport(sampleData);
     
     t.deepEqual(report.toString(), sampleData);
 

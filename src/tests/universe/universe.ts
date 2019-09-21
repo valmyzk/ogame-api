@@ -1,5 +1,4 @@
 import test from "ava";
-import { downloadXml, parseXml } from "../../universe/universe";
 import Universe from "../..";
 import PlayerData from "../../player/playerdata";
 import PlanetData from "../../planet/planetdata";
@@ -7,10 +6,30 @@ import AllianceData from "../../alliance/alliancedata";
 import ServerData from "../../universe/serverData";
 import PlanetReport from "../../report/planet";
 import Position from "../../position/position";
+import { XMLContext, requireXml } from "..";
+import { XMLUniverse, XMLUniverses, resolveSolo } from "../../universe/universe";
+
+type Context = XMLContext<XMLUniverse>;
 
 const universe = new Universe(800, "en");
 
-test.todo("constructor");
+const before = requireXml("universes.json");
+test.serial.before(before);
+
+test.serial.before(t => {
+    
+    const solo = (t.context as XMLContext<XMLUniverses>).xml.universe;
+    (t.context as Context).xml = resolveSolo(solo)[0];
+
+});
+
+test.serial("constructor", t => {
+
+    const encodedData = (t.context as Context).xml;
+
+    t.notThrows(() => new Universe(encodedData));
+
+});
 
 test.serial("parseEndpoint", t => {
 
@@ -122,18 +141,6 @@ test.serial("getServerData", async t => {
         }
 
     });
-
-});
-
-test.serial("createPlanetReport", t => {
-
-    t.notThrows(() => universe.createPlanetReport("coords;0:0:0|0;0"));
-
-    if(!(universe.createPlanetReport("coords;0:0:0|0;0") instanceof PlanetReport)) {
-
-        t.fail();
-
-    }
 
 });
 

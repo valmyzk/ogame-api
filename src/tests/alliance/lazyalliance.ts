@@ -1,38 +1,18 @@
 import test from "ava";
-import { promisify } from "util";
-import { join } from "path";
 import LazyAlliance, { XMLLazyAlliance } from "../../alliance/lazyalliance";
 import Universe from "../..";
-import { readFile as readFileCb } from "fs";
+import { XMLContext, requireXml } from "..";
 
-const readFile = promisify(readFileCb);
-
-//Tests are in /out
-const xmlPath = join(__dirname, "../", "../", "../", "src", "tests", "json", "lazyalliance.json");
-
-interface Context {
-
-    sampleData: XMLLazyAlliance;
-
-}
+type Context = XMLContext<XMLLazyAlliance>;
 
 const universe = new Universe(800, "en");
 
-test.serial.before(async t => {
-
-    const encodedData = await readFile(xmlPath).then(b => b.toString()).catch(t.fail);
-    
-    if(encodedData) {
-
-        (t.context as Context).sampleData = JSON.parse(encodedData) as XMLLazyAlliance;
-
-    }
-
-});
+const before = requireXml("lazyalliance.json");
+test.serial.before(before);
 
 test.serial("constructor", t => {
 
-    const encodedData = (t.context as Context).sampleData;
+    const encodedData = (t.context as Context).xml;
 
     t.notThrows(() => new LazyAlliance(encodedData, universe, "1337"));
 
@@ -40,7 +20,7 @@ test.serial("constructor", t => {
 
 test.serial("properties", t => {
 
-    const encodedData = (t.context as Context).sampleData;
+    const encodedData = (t.context as Context).xml;
     const alliance = new LazyAlliance(encodedData, universe, "1337");
 
     t.deepEqual(alliance.id, encodedData.id);

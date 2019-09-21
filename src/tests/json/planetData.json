@@ -1,0 +1,23 @@
+{
+    "timestamp": "1337",
+    "serverId": "en800",
+    "planet": [
+        {
+            "id": "1",
+            "player": "137",
+            "name": "Foo",
+            "coords": "1:1:1"
+        },
+        {
+            "id": "1",
+            "player": "137",
+            "name": "Foo",
+            "coords": "1:1:2",
+            "moon": {
+                "id": "1",
+                "name": "Foobar",
+                "size": "1"
+            }
+        }
+    ]
+}
