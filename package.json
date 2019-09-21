@@ -1,5 +1,5 @@
 {
-  "name": "ogame-api",
+  "name": "@valentims/ogame-api",
   "version": "1.0.0",
   "description": "OGame XML API parser written in Typescript",
   "sideEffects": false,
@@ -7,8 +7,12 @@
   "files": [
     "out/**/*"
   ],
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "typings": "out/index.d.ts",
-  "repository": "ValentiMS/ogame-api",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:valentims/ogame-api.git"
+  },
   "bugs": "https://github.com/ValentiMS/ogame-api/issues",
   "dependencies": {
     "fast-xml-parser": "^3.12.20",
