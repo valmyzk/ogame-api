@@ -6,7 +6,7 @@
 !package-lock.json
 !tsconfig.json
 !.eslintrc.js
-!travis.yml
+!.github
 
 #Whitelist code
 !/src
