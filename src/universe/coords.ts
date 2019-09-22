@@ -4,7 +4,19 @@
 */
 export class Coords {
 
-    public constructor(public readonly galaxy: number, public readonly system: number, public readonly position: number) {}
+    public readonly galaxy: number;
+    public readonly system: number;
+    public readonly position: number;
+
+    public constructor(encodedData: string);
+    public constructor(galaxy: number, system: number, position: number);
+
+    public constructor(arg1: string | number, system?: number, position?: number) {
+
+        const array = typeof arg1 === "string" ? Coords.parseString(arg1) : [arg1, system as number, position as number];
+        [this.galaxy, this.position, this.system] = array; 
+
+    }
 
     /**Converts the coords from an object format to an encoded string */
     public toString() {
@@ -22,16 +34,20 @@ export class Coords {
 
     };
 
+    private static parseString(coords: string) {
+
+        return coords.split(":", 3)
+            .map(v => parseInt(v)) as [number, number, number];
+
+    };
+
     /**Parses an encoded string to a coords object
-     * @todo Replace with constructor overloading
+     * @deprecated
      */
     public static fromString(coords: string) {
 
-        const split = coords.split(":", 3)
-            .map(v => parseInt(v)) as [number, number, number];
+        return new Coords(...Coords.parseString(coords));
 
-        return new Coords(...split);
-
-    };
+    }
 
 };
