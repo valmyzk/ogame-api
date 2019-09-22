@@ -6,3 +6,4 @@ docs
 .eslintignore
 .eslintrc.js
 .travis.yml
+.github
