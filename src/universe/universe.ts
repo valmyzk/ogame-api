@@ -24,24 +24,56 @@ export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
 /**@category universes */
 export default class Universe<T extends ID> {
 
-    public readonly id: T;
-    public readonly region: Region;
-    public readonly endpoint: string;
+    /**@deprecated */
+    public readonly id!: T;
 
+    /**@deprecated */
+    public readonly region!: Region;
+
+    public readonly endpoint!: string;
+
+    /**@param id Universe's ID
+     * @param region Universe's region
+     * Used by official GameForge servers
+     */
     public constructor(id: ID, region: Region);
     public constructor(encodedData: XMLUniverse);
 
+    /**@param endpoint Universe's API endpoint
+     * Used by unofficial servers
+     */
+    public constructor(endpoint: string);
+
+    /**@todo Disable XMLUniverse href parsing */
     public constructor(encodedData: ID | XMLUniverse, arg1?: Region) {
 
-        this.id = encodedData as T;
-        if((encodedData as XMLUniverse).id) {
+        if(encodedData && arg1) {
 
+            //First overload
+            this.id = encodedData as T;
+            this.region = arg1;
+
+            this.endpoint = Universe.parseEndpoint(this.id, this.region); 
+
+        }
+
+        else if(typeof encodedData === "string") {
+
+            //Third overload
+            this.endpoint = encodedData;
+
+        }
+
+        else if((encodedData as XMLUniverse).id){
+
+            //Second overload
             const parsed = Number.parseInt((encodedData as XMLUniverse).id);
             this.id = (!Number.isNaN(parsed) ? parsed : (encodedData as XMLUniverse).id) as T;
+            this.region = (encodedData as XMLUniverse).href.split("-")[1].substr(0, 2) as Region;
 
-        } 
-        this.region = arg1 || (encodedData as XMLUniverse).href.split("-")[1].substr(0, 2) as Region;
-        this.endpoint = Universe.parseEndpoint(this.id, this.region); 
+            this.endpoint = Universe.parseEndpoint(this.id, this.region); 
+
+        }
 
     }
 
@@ -160,6 +192,7 @@ export default class Universe<T extends ID> {
         return `https://${_id}-${region}.ogame.gameforge.com/api`;
     
     }
+    
 
 }
 
