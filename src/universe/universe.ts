@@ -24,13 +24,7 @@ export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
 /**@category universes */
 export default class Universe<T extends ID> {
 
-    /**@deprecated */
-    public readonly id!: T;
-
-    /**@deprecated */
-    public readonly region!: Region;
-
-    public readonly endpoint!: string;
+    public readonly endpoint: string;
 
     /**@param id Universe's ID
      * @param region Universe's region
@@ -45,35 +39,9 @@ export default class Universe<T extends ID> {
     public constructor(endpoint: string);
 
     /**@todo Disable XMLUniverse href parsing */
-    public constructor(encodedData: ID | XMLUniverse, arg1?: Region) {
+    public constructor(encodedData: ID | XMLUniverse | string, arg1?: Region) {
 
-        if(encodedData && arg1) {
-
-            //First overload
-            this.id = encodedData as T;
-            this.region = arg1;
-
-            this.endpoint = Universe.parseEndpoint(this.id, this.region); 
-
-        }
-
-        else if(typeof encodedData === "string") {
-
-            //Third overload
-            this.endpoint = encodedData;
-
-        }
-
-        else if((encodedData as XMLUniverse).id){
-
-            //Second overload
-            const parsed = Number.parseInt((encodedData as XMLUniverse).id);
-            this.id = (!Number.isNaN(parsed) ? parsed : (encodedData as XMLUniverse).id) as T;
-            this.region = (encodedData as XMLUniverse).href.split("-")[1].substr(0, 2) as Region;
-
-            this.endpoint = Universe.parseEndpoint(this.id, this.region); 
-
-        }
+        this.endpoint = Universe["parseEndpoint"](encodedData, arg1);
 
     }
 
@@ -183,13 +151,15 @@ export default class Universe<T extends ID> {
     }
 
     /**Parses the universe id and region to create an API endpoint
-     * @deprecated id and region are readonly
      */
-    private static parseEndpoint(id: number | string, region: Region) {
+    private static parseEndpoint(arg1: ID | XMLUniverse | string, arg2?: Region) {
 
-        const _id = typeof id === "number" ? `s${id}` : id.toLowerCase();
+        const factory = (id: string, region: string) => `https://${id}-${region}.ogame.gameforge.com/api`;
 
-        return `https://${_id}-${region}.ogame.gameforge.com/api`;
+        const endpoint = !arg2 ? (arg1 as XMLUniverse)["href"] || arg1 as string
+        : factory(typeof arg1 === "number" ? "s" + arg1 : (arg1 as string).toLowerCase(), arg2);
+
+        return endpoint;
     
     }
     

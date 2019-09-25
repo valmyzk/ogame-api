@@ -35,16 +35,23 @@ test.serial("parseEndpoint", t => {
 
     const numerical = Universe["parseEndpoint"](800, "en");
     const alphabetical = Universe["parseEndpoint"]("Dorado", "es");
+    const raw = Universe["parseEndpoint"]("https://hyperion-en.ogame.nova.com/api");
+    const xml = Universe["parseEndpoint"]({
+        href: "https://s999-en.ogame.gameforge.com",
+        id: "999"
+    });
 
     t.deepEqual(numerical, "https://s800-en.ogame.gameforge.com/api");
     t.deepEqual(alphabetical, "https://dorado-es.ogame.gameforge.com/api");
+    t.deepEqual(raw, "https://hyperion-en.ogame.nova.com/api");
+    t.deepEqual(xml, "https://s999-en.ogame.gameforge.com");
+
 
 });
 
 test.serial("properties", t => {
 
-    t.truthy(universe.id);
-    t.truthy(universe.region);
+    t.truthy(universe.endpoint);
 
 });
 
