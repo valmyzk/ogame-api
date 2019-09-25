@@ -3,7 +3,7 @@ import Universe, { ID } from "../universe/universe";
 /**Highscore entry
  * @catagory positions
  */
-export default class Position<T extends ID> {
+export default class Position {
 
     /**Position's type */
     public readonly type: PositionType;
@@ -20,7 +20,7 @@ export default class Position<T extends ID> {
     /**Identifier of the player or alliance */
     public readonly id: string;
 
-    public constructor(encodedData: XMLPosition, public readonly universe: Universe<T>, public readonly timestamp: string) {
+    public constructor(encodedData: XMLPosition, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.type = encodedData.type;
         this.score = encodedData.score;

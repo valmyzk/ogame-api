@@ -5,7 +5,7 @@ import { Solo } from "../../typings/util";
 /**Parses XML Localization root file to a Planet array
  * @category planet
  */
-export default function parseXml<T extends ID>(encodedData: XMLPlanetData, universe: Universe<T>) {
+export default function parseXml(encodedData: XMLPlanetData, universe: Universe) {
 
     const planetArray = resolveSolo(encodedData.planet);
 
@@ -13,7 +13,7 @@ export default function parseXml<T extends ID>(encodedData: XMLPlanetData, unive
         
         new Planet(planet, universe, encodedData.timestamp)
         
-    ) as Planet<T>[];
+    ) as Planet[];
 
 }
 

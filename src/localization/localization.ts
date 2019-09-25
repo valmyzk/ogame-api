@@ -1,4 +1,4 @@
-import Universe, { ID } from "../universe/universe";
+import Universe from "../universe/universe";
 
 /**Helper const enum with localization IDs
  * @category localization
@@ -87,7 +87,7 @@ export const enum Locale {
 /**Single entry of the Localization API
  * @category localization
  */
-export default class Localization<T extends ID> {
+export default class Localization {
 
     /**Localization's identifier */
     public readonly id: string;
@@ -95,7 +95,7 @@ export default class Localization<T extends ID> {
     /**Localization's name */
     public readonly name: string;
 
-    public constructor(encodedData: XMLLocalization, public readonly universe: Universe<T>, public readonly timestamp: string) {
+    public constructor(encodedData: XMLLocalization, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.id = encodedData.id;
         this.name = encodedData.text;

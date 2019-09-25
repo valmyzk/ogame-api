@@ -1,15 +1,15 @@
-import Universe, { ID } from "../universe/universe";
+import Universe from "../universe/universe";
 
 /**Player Reference
  * @category player
  */
-export default class LazyPlayer<T extends ID> {
+export default class LazyPlayer {
 
     public readonly id: string;
-    public readonly universe: Universe<T>;
+    public readonly universe: Universe;
     public readonly timestamp: string;
 
-    public constructor(universe: Universe<T>, data: XMLLazyPlayer, timestamp: string) {
+    public constructor(universe: Universe, data: XMLLazyPlayer, timestamp: string) {
 
         this.id = data.id;
         this.universe = universe;
@@ -24,7 +24,7 @@ export default class LazyPlayer<T extends ID> {
 /**Player reference with additional features such as status, alliance and name
  * @category player
  */
-export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
+export class ExtendedLazyPlayer extends LazyPlayer {
 
     /**Player's name */
     public readonly name: string;
@@ -35,7 +35,7 @@ export class ExtendedLazyPlayer<T extends ID> extends LazyPlayer<T> {
     /**Player's account status */
     public readonly status?: string;
 
-    public constructor(universe: Universe<T>, data: XMLExtendedLazyPlayer, timestamp: string) {
+    public constructor(universe: Universe, data: XMLExtendedLazyPlayer, timestamp: string) {
 
         super(universe, data, timestamp);
         this.name = data.name;

@@ -5,7 +5,7 @@ import { Solo } from "../../typings/util";
 /**Parses XML alliance root file to an Alliance array
  * @category alliance
  */
-export default function parseXml<T extends ID>(encodedData: XMLAllianceData, universe: Universe<T>) {
+export default function parseXml(encodedData: XMLAllianceData, universe: Universe) {
 
     const allianceArray = resolveSolo(encodedData.alliance);
     
@@ -13,7 +13,7 @@ export default function parseXml<T extends ID>(encodedData: XMLAllianceData, uni
       
         new Alliance(alliance, universe, encodedData.timestamp)
 
-    ) as Alliance<T>[];
+    ) as Alliance[];
 
 }
 

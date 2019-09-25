@@ -9,7 +9,7 @@ import { Writable } from "../../typings/util";
 type ReportMap = Map<string, ReportValue>;
 
 /**@category report */
-export default class PlanetReport<T extends ID> {
+export default class PlanetReport {
 
     /**Report's planet coordinates */
     public readonly coords!: Coords;
@@ -37,7 +37,7 @@ export default class PlanetReport<T extends ID> {
      */
     public readonly unknown: ReportMap = new Map();
 
-    public constructor(encodedData: string, public readonly universe: Universe<T>) {
+    public constructor(encodedData: string, public readonly universe: Universe) {
 
         this.parseString(encodedData);
 
@@ -82,10 +82,10 @@ export default class PlanetReport<T extends ID> {
     /**Filters LocalizationData to get requestes Localization entry
      * @todo Add support for unknown localizations
      */
-    private getLocalizationName<I extends ID>(reportValue: LazyReportValue, localizationData: LocalizationMap<I>) {
+    private getLocalizationName(reportValue: LazyReportValue, localizationData: LocalizationMap) {
 
         const localization = localizationData.get("techs")
-            .filter(localization => localization.id === reportValue.id)[0] as Localization<I>;
+            .filter(localization => localization.id === reportValue.id)[0] as Localization;
 
         return localization.name;
 
@@ -124,7 +124,7 @@ export default class PlanetReport<T extends ID> {
             
             return planet.coords.equals(this.coords);
 
-        })[0] as Planet<T>;
+        })[0] as Planet;
 
         return planet;
 

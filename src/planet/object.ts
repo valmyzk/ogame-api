@@ -3,7 +3,7 @@ import LazyPlayer from "../player/lazyplayer";
 import { Coords } from "../universe/coords";
 
 /**@ignore */
-export default abstract class UniverseObject<T extends ID> {
+export default abstract class UniverseObject {
 
     /**Object's coordinates */
     public readonly coords: Coords;
@@ -15,14 +15,14 @@ export default abstract class UniverseObject<T extends ID> {
     public readonly name: string;
 
     /**Reference to the object's player */
-    public readonly player: LazyPlayer<T>;
+    public readonly player: LazyPlayer;
 
-    public constructor(encodedData: XMLUniverseObject, public readonly universe: Universe<T>, public readonly timestamp: string) {
+    public constructor(encodedData: XMLUniverseObject, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.coords = Coords.fromString(encodedData.coords);
         this.id = encodedData.id;
         this.name = encodedData.name;
-        this.player = new LazyPlayer<T>(
+        this.player = new LazyPlayer(
             universe,
             {
                 id: encodedData.player

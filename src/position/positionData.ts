@@ -6,13 +6,13 @@ import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../player/player";
 /**Parses XML Position root file to a Position array
  * @category positions
  */
-export default function parseXml<T extends ID, C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe<T>) {
+export default function parseXml<C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe) {
     
     const array = resolveSolo(encodedData.player) as unknown as PositionInterface<C, K>[];
 
     return array.map(position => 
 
-        new Position<T>({
+        new Position({
 
             score: position.score,
             position: position.position,
@@ -22,14 +22,14 @@ export default function parseXml<T extends ID, C extends PositionCategory, K ext
 
         }, universe, encodedData.timestamp)
 
-    ) as PositionType<T, C, K>[];
+    ) as PositionType<C, K>[];
 
 };
 
 type PositionInterface<C extends PositionCategory, K extends PositionTypeEnum> = C extends PositionCategory.PLAYER ? K extends PositionTypeEnum.MILITARY ? XMLMilitaryPlayerPosition : XMLPosition : XMLPosition;
 
 /**@ignore */
-export type PositionType<T extends ID, C extends PositionCategory, K extends PositionTypeEnum> = PositionInterface<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition<T> : Position<T>;
+export type PositionType<C extends PositionCategory, K extends PositionTypeEnum> = PositionInterface<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition : Position;
 
 /**@ignore */
 export interface XMLPositionData<C extends PositionCategory, K extends PositionTypeEnum> extends APIAttributes {

@@ -34,7 +34,7 @@ test.serial("properties", t => {
 
     const ctx = (t.context as Context);
 
-    const object = new (UniverseObject as any)(ctx.xml, universe, ctx.timestamp) as UniverseObject<any>;
+    const object = new (UniverseObject as any)(ctx.xml, universe, ctx.timestamp) as UniverseObject;
 
     t.deepEqual(object.coords, Coords.fromString(ctx.xml.coords));
     t.deepEqual(object.id, ctx.xml.id);

@@ -5,13 +5,13 @@ import { Solo } from "../../typings/util";
 /**Parses XML Player root file to a Player array
  * @category player
  */
-export default function parseXml<T extends ID>(encodedData: XMLPlayerData, universe: Universe<T>) {
+export default function parseXml(encodedData: XMLPlayerData, universe: Universe) {
 
     const playerArray = resolveSolo(encodedData.player);
 
     return playerArray.map(player => 
 
-        new ExtendedLazyPlayer<T>(universe, player, encodedData.timestamp) 
+        new ExtendedLazyPlayer(universe, player, encodedData.timestamp) 
 
     );
 

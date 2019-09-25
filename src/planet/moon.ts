@@ -5,12 +5,12 @@ import UniverseObject, { XMLUniverseObject } from "./object";
 /**Planet's moon
  * @category planet
  */
-export default class Moon<T extends ID> extends UniverseObject<T> {
+export default class Moon extends UniverseObject {
 
     /**Moon's size */
     public readonly size: string;
 
-    public constructor(encodedData: XMLMoon, planet: XMLUniversePlanet, universe: Universe<T>, timestamp: string) {
+    public constructor(encodedData: XMLMoon, planet: XMLUniversePlanet, universe: Universe, timestamp: string) {
 
         (encodedData as XMLMoon & XMLUniverseObject).coords = planet.coords;
         (encodedData as XMLMoon & XMLUniverseObject).player = planet.player;

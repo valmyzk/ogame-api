@@ -5,7 +5,7 @@ import { Solo } from "../../typings/util";
 /**OGame alliance
  * @category alliance
  */
-export default class Alliance<T extends ID> {
+export default class Alliance {
 
     /**Identifier of the alliance */
     public readonly id: string;
@@ -16,7 +16,7 @@ export default class Alliance<T extends ID> {
     public readonly tag: string;
 
     /**Alliance founder */
-    public readonly founder: LazyPlayer<T>;
+    public readonly founder: LazyPlayer;
 
     /**Alliance's found date represented in a UNIX timestamp */
     public readonly foundDate: string;
@@ -29,9 +29,9 @@ export default class Alliance<T extends ID> {
     public readonly homepage?: string;
 
     /**Array of members of alliance, including founder */
-    public readonly members: LazyPlayer<T>[];
+    public readonly members: LazyPlayer[];
 
-    public constructor(encodedData: XMLAlliance, public readonly universe: Universe<T>, public readonly timestamp: string) {
+    public constructor(encodedData: XMLAlliance, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.id = encodedData.id;
         this.name = encodedData.name;
@@ -59,7 +59,7 @@ export default class Alliance<T extends ID> {
 
         return array ? array.map(member => {
 
-            return new LazyPlayer<T>(this.universe, member, this.timestamp);
+            return new LazyPlayer(this.universe, member, this.timestamp);
 
         }) : [];
 

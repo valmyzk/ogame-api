@@ -6,29 +6,29 @@ import { Solo } from "../../typings/util";
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category localization
  */
-export default function parseXml<T extends ID>(encodedData: XMLLocalizationData, universe: Universe<T>) {
+export default function parseXml(encodedData: XMLLocalizationData, universe: Universe) {
 
     const parsed = Object.entries(encodedData)
         .filter(([, value]) => typeof value === "object")
         .map(([key, value]) => [key, resolveSolo((value as XMLLocalizationGroup).name)] as const)
-        .map(([key, value]) => [key, value.map(l => new Localization<T>(l, universe, encodedData.timestamp))]);
+        .map(([key, value]) => [key, value.map(l => new Localization(l, universe, encodedData.timestamp))]);
 
 
-    return new Map<string, Localization<T>[]>(parsed as ([string, Localization<T>[]])[]) as LocalizationMap<T>;
+    return new Map<string, Localization[]>(parsed as ([string, Localization[]])[]) as LocalizationMap;
 
 }
 
-export interface LocalizationGroups<T extends ID> {
+export interface LocalizationGroups {
 
-    techs: Localization<T>[];
-    missions: Localization<T>[];
+    techs: Localization[];
+    missions: Localization[];
     
 }
 
 /**ES6 Map mapped by localization group to localization array. Identical to Map<string, Localization<T>[]>
  * @category localization
  */
-export interface LocalizationMap<T extends ID> extends FlexibleMap<ReadonlyCustomMap<LocalizationGroups<T>>> {};
+export interface LocalizationMap extends FlexibleMap<ReadonlyCustomMap<LocalizationGroups>> {};
 
 /**@ignore */
 export interface XMLLocalizationData extends APIAttributes {

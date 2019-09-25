@@ -3,7 +3,7 @@ import Universe, { ID } from "../universe/universe";
 /**Reference to an alliance
  * @category alliance
   */
-export default class LazyAlliance<T extends ID> {
+export default class LazyAlliance {
 
     /**Alliance's name */
     public readonly name: string;
@@ -14,7 +14,7 @@ export default class LazyAlliance<T extends ID> {
     /**Alliance's identifier */
     public readonly id: string;
 
-    public constructor(encodedData: XMLLazyAlliance, public readonly universe: Universe<T>, public readonly timestamp: string) {
+    public constructor(encodedData: XMLLazyAlliance, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.name = encodedData.name;
         this.tag = encodedData.tag;

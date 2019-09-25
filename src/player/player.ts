@@ -6,7 +6,7 @@ import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
 import { ExtendedLazyPlayer } from "./lazyplayer";
 
 /**@category player */
-export default class Player<T extends ID> {
+export default class Player {
 
     /**Player's name */
     public readonly name: string;
@@ -15,25 +15,25 @@ export default class Player<T extends ID> {
     public readonly id: string;
 
     /**Player positions tuple. Index 3 will always be a military position */
-    public readonly positions: PlayerPositions<T>;
+    public readonly positions: PlayerPositions;
 
     /**Player's planets. First element will always be the homeplanet */
-    public readonly planets: Planet<T>[];
-    public readonly home: Planet<T>;
+    public readonly planets: Planet[];
+    public readonly home: Planet;
 
     /**Reference to the player's alliance. May be undefined */
-    public readonly alliance?: LazyAlliance<T>;
+    public readonly alliance?: LazyAlliance;
 
     /**UNIX timestamp of when the object was parsed */
     public readonly timestamp: string;
 
-    public constructor(encodedData: XMLPlayer, public universe: Universe<T>) {
+    public constructor(encodedData: XMLPlayer, public universe: Universe) {
 
         this.name = encodedData.name;
         this.id = encodedData.id;
         this.timestamp = encodedData.timestamp;
 
-        this.positions = this.parsePositions(encodedData.positions.position) as PlayerPositions<T>;
+        this.positions = this.parsePositions(encodedData.positions.position) as PlayerPositions;
         this.planets = this.parsePlanets(encodedData.planets.planet);
         this.home = Player.getHomeplanet(this.planets);
         this.alliance = this.parseAlliance(encodedData.alliance);
@@ -47,13 +47,13 @@ export default class Player<T extends ID> {
             (playerPosition as unknown as XMLPosition).position = playerPosition.text;
             (playerPosition as unknown as XMLPosition).id = this.id;
 
-            return new Position<T>(playerPosition as unknown as XMLPosition, this.universe, this.timestamp);
+            return new Position(playerPosition as unknown as XMLPosition, this.universe, this.timestamp);
         
-        }) as PlayerPositions<T>;
+        }) as PlayerPositions;
 
     }
 
-    private parsePlanets(planets: Solo<XMLPlayerPlanet>): Planet<T>[] {
+    private parsePlanets(planets: Solo<XMLPlayerPlanet>): Planet[] {
 
         const planetArray = resolveSolo(planets);
 
@@ -61,13 +61,13 @@ export default class Player<T extends ID> {
 
             return new Planet(planet, this.universe, this.timestamp, this.id);
 
-        }) as Planet<T>[];
+        }) as Planet[];
 
     }
 
     private parseAlliance(alliance?: XMLLazyAlliance) {
 
-        return alliance && new LazyAlliance<T>(alliance, this.universe, this.timestamp);
+        return alliance && new LazyAlliance(alliance, this.universe, this.timestamp);
 
     }
 
@@ -75,14 +75,14 @@ export default class Player<T extends ID> {
     public async getStatus() {
 
         const playerData = await this.universe.getPlayerData();
-        const player = playerData.filter(player => player.id === this.id)[0] as ExtendedLazyPlayer<T>;
+        const player = playerData.filter(player => player.id === this.id)[0] as ExtendedLazyPlayer;
 
         return player.status;
     
     }
 
     /**@returns Earliest created planet of an array */
-    public static getHomeplanet<T extends ID>(planets: Planet<T>[]) {
+    public static getHomeplanet(planets: Planet[]) {
 
         return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];
 
@@ -122,6 +122,6 @@ export interface XMLMilitaryPlayerPosition extends XMLPosition {
 }
 
 /**@ignore */
-export type MilitaryPosition<T extends ID> = Position<T> & XMLMilitaryPlayerPosition;
+export type MilitaryPosition = Position & XMLMilitaryPlayerPosition;
 
-type PlayerPositions<T extends ID> = [Position<T>, Position<T>, Position<T>, MilitaryPosition<T>, Position<T>, Position<T>, Position<T>];
+type PlayerPositions = [Position, Position, Position, MilitaryPosition, Position, Position, Position];

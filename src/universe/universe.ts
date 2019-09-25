@@ -22,7 +22,7 @@ export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
 };
 
 /**@category universes */
-export default class Universe<T extends ID> {
+export default class Universe {
 
     public readonly endpoint: string;
 
@@ -46,7 +46,7 @@ export default class Universe<T extends ID> {
     }
 
     /**Gets universe's players */
-    public async getPlayerData(): Promise<ExtendedLazyPlayer<T>[]> {
+    public async getPlayerData(): Promise<ExtendedLazyPlayer[]> {
 
         const playerData = await this.fetchApi<XMLPlayerData>("players");
         
@@ -55,20 +55,20 @@ export default class Universe<T extends ID> {
     }
 
     /**Gets universe's planets */
-    public async getPlanetData(): Promise<Planet<T>[]> {
+    public async getPlanetData(): Promise<Planet[]> {
 
         const planetData = await this.fetchApi<XMLPlanetData>("universe");
         
-        return PlanetData<T>(planetData, this);
+        return PlanetData(planetData, this);
     
     }
 
     /**Gets universe's alliances */
-    public async getAllianceData(): Promise<Alliance<T>[]> {
+    public async getAllianceData(): Promise<Alliance[]> {
 
         const allianceData = await this.fetchApi<XMLAllianceData>("alliances");
         
-        return AllianceData<T>(allianceData, this);
+        return AllianceData(allianceData, this);
     
     };
 
@@ -76,7 +76,7 @@ export default class Universe<T extends ID> {
     public async getPlayerPositions<Type extends PositionTypeEnum>(type: Type) {
 
         const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.PLAYER, Type>>("highscore", `category=1&type=${type}`);
-        const positions = PositionData(positionsData, this) as PositionType<T, PositionCategory.PLAYER, Type>[];
+        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.PLAYER, Type>[];
 
         return positions;
 
@@ -86,7 +86,7 @@ export default class Universe<T extends ID> {
     public async getAlliancePositions<Type extends PositionTypeEnum>(type: Type) {
 
         const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.ALLIANCE, Type>>("highscore", `category=2&type=${type}`);
-        const positions = PositionData(positionsData, this) as PositionType<T, PositionCategory.ALLIANCE, Type>[];
+        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.ALLIANCE, Type>[];
 
         return positions;
         
@@ -96,12 +96,12 @@ export default class Universe<T extends ID> {
      * @todo Migrate to global export, unlink from Universe id
      * @todo fix naming
      */
-    public async getNearbyUniverses(): Promise<Universe<number>[]> {
+    public async getNearbyUniverses(): Promise<Universe[]> {
 
         const universesData = await this.fetchApi<XMLUniverses>("universes");
         const array = resolveSolo(universesData.universe);
 
-        return array.map(universe => new Universe<number>(universe));
+        return array.map(universe => new Universe(universe));
     
     }
 
@@ -115,7 +115,7 @@ export default class Universe<T extends ID> {
     }
 
     /**Gets universe's localizations */
-    public async getLocalizations(): Promise<LocalizationMap<T>> {
+    public async getLocalizations(): Promise<LocalizationMap> {
 
         const localizationData = await this.fetchApi<XMLLocalizationData>("localization");
 
@@ -128,7 +128,7 @@ export default class Universe<T extends ID> {
      */
     public createPlanetReport(encodedData: string) {
 
-        return new PlanetReport<T>(encodedData, this);
+        return new PlanetReport(encodedData, this);
 
     }
     
@@ -137,7 +137,7 @@ export default class Universe<T extends ID> {
 
         const playerData = await this.fetchApi<XMLPlayer>("playerData", `id=${id}`);
 
-        return new Player<T>(playerData, this);
+        return new Player(playerData, this);
 
     }
 
