@@ -1,5 +1,5 @@
 {
-  "name": "@valentims/ogame-api",
+  "name": "ogame-api",
   "version": "1.0.0",
   "description": "OGame XML API parser written in Typescript",
   "sideEffects": false,
