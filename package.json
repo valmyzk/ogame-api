@@ -1,6 +1,6 @@
 {
   "name": "ogame-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OGame XML API parser written in Typescript",
   "sideEffects": false,
   "main": "out/index.js",
