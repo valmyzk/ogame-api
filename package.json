@@ -7,9 +7,6 @@
   "files": [
     "out/**/*"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "typings": "out/index.d.ts",
   "repository": {
     "type": "git",

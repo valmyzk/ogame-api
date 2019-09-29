@@ -42,7 +42,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@valentims'
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.PACKAGE_DEPLOY_TOKEN}}
