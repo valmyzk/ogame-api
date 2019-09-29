@@ -1,8 +1,12 @@
 name: Node.js Package
 
 on:
-  project_column:
-    types: [published]
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
 
 jobs:
   build:
