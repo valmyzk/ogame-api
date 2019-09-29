@@ -77,7 +77,7 @@ export default class Player<T extends ID> {
         const playerData = await this.universe.getPlayerData();
         const player = playerData.filter(player => player.id === this.id)[0] as ExtendedLazyPlayer<T>;
 
-        return player.status;
+        return (player && player.status) || "";
     
     }
 
