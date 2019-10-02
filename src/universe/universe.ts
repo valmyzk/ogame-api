@@ -13,6 +13,7 @@ import { PositionType as PositionTypeEnum } from "../position/position";
 import Player, { XMLPlayer } from "../player/player";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
 import Alliance from "../alliance/alliance";
+import { fetch } from "../xml";
 
 export type ID = number | string;
 export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
@@ -48,7 +49,7 @@ export default class Universe {
     /**Gets universe's players */
     public async getPlayerData(): Promise<ExtendedLazyPlayer[]> {
 
-        const playerData = await this.fetchApi<XMLPlayerData>("players");
+        const playerData = await fetch<XMLPlayerData>(this.endpoint, "players");
         
         return PlayerData(playerData, this);
     
@@ -57,7 +58,7 @@ export default class Universe {
     /**Gets universe's planets */
     public async getPlanetData(): Promise<Planet[]> {
 
-        const planetData = await this.fetchApi<XMLPlanetData>("universe");
+        const planetData = await fetch<XMLPlanetData>(this.endpoint, "universe");
         
         return PlanetData(planetData, this);
     
@@ -66,27 +67,29 @@ export default class Universe {
     /**Gets universe's alliances */
     public async getAllianceData(): Promise<Alliance[]> {
 
-        const allianceData = await this.fetchApi<XMLAllianceData>("alliances");
+        const allianceData = await fetch<XMLAllianceData>(this.endpoint, "alliances");
         
         return AllianceData(allianceData, this);
     
     };
 
     /**Gets universe's player positions (highscore) */
-    public async getPlayerPositions<Type extends PositionTypeEnum>(type: Type) {
+    public async getPlayerPositions<T extends PositionTypeEnum>(type: T) {
 
-        const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.PLAYER, Type>>("highscore", `category=1&type=${type}`);
-        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.PLAYER, Type>[];
+        const query = `category=1&type=${type}`;
+        const positionsData = await fetch<XMLPositionData<PositionCategory.PLAYER, T>>(this.endpoint, "highscore", query);
+        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.PLAYER, T>[];
 
         return positions;
 
     };
 
     /**Gets universe's alliance positions (highscore) */
-    public async getAlliancePositions<Type extends PositionTypeEnum>(type: Type) {
+    public async getAlliancePositions<T extends PositionTypeEnum>(type: T) {
 
-        const positionsData = await this.fetchApi<XMLPositionData<PositionCategory.ALLIANCE, Type>>("highscore", `category=2&type=${type}`);
-        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.ALLIANCE, Type>[];
+        const query = `category=2&type=${type}`;
+        const positionsData = await fetch<XMLPositionData<PositionCategory.ALLIANCE, T>>(this.endpoint, "highscore", query);
+        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.ALLIANCE, T>[];
 
         return positions;
         
@@ -98,7 +101,7 @@ export default class Universe {
      */
     public async getNearbyUniverses(): Promise<Universe[]> {
 
-        const universesData = await this.fetchApi<XMLUniverses>("universes");
+        const universesData = await fetch<XMLUniverses>(this.endpoint, "universes");
         const array = resolveSolo(universesData.universe);
 
         return array.map(universe => new Universe(universe));
@@ -108,7 +111,7 @@ export default class Universe {
     /**Gets universe's properties */
     public async getServerData(): Promise<ServerMap> {
 
-        const serverData = await this.fetchApi<XMLServerData>("serverData");
+        const serverData = await fetch<XMLServerData>(this.endpoint, "serverData");
 
         return ServerData(serverData);
     
@@ -117,7 +120,7 @@ export default class Universe {
     /**Gets universe's localizations */
     public async getLocalizations(): Promise<LocalizationMap> {
 
-        const localizationData = await this.fetchApi<XMLLocalizationData>("localization");
+        const localizationData = await fetch<XMLLocalizationData>(this.endpoint, "localization");
 
         return LocalizationData(localizationData, this);
     
@@ -135,19 +138,10 @@ export default class Universe {
     /**Gets full player (no references) by id */
     public async getPlayer(id: string) {
 
-        const playerData = await this.fetchApi<XMLPlayer>("playerData", `id=${id}`);
+        const playerData = await fetch<XMLPlayer>(this.endpoint, "playerData", `id=${id}`);
 
         return new Player(playerData, this);
 
-    }
-
-    /**Downloads an xml and casts it to an XML type */
-    protected async fetchApi<T>(file: string, query = "") {
-
-        const downloadPromise = await downloadXml(`${this.endpoint}/${file}.xml${query && "?"}${query}`) as {[key: string]: unknown};
-        
-        return downloadPromise[file] as T;
-    
     }
 
     /**Parses the universe id and region to create an API endpoint
@@ -166,28 +160,9 @@ export default class Universe {
 
 }
 
-/**@internal */
-export const parseXml = <T>(xmlContent: string) => {
 
-    return parse(xmlContent, {
-        textNodeName: "text",
-        attributeNamePrefix: "",
-        ignoreAttributes: false
-    }) as T;
 
-};
 
-/**@internal */
-export async function downloadXml<T>(request: RequestInfo) {
-
-    //console.log("Fetching " + request + "...");
-    const apiResponse = await ifetch(request)
-        .then((res): Promise<string> => res.text())
-        .then(parseXml);
-
-    return apiResponse as T;
-
-};
 
 export interface XMLUniverses {
     universe: Solo<XMLUniverse>;
