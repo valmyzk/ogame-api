@@ -1,18 +1,21 @@
 import { Region } from "./universe";
 import { FlexibleMap, CustomMap, ReadonlyCustomMap } from "../../typings/map";
+import { xml } from "../xml";
+import { Union } from "ts-toolbelt";
 
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category serverData
  */
-export default function parseXml(encodedData: XMLServerData) {
+export default function parseXml(encodedData: XMLServerData, xsd: XsdList) {
 
     const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
+    const boolean = xsd.filter(v => v.type === "xs:boolean");
 
-    encodedData.acs = !!encodedData.acs;
-    encodedData.rapidFire = !!encodedData.rapidFire;
-    encodedData.donutGalaxy = !!encodedData.donutGalaxy;
-    encodedData.donutSystem = !!encodedData.donutSystem;
-    encodedData.wfEnabled = !!encodedData.wfEnabled;
+    for(const { name } of boolean) {
+
+        encodedData[name] = !!encodedData[name]; 
+
+    }
 
     for(const entry in encodedData) {
 
@@ -23,6 +26,15 @@ export default function parseXml(encodedData: XMLServerData) {
     }
 
     return serverMap as ServerMap;
+
+}
+
+export async function getXsd(endpoint: string) {
+
+    const xsd = await xml<any>(endpoint + "/xsd/serverData.xsd");
+    const list = xsd["xs:schema"]["xs:element"]["xs:complexType"]["xs:sequence"]["xs:element"] as XsdList;
+    
+    return list;
 
 }
 
@@ -67,8 +79,17 @@ interface ServerData {
 
 /**@ignore */
 export interface XMLServerData {
+
     [key: string]: string | boolean | number;
+
 }
+
+type XsdMap<N extends keyof ServerData, V = ServerData[N]> = V extends number ? "xs:integer" | "xs:float" | "xs:int" :
+                                                                   V extends string ? "xs:string" :
+                                                                   V extends boolean ? "xs:boolean" : any
+
+type XsdDescription<N extends keyof ServerData> = {name: N, type: XsdMap<N>}
+type XsdList = Union.TupleOf<{ [K in keyof ServerData]: XsdDescription<K> }[keyof ServerData]>
 
 /**ES6 Map mapped by server property to server value */
 export interface ServerMap extends FlexibleMap<ReadonlyCustomMap<ServerData>> {};

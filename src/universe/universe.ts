@@ -1,12 +1,10 @@
-import { parse } from "fast-xml-parser";
 import Planet from "../planet/planet";
 import PlayerData, { XMLPlayerData } from "../player/playerdata";
 import PlanetData, { XMLPlanetData } from "../planet/planetdata";
 import AllianceData, { XMLAllianceData } from "../alliance/alliancedata";
-import ServerData, { XMLServerData, ServerMap } from "./serverData";
+import ServerData, { XMLServerData, ServerMap, getXsd } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
 import PositionData, { XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
-import ifetch from "isomorphic-fetch";
 import PlanetReport from "../report/planet";
 import { ResolveSolo, Solo } from "../../typings/util";
 import { PositionType as PositionTypeEnum } from "../position/position";
@@ -112,8 +110,9 @@ export default class Universe {
     public async getServerData(): Promise<ServerMap> {
 
         const serverData = await fetch<XMLServerData>(this.endpoint, "serverData");
+        const xsd = await getXsd(this.endpoint);
 
-        return ServerData(serverData);
+        return ServerData(serverData, xsd);
     
     }
 
