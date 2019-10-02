@@ -1,15 +1,12 @@
 {
   "name": "ogame-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OGame XML API parser written in Typescript",
   "sideEffects": false,
   "main": "out/index.js",
   "files": [
     "out/**/*"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "typings": "out/index.d.ts",
   "repository": {
     "type": "git",
@@ -22,13 +19,13 @@
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.35",
-    "@types/node": "12.7.7",
-    "@typescript-eslint/eslint-plugin": "2.3.1",
-    "@typescript-eslint/parser": "2.3.1",
+    "@types/node": "12.7.9",
+    "@typescript-eslint/eslint-plugin": "2.3.2",
+    "@typescript-eslint/parser": "2.3.2",
     "ava": "2.4.0",
-    "eslint": "6.4.0",
-    "ts-toolbelt": "^4.7.24",
+    "eslint": "6.5.1",
     "typedoc": "0.15.0",
+    "ts-toolbelt": "3.6.1",
     "typescript": "3.6.3"
   },
   "scripts": {
