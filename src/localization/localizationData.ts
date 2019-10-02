@@ -1,4 +1,4 @@
-import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
+import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
 import Localization, { XMLLocalization } from "./localization";
 import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
 import { Solo } from "../../typings/util";

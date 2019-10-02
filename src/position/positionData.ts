@@ -1,4 +1,4 @@
-import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
+import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
 import Position, { PositionType as PositionTypeEnum, XMLPosition } from "./position";
 import { Solo } from "../../typings/util";
 import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../player/player";

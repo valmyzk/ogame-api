@@ -1,5 +1,5 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
-import Universe, { ID, resolveSolo } from "../universe/universe";
+import Universe, { resolveSolo } from "../universe/universe";
 import { Solo } from "../../typings/util";
 
 /**OGame alliance

@@ -1,4 +1,4 @@
-import Universe, { ID } from "../universe/universe";
+import Universe from "../universe/universe";
 import LazyPlayer from "../player/lazyplayer";
 import { Coords } from "../universe/coords";
 

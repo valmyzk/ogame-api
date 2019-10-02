@@ -1,4 +1,4 @@
-import Universe, { ID, APIAttributes, resolveSolo } from "../universe/universe";
+import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
 import Planet, { XMLUniversePlanet } from "./planet";
 import { Solo } from "../../typings/util";
 

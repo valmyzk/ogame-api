@@ -1,4 +1,4 @@
-import Universe, { ID } from "../universe/universe";
+import Universe from "../universe/universe";
 
 /**Highscore entry
  * @catagory positions
