@@ -1,6 +1,7 @@
 import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
-import Universe, { resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import { Solo } from "../../typings/util";
+import { resolveSolo } from "../xml";
 
 /**OGame alliance
  * @category alliance

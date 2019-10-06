@@ -3,7 +3,7 @@ import Localization, { XMLLocalization } from "../../localization/localization";
 import { XMLContext, requireXml } from "..";
 import Universe from "../..";
 import { XMLLocalizationData, XMLLocalizationGroup } from "../../localization/localizationData";
-import { resolveSolo } from "../../universe/universe";
+import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLLocalization> & {timestamp: string};
 

@@ -33,13 +33,3 @@ test("jsEquals", t => {
     t.deepEqual(coords, assert);
 
 });
-
-test("fromString", t => {
-
-    const coords = Coords.fromString("0:0:0");
-
-    t.deepEqual(coords.galaxy, 0);
-    t.deepEqual(coords.system, 0);
-    t.deepEqual(coords.position, 0);
-
-});

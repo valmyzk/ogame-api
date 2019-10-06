@@ -1,6 +1,7 @@
-import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import { ExtendedLazyPlayer, XMLExtendedLazyPlayer } from "./lazyplayer";
 import { Solo } from "../../typings/util";
+import { APIAttributes, resolveSolo } from "../xml";
 
 /**Parses XML Player root file to a Player array
  * @category player

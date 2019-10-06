@@ -1,6 +1,6 @@
 import { Solo } from "../../typings/util";
-import Universe, { XMLUniverse, Region, ID, resolveSolo } from "./universe";
-import { fetch } from "../xml";
+import Universe, { XMLUniverse, Region, ID } from "./universe";
+import { fetch, resolveSolo } from "../xml";
 
 /**
  * @param base Due to how OGame's API is structured, a universe id is required to get the universe list

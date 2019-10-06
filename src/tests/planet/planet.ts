@@ -3,7 +3,7 @@ import Universe, { Coords } from "../..";
 import { XMLContext, requireXml } from "..";
 import Planet, { XMLUniversePlanet } from "../../planet/planet";
 import { XMLPlanetData } from "../../planet/planetdata";
-import { resolveSolo } from "../../universe/universe";
+import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLUniversePlanet> & {timestamp: string};
 

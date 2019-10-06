@@ -2,12 +2,11 @@ import test from "ava";
 import PlanetReport from "../../report/planet";
 import LocalizationData from "../../localization/localizationData";
 import { Coords } from "../../universe/coords";
-import Universe from "../..";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
 test.serial("constructor", t => {
 
-    t.notThrows(() => new PlanetReport(sampleData, new Universe(800, "en")));
+    t.notThrows(() => new PlanetReport(sampleData));
 
 });
 
@@ -58,7 +57,7 @@ test.serial("getUniverseLocalizations", async t => {
 
 test.serial("toString", t => {
 
-    const report = new PlanetReport(sampleData, new Universe(800, "en"));
+    const report = new PlanetReport(sampleData);
     
     t.deepEqual(report.toString(), sampleData);
 

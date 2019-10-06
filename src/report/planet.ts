@@ -3,7 +3,6 @@ import { ID, Region } from "../universe/universe";
 import Localization, { LocalizationType } from "../localization/localization";
 import Universe from "../universe/universe";
 import { LocalizationMap } from "../localization/localizationData";
-import Planet from "../planet/planet";
 import { Writable } from "../../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
@@ -37,7 +36,7 @@ export default class PlanetReport {
      */
     public readonly unknown: ReportMap = new Map();
 
-    public constructor(encodedData: string, public readonly universe: Universe) {
+    public constructor(encodedData: string) {
 
         this.parseString(encodedData);
 
@@ -49,7 +48,7 @@ export default class PlanetReport {
         const sectioned = raw.split("|");
         const rawCoords = (sectioned.shift() as string).slice(7);
 
-        (this as Writable<this>).coords = Coords.fromString(rawCoords);
+        (this as Writable<this>).coords = new Coords(rawCoords);
 
         //Fill this.props
         for(const valuePair of sectioned) {
@@ -110,23 +109,6 @@ export default class PlanetReport {
         });
 
         return this;
-
-    }
-
-    /**Gets planet of the report
-     * @deprecated
-     */
-    public async getPlanet() {
-
-        const planetData = await this.universe.getPlanetData();
-
-        const planet = planetData.filter(planet => {
-            
-            return planet.coords.equals(this.coords);
-
-        })[0] as Planet;
-
-        return planet;
 
     }
 

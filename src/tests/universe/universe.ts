@@ -4,10 +4,11 @@ import PlayerData from "../../player/playerdata";
 import PlanetData from "../../planet/planetdata";
 import AllianceData from "../../alliance/alliancedata";
 import ServerData from "../../universe/serverData";
-import PlanetReport from "../../report/planet";
 import Position from "../../position/position";
 import { XMLContext, requireXml } from "..";
-import { XMLUniverse, XMLUniverses, resolveSolo } from "../../universe/universe";
+import { XMLUniverse } from "../../universe/universe";
+import { XMLUniverses } from "../../universe/universes";
+import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLUniverse>;
 
@@ -110,22 +111,6 @@ test.serial("getPlayerPositions", async t => {
     universe.getPlayerData().then(data => {
 
         if(!Array.isArray(data) || !(data[0] instanceof Position)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial("getNearbyUniverses", async t => {
-
-    await t.notThrowsAsync(() => universe.getPlayerData());
-
-    universe.getNearbyUniverses().then(data => {
-
-        if(!Array.isArray(data) || !(data[0] instanceof Universe)) {
 
             t.fail();
 

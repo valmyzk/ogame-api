@@ -1,6 +1,7 @@
-import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import Planet, { XMLUniversePlanet } from "./planet";
 import { Solo } from "../../typings/util";
+import { resolveSolo, APIAttributes } from "../xml";
 
 /**Parses XML Localization root file to a Planet array
  * @category planet

@@ -105,15 +105,6 @@ export default class Universe {
         return LocalizationData(localizationData, this);
     
     }
-
-    /**Parses a planet report
-     * @deprecated
-     */
-    public createPlanetReport(encodedData: string) {
-
-        return new PlanetReport(encodedData, this);
-
-    }
     
     /**Gets full player (no references) by id */
     public async getPlayer(id: string) {
@@ -144,7 +135,7 @@ export interface XMLUniverse {
 
     id: string;
     href: string;
-    
+
 }
 
 /**Universe's region

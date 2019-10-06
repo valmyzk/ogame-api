@@ -19,7 +19,7 @@ export default abstract class UniverseObject {
 
     public constructor(encodedData: XMLUniverseObject, public readonly universe: Universe, public readonly timestamp: string) {
 
-        this.coords = Coords.fromString(encodedData.coords);
+        this.coords = new Coords(encodedData.coords);
         this.id = encodedData.id;
         this.name = encodedData.name;
         this.player = new LazyPlayer(

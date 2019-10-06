@@ -2,8 +2,9 @@ import Position, { XMLPosition } from "../position/position";
 import Planet, { XMLPlayerPlanet } from "../planet/planet";
 import LazyAlliance, { XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Solo } from "../../typings/util";
-import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import { ExtendedLazyPlayer } from "./lazyplayer";
+import { APIAttributes, resolveSolo } from "../xml";
 
 /**@category player */
 export default class Player {

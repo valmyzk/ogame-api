@@ -3,8 +3,8 @@ import Moon, { XMLMoon } from "../../planet/moon";
 import { XMLContext, requireXml } from "..";
 import Universe, { Coords } from "../..";
 import { XMLPlanetData } from "../../planet/planetdata";
-import { resolveSolo } from "../../universe/universe";
 import { XMLUniversePlanet } from "../../planet/planet";
+import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLMoon> & {timestamp: string, planet: XMLUniversePlanet};
 
@@ -35,7 +35,7 @@ test.serial("properties", t => {
     const ctx = (t.context as Context);
     const moon = new Moon(ctx.xml, ctx.planet, universe, ctx.timestamp);
 
-    t.deepEqual(moon.coords, Coords.fromString(ctx.planet.coords));
+    t.deepEqual(moon.coords, new Coords(ctx.planet.coords));
     t.deepEqual(moon.id, ctx.xml.id);
     t.deepEqual(moon.name, ctx.xml.name);
     t.deepEqual(moon.player.id, ctx.planet.player);

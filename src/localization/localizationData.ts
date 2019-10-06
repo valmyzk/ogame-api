@@ -1,7 +1,8 @@
-import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import Localization, { XMLLocalization } from "./localization";
 import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
 import { Solo } from "../../typings/util";
+import { resolveSolo, APIAttributes } from "../xml";
 
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category localization
@@ -32,7 +33,9 @@ export interface LocalizationMap extends FlexibleMap<ReadonlyCustomMap<Localizat
 
 /**@ignore */
 export interface XMLLocalizationData extends APIAttributes {
+
     [key: string]: XMLLocalizationGroup | string;
+    
 }
 
 /**@ignore */

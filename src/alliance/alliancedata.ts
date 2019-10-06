@@ -1,6 +1,7 @@
-import Universe, { APIAttributes, resolveSolo } from "../universe/universe";
+import Universe from "../universe/universe";
 import Alliance, { XMLAlliance } from "./alliance";
 import { Solo } from "../../typings/util";
+import { resolveSolo, APIAttributes } from "../xml";
 
 /**Parses XML alliance root file to an Alliance array
  * @category alliance
@@ -18,5 +19,7 @@ export default function parseXml(encodedData: XMLAllianceData, universe: Univers
 }
 
 export interface XMLAllianceData extends APIAttributes {
+
     alliance: Solo<XMLAlliance>;
+    
 }

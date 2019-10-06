@@ -41,13 +41,4 @@ export class Coords {
 
     };
 
-    /**Parses an encoded string to a coords object
-     * @deprecated
-     */
-    public static fromString(coords: string) {
-
-        return new Coords(...Coords.parseString(coords));
-
-    }
-
 };
