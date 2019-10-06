@@ -11,12 +11,11 @@ jobs:
      - name: Checkout
        uses: actions/checkout@master
        
-     - name: Build
-       run: npm ci && npm run-script build:docs
-       
      - name: Deploy
        if: success()
-       uses: maxheld83/ghpages@master
+       uses: jeoy/github-deploy-actions@v1.0.1
        env:
          BUILD_DIR: docs/
-         GH_PAT: ${{secrets.ACTIONS_DEPLOY_KEY}}
+         ACCESS_TOKEN: ${{secrets.ACTIONS_DEPLOY_KEY}}
+         BUILD_SCRIPT: npm ci && npm run build:docs
+         FOLDER: docs
