@@ -1,9 +1,9 @@
-import UniverseObject, { XMLUniverseObject } from "./object";
-import Universe from "../universe/universe";
-import Moon, { XMLMoon } from "./moon";
+import { UniverseObject, XMLUniverseObject } from "./object";
+import { Universe } from "../universe/universe";
+import { Moon, XMLMoon } from "./moon";
 
 /**@category planet */
-export default class Planet extends UniverseObject {
+export class Planet extends UniverseObject {
 
     /**Planet's moon */
     public readonly moon?: Moon;

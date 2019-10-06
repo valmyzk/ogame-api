@@ -1,9 +1,9 @@
 import test from "ava";
 import { XMLContext, requireXml, newAbstract } from "..";
 import { XMLUniversePlanet } from "../../planet/planet";
-import Universe, { Coords } from "../..";
+import { Universe } from "../../universe/universe";
 import { XMLPlanetData } from "../../planet/planetdata";
-import UniverseObject from "../../planet/object";
+import { UniverseObject } from "../../planet/object";
 import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLUniversePlanet> & {timestamp: string};

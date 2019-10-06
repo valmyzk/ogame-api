@@ -1,12 +1,12 @@
-import Universe from "../universe/universe";
-import Planet, { XMLUniversePlanet } from "./planet";
+import { Universe } from "../universe/universe";
+import { Planet, XMLUniversePlanet } from "./planet";
 import { Solo } from "../../typings/util";
 import { resolveSolo, APIAttributes } from "../xml";
 
 /**Parses XML Localization root file to a Planet array
  * @category planet
  */
-export default function parseXml(encodedData: XMLPlanetData, universe: Universe) {
+export function parseXml(encodedData: XMLPlanetData, universe: Universe) {
 
     const planetArray = resolveSolo(encodedData.planet);
 

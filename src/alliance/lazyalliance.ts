@@ -1,9 +1,9 @@
-import Universe from "../universe/universe";
+import { Universe } from "../universe/universe";
 
 /**Reference to an alliance
  * @category alliance
   */
-export default class LazyAlliance {
+export class LazyAlliance {
 
     /**Alliance's name */
     public readonly name: string;

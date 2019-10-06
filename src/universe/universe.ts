@@ -1,21 +1,20 @@
-import Planet from "../planet/planet";
-import PlayerData, { XMLPlayerData } from "../player/playerdata";
-import PlanetData, { XMLPlanetData } from "../planet/planetdata";
-import AllianceData, { XMLAllianceData } from "../alliance/alliancedata";
-import ServerData, { XMLServerData, ServerMap, getXsd } from "./serverData";
-import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
-import PositionData, { XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
-import PlanetReport from "../report/planet";
+import { Planet } from "../planet/planet";
+import { parseXml as PlayerData, XMLPlayerData } from "../player/playerdata";
+import { parseXml as PlanetData, XMLPlanetData } from "../planet/planetdata";
+import { parseXml as AllianceData, XMLAllianceData } from "../alliance/alliancedata";
+import { parseXml as ServerData, XMLServerData, ServerMap, getXsd } from "./serverData";
+import { parseXml as LocalizationData, XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
+import { parseXml as PositionData, XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
 import { PositionType as PositionTypeEnum } from "../position/position";
-import Player, { XMLPlayer } from "../player/player";
+import { Player, XMLPlayer } from "../player/player";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
-import Alliance from "../alliance/alliance";
+import { Alliance } from "../alliance/alliance";
 import { fetch } from "../xml";
 
 export type ID = number | string;
 
 /**@category universes */
-export default class Universe {
+export class Universe {
 
     public readonly endpoint: string;
 

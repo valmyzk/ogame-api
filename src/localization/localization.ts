@@ -1,4 +1,4 @@
-import Universe from "../universe/universe";
+import { Universe } from "../universe/universe";
 
 /**Helper const enum with localization IDs
  * @category localization
@@ -87,7 +87,7 @@ export const enum Locale {
 /**Single entry of the Localization API
  * @category localization
  */
-export default class Localization {
+export class Localization {
 
     /**Localization's identifier */
     public readonly id: string;

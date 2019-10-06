@@ -1,7 +1,7 @@
 import test from "ava";
-import Localization, { XMLLocalization } from "../../localization/localization";
+import { Localization, XMLLocalization } from "../../localization/localization";
 import { XMLContext, requireXml } from "..";
-import Universe from "../..";
+import { Universe } from "../..";
 import { XMLLocalizationData, XMLLocalizationGroup } from "../../localization/localizationData";
 import { resolveSolo } from "../../xml";
 

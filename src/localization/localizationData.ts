@@ -1,5 +1,5 @@
-import Universe from "../universe/universe";
-import Localization, { XMLLocalization } from "./localization";
+import { Universe } from "../universe/universe";
+import { Localization, XMLLocalization } from "./localization";
 import { FlexibleMap, ReadonlyCustomMap } from "../../typings/map";
 import { Solo } from "../../typings/util";
 import { resolveSolo, APIAttributes } from "../xml";
@@ -7,7 +7,7 @@ import { resolveSolo, APIAttributes } from "../xml";
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category localization
  */
-export default function parseXml(encodedData: XMLLocalizationData, universe: Universe) {
+export function parseXml(encodedData: XMLLocalizationData, universe: Universe) {
 
     const parsed = Object.entries(encodedData)
         .filter(([, value]) => typeof value === "object")

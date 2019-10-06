@@ -1,6 +1,6 @@
 import test from "ava";
-import Alliance, { XMLAlliance } from "../../alliance/alliance";
-import Universe from "../..";
+import { Alliance, XMLAlliance } from "../../alliance/alliance";
+import { Universe } from "../..";
 import { XMLAllianceData } from "../../alliance/alliancedata";
 import { XMLLazyPlayer } from "../../player/lazyplayer";
 import { requireXml, XMLContext } from "..";

@@ -6,7 +6,7 @@ import { Union } from "ts-toolbelt";
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category serverData
  */
-export default function parseXml(encodedData: XMLServerData, xsd: XsdList) {
+export function parseXml(encodedData: XMLServerData, xsd: XsdList) {
 
     const serverMap = new Map<string, ServerData[keyof ServerData]>() as FlexibleMap<CustomMap<ServerData>>;
     const boolean = xsd.filter(v => v.type === "xs:boolean");

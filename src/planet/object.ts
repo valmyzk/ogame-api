@@ -1,8 +1,8 @@
-import Universe from "../universe/universe";
-import LazyPlayer from "../player/lazyplayer";
+import { Universe } from "../universe/universe";
+import { LazyPlayer } from "../player/lazyplayer";
 
 /**@ignore */
-export default abstract class UniverseObject {
+export abstract class UniverseObject {
 
     /**Object's coordinates */
     public readonly coords: string;

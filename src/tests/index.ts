@@ -3,7 +3,7 @@ import * as OGameAPI from "../index";
 import { join } from "path";
 import { readFile as readFileCb } from "fs";
 import { promisify } from "util";
-import Universe from "../universe/universe";
+import { Universe } from "../universe/universe";
 import { Coords } from "../universe/coords";
 
 const readFile = promisify(readFileCb);
@@ -33,9 +33,7 @@ export interface XMLContext<T> {
 /**Test runtime exports */
 test.serial("exports", t => {
 
-    t.deepEqual(OGameAPI.default, Universe);
     t.deepEqual(OGameAPI.Universe, Universe);
-    t.deepEqual(OGameAPI.default, OGameAPI.Universe);
     t.deepEqual(OGameAPI.Coords, Coords);
 
 });

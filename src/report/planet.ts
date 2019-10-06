@@ -1,14 +1,14 @@
 import { Coords } from "../universe/coords";
 import { ID, Region } from "../universe/universe";
-import Localization, { LocalizationType } from "../localization/localization";
-import Universe from "../universe/universe";
+import { Localization, LocalizationType } from "../localization/localization";
+import { Universe } from "../universe/universe";
 import { LocalizationMap } from "../localization/localizationData";
 import { Writable } from "../../typings/util";
 
 type ReportMap = Map<string, ReportValue>;
 
 /**@category report */
-export default class PlanetReport {
+export class PlanetReport {
 
     /**Report's planet coordinates */
     public readonly coords!: Coords;

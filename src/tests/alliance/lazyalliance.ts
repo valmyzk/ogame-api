@@ -1,6 +1,6 @@
 import test from "ava";
-import LazyAlliance, { XMLLazyAlliance } from "../../alliance/lazyalliance";
-import Universe from "../..";
+import { LazyAlliance, XMLLazyAlliance } from "../../alliance/lazyalliance";
+import { Universe } from "../..";
 import { XMLContext, requireXml } from "..";
 
 type Context = XMLContext<XMLLazyAlliance>;

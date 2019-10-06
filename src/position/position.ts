@@ -1,9 +1,9 @@
-import Universe from "../universe/universe";
+import { Universe } from "../universe/universe";
 
 /**Highscore entry
  * @catagory positions
  */
-export default class Position {
+export class Position {
 
     /**Position's type */
     public readonly type: PositionType;

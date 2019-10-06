@@ -1,7 +1,7 @@
 import test from "ava";
-import Moon, { XMLMoon } from "../../planet/moon";
+import { Moon, XMLMoon } from "../../planet/moon";
 import { XMLContext, requireXml } from "..";
-import Universe, { Coords } from "../..";
+import { Universe } from "../../universe/universe";
 import { XMLPlanetData } from "../../planet/planetdata";
 import { XMLUniversePlanet } from "../../planet/planet";
 import { resolveSolo } from "../../xml";

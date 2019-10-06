@@ -1,5 +1,5 @@
 import { Solo } from "../../typings/util";
-import Universe, { XMLUniverse, Region, ID } from "./universe";
+import { XMLUniverse, Region, ID, Universe } from "./universe";
 import { fetch, resolveSolo } from "../xml";
 
 /**
@@ -7,7 +7,7 @@ import { fetch, resolveSolo } from "../xml";
  * @param region Universe's region
  * @returns List of universes of a specified region
  */
-export default async function getUniverses(base: ID, region: Region) {
+export async function getUniverses(base: ID, region: Region) {
 
     const endpoint = Universe["parseEndpoint"](base, region);
     const universeData = await fetch<XMLUniverses>(endpoint, "universes");

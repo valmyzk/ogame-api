@@ -1,7 +1,7 @@
 import test from "ava";
-import Universe, { Coords } from "../..";
+import { Universe, Coords } from "../..";
 import { XMLContext, requireXml } from "..";
-import Planet, { XMLUniversePlanet } from "../../planet/planet";
+import { Planet, XMLUniversePlanet } from "../../planet/planet";
 import { XMLPlanetData } from "../../planet/planetdata";
 import { resolveSolo } from "../../xml";
 

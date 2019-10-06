@@ -1,7 +1,7 @@
 import test from "ava";
 import { XMLContext, requireXml } from "..";
-import parseXml, { XMLPlanetData } from "../../planet/planetdata";
-import Universe from "../..";
+import { parseXml, XMLPlanetData } from "../../planet/planetdata";
+import { Universe } from "../..";
 import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLPlanetData>;

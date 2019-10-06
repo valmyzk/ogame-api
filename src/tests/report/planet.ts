@@ -1,6 +1,6 @@
 import test from "ava";
-import PlanetReport from "../../report/planet";
-import LocalizationData from "../../localization/localizationData";
+import { PlanetReport } from "../../report/planet";
+import { parseXml as LocalizationData } from "../../localization/localizationData";
 import { Coords } from "../../universe/coords";
 
 const sampleData = "coords;0:0:0|0;0|1;2";

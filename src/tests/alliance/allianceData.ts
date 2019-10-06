@@ -1,7 +1,7 @@
 import test from "ava";
 import { XMLContext, requireXml } from "..";
-import parseXml, { XMLAllianceData } from "../../alliance/alliancedata";
-import Universe from "../../";
+import { parseXml, XMLAllianceData } from "../../alliance/alliancedata";
+import { Universe } from "../../";
 import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLAllianceData>;

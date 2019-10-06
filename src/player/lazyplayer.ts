@@ -1,9 +1,9 @@
-import Universe from "../universe/universe";
+import { Universe } from "../universe/universe";
 
 /**Player Reference
  * @category player
  */
-export default class LazyPlayer {
+export class LazyPlayer {
 
     public readonly id: string;
     public readonly universe: Universe;

@@ -1,7 +1,7 @@
 import test from "ava";
 import { XMLContext, requireXml } from "..";
-import parseXml, { XMLLocalizationData, XMLLocalizationGroup } from "../../localization/localizationData";
-import Universe from "../..";
+import { parseXml, XMLLocalizationData, XMLLocalizationGroup } from "../../localization/localizationData";
+import { Universe } from "../..";
 import { resolveSolo } from "../../xml";
 
 type Context = XMLContext<XMLLocalizationData>;

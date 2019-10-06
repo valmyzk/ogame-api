@@ -1,5 +1,5 @@
-import Universe from "../universe/universe";
-import Position, { PositionType as PositionTypeEnum, XMLPosition } from "./position";
+import { Universe } from "../universe/universe";
+import { Position, PositionType as PositionTypeEnum, XMLPosition } from "./position";
 import { Solo } from "../../typings/util";
 import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../player/player";
 import { resolveSolo, APIAttributes } from "../xml";
@@ -7,7 +7,7 @@ import { resolveSolo, APIAttributes } from "../xml";
 /**Parses XML Position root file to a Position array
  * @category positions
  */
-export default function parseXml<C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe) {
+export function parseXml<C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe) {
     
     const array = resolveSolo(encodedData.player) as unknown as PositionInterface<C, K>[];
 

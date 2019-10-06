@@ -1,6 +1,6 @@
 import test from "ava";
 import { XMLContext, requireXml } from "..";
-import parseXml, { XMLServerData } from "../../universe/serverData";
+import { parseXml, XMLServerData } from "../../universe/serverData";
 
 type Context = XMLContext<XMLServerData>;
 

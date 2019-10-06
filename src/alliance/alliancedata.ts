@@ -1,12 +1,12 @@
-import Universe from "../universe/universe";
-import Alliance, { XMLAlliance } from "./alliance";
+import { Universe } from "../universe/universe";
+import { Alliance, XMLAlliance } from "./alliance";
 import { Solo } from "../../typings/util";
 import { resolveSolo, APIAttributes } from "../xml";
 
 /**Parses XML alliance root file to an Alliance array
  * @category alliance
  */
-export default function parseXml(encodedData: XMLAllianceData, universe: Universe) {
+export function parseXml(encodedData: XMLAllianceData, universe: Universe) {
 
     const allianceArray = resolveSolo(encodedData.alliance);
     

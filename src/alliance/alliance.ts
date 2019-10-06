@@ -1,12 +1,12 @@
-import LazyPlayer, { XMLLazyPlayer } from "../player/lazyplayer";
-import Universe from "../universe/universe";
+import { LazyPlayer, XMLLazyPlayer } from "../player/lazyplayer";
+import { Universe } from "../universe/universe";
 import { Solo } from "../../typings/util";
 import { resolveSolo } from "../xml";
 
 /**OGame alliance
  * @category alliance
  */
-export default class Alliance {
+export class Alliance {
 
     /**Identifier of the alliance */
     public readonly id: string;
