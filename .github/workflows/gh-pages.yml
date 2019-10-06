@@ -11,11 +11,14 @@ jobs:
      - name: Checkout
        uses: actions/checkout@master
        
+     - name: Build
+       run: npm ci && npm run-script build::docs
+       
      - name: Deploy
-       uses: JamesIves/github-pages-deploy-action@master
+       if: success()
+       uses: crazy-max/ghaction-github-pages@master
+       with:
+          target_branch: gh-pages
+          build_dir: docs
        env:
-        ACCESS_TOKEN: ${{secrets.ACTIONS_DEPLOY_KEY}}
-        BASE_BRANCH: master
-        BRANCH: gh-pages
-        FOLDER: docs
-        BUILD_SCRIPT: npm ci && npm run-script build:docs
+        GITHUB_PAT: ${{secrets.ACTIONS_DEPLOY_KEY}}
