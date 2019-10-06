@@ -6,7 +6,7 @@ import ServerData, { XMLServerData, ServerMap, getXsd } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
 import PositionData, { XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
 import PlanetReport from "../report/planet";
-import { ResolveSolo, Solo } from "../../typings/util";
+import { ResolveSolo } from "../../typings/util";
 import { PositionType as PositionTypeEnum } from "../position/position";
 import Player, { XMLPlayer } from "../player/player";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
@@ -93,19 +93,6 @@ export default class Universe {
         
     }
 
-    /**Gets universe's "nearby" universes
-     * @todo Migrate to global export, unlink from Universe id
-     * @todo fix naming
-     */
-    public async getNearbyUniverses(): Promise<Universe[]> {
-
-        const universesData = await fetch<XMLUniverses>(this.endpoint, "universes");
-        const array = resolveSolo(universesData.universe);
-
-        return array.map(universe => new Universe(universe));
-    
-    }
-
     /**Gets universe's properties */
     public async getServerData(): Promise<ServerMap> {
 
@@ -159,21 +146,12 @@ export default class Universe {
 
 }
 
-
-
-
-
-export interface XMLUniverses {
-    universe: Solo<XMLUniverse>;
-}
-
 export interface XMLUniverse {
     id: string;
     href: string;
 }
 
 /**Universe's region
- * @todo Investigate adding more regions
  * @utility
  */
 export type Region = "ar" | "br" | "dk" | "de" | "es" | "fr" | "hr" | "it" | "hu" | "mx" | "nl" | "no" | "pl" | "pt" | "ro" | "si" | "sk" | "fi" | "se" | "tr" | "us" | "en" | "cz" | "gr" | "ru" | "tw" | "jp";
