@@ -15,7 +15,7 @@ jobs:
        if: success()
        uses: jeoy/github-deploy-actions@v1.0.1
        env:
-         BUILD_DIR: docs/
+         COMMIT_EMAIL: 30903958+ValentiMS@users.noreply.github.com
          ACCESS_TOKEN: ${{secrets.ACTIONS_DEPLOY_KEY}}
          BUILD_SCRIPT: npm ci && npm run build:docs
          FOLDER: docs
