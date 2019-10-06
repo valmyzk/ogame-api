@@ -1,5 +1,6 @@
 import ifetch from "isomorphic-fetch";
 import { parse } from "fast-xml-parser";
+import { ResolveSolo } from "../typings/util";
 
 /**@internal */
 export const parseXml = <T>(xmlContent: string) => {
@@ -32,3 +33,19 @@ export async function fetch<T>(endpoint: string, file: string, query = "") {
     return download[file] as T;
     
 }
+
+/**@ignore */
+export interface APIAttributes {
+
+    "xmlns:xsi": string;
+    "xsi:noNamespaceSchemaLocation": string;
+    timestamp: string;
+    serverId: string;
+
+}
+
+export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
+
+    return (Array.isArray(solo) ? solo : [solo]) as ResolveSolo<T>;
+
+};

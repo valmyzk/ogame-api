@@ -6,7 +6,6 @@ import ServerData, { XMLServerData, ServerMap, getXsd } from "./serverData";
 import LocalizationData, { XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
 import PositionData, { XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
 import PlanetReport from "../report/planet";
-import { ResolveSolo } from "../../typings/util";
 import { PositionType as PositionTypeEnum } from "../position/position";
 import Player, { XMLPlayer } from "../player/player";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
@@ -14,11 +13,6 @@ import Alliance from "../alliance/alliance";
 import { fetch } from "../xml";
 
 export type ID = number | string;
-export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
-
-    return (Array.isArray(solo) ? solo : [solo]) as ResolveSolo<T>;
-
-};
 
 /**@category universes */
 export default class Universe {
@@ -147,8 +141,10 @@ export default class Universe {
 }
 
 export interface XMLUniverse {
+
     id: string;
     href: string;
+    
 }
 
 /**Universe's region
@@ -156,10 +152,3 @@ export interface XMLUniverse {
  */
 export type Region = "ar" | "br" | "dk" | "de" | "es" | "fr" | "hr" | "it" | "hu" | "mx" | "nl" | "no" | "pl" | "pt" | "ro" | "si" | "sk" | "fi" | "se" | "tr" | "us" | "en" | "cz" | "gr" | "ru" | "tw" | "jp";
 
-/**@ignore */
-export interface APIAttributes {
-    "xmlns:xsi": string;
-    "xsi:noNamespaceSchemaLocation": string;
-    timestamp: string;
-    serverId: string;
-}
