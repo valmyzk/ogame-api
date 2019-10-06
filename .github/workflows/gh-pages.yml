@@ -16,9 +16,7 @@ jobs:
        
      - name: Deploy
        if: success()
-       uses: crazy-max/ghaction-github-pages@master
-       with:
-          target_branch: gh-pages
-          build_dir: docs
+       uses: maxheld83/ghpages@master
        env:
-        GITHUB_PAT: ${{secrets.ACTIONS_DEPLOY_KEY}}
+         BUILD_DIR: docs/
+         GH_PAT: ${{secrets.ACTIONS_DEPLOY_KEY}}
