@@ -4,8 +4,8 @@ import { parseXml as PlanetData, XMLPlanetData } from "../planet/planetdata";
 import { parseXml as AllianceData, XMLAllianceData } from "../alliance/alliancedata";
 import { parseXml as ServerData, XMLServerData, ServerMap, getXsd } from "./serverData";
 import { parseXml as LocalizationData, XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
-import { parseXml as PositionData, XMLPositionData, PositionCategory, PositionType } from "../position/positionData";
-import { PositionType as PositionTypeEnum } from "../position/position";
+import { parseXml as PositionData, XMLPositionData, PositionFetch } from "../position/positionData";
+import { PositionType, PositionCategory } from "../position/position";
 import { Player, XMLPlayer } from "../player/player";
 import { ExtendedLazyPlayer } from "../player/lazyplayer";
 import { Alliance } from "../alliance/alliance";
@@ -65,22 +65,22 @@ export class Universe {
     };
 
     /**Gets universe's player positions (highscore) */
-    public async getPlayerPositions<T extends PositionTypeEnum>(type: T) {
+    public async getPlayerPositions<T extends PositionType>(type: T) {
 
         const query = `category=1&type=${type}`;
         const positionsData = await fetch<XMLPositionData<PositionCategory.PLAYER, T>>(this.endpoint, "highscore", query);
-        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.PLAYER, T>[];
+        const positions = PositionData(positionsData, this) as PositionFetch<PositionCategory.PLAYER, T>[];
 
         return positions;
 
     };
 
     /**Gets universe's alliance positions (highscore) */
-    public async getAlliancePositions<T extends PositionTypeEnum>(type: T) {
+    public async getAlliancePositions<T extends PositionType>(type: T) {
 
         const query = `category=2&type=${type}`;
         const positionsData = await fetch<XMLPositionData<PositionCategory.ALLIANCE, T>>(this.endpoint, "highscore", query);
-        const positions = PositionData(positionsData, this) as PositionType<PositionCategory.ALLIANCE, T>[];
+        const positions = PositionData(positionsData, this) as PositionFetch<PositionCategory.ALLIANCE, T>[];
 
         return positions;
         

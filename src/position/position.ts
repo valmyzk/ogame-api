@@ -62,3 +62,14 @@ export const enum PositionType {
     HONOR = "7"
 
 }
+
+/**
+ * @category positions
+ * @utility
+ */
+export const enum PositionCategory {
+
+    PLAYER = "1",
+    ALLIANCE = "2"
+
+}

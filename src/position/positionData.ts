@@ -1,5 +1,5 @@
 import { Universe } from "../universe/universe";
-import { Position, PositionType as PositionTypeEnum, XMLPosition } from "./position";
+import { Position, PositionType, XMLPosition, PositionCategory } from "./position";
 import { Solo } from "../../typings/util";
 import { XMLMilitaryPlayerPosition, MilitaryPosition } from "../player/player";
 import { resolveSolo, APIAttributes } from "../xml";
@@ -7,9 +7,9 @@ import { resolveSolo, APIAttributes } from "../xml";
 /**Parses XML Position root file to a Position array
  * @category positions
  */
-export function parseXml<C extends PositionCategory, K extends PositionTypeEnum>(encodedData: XMLPositionData<C, K>, universe: Universe) {
+export function parseXml<C extends PositionCategory, K extends PositionType>(encodedData: XMLPositionData<C, K>, universe: Universe) {
     
-    const array = resolveSolo(encodedData.player) as unknown as PositionInterface<C, K>[];
+    const array = resolveSolo(encodedData.player) as unknown as XMLPositionFetch<C, K>[];
 
     return array.map(position => 
 
@@ -23,31 +23,21 @@ export function parseXml<C extends PositionCategory, K extends PositionTypeEnum>
 
         }, universe, encodedData.timestamp)
 
-    ) as PositionType<C, K>[];
+    ) as PositionFetch<C, K>[];
 
 };
 
-type PositionInterface<C extends PositionCategory, K extends PositionTypeEnum> = C extends PositionCategory.PLAYER ? K extends PositionTypeEnum.MILITARY ? XMLMilitaryPlayerPosition : XMLPosition : XMLPosition;
+type XMLPositionFetch<C extends PositionCategory, K extends PositionType> = C extends PositionCategory.PLAYER ? K extends PositionType.MILITARY ? XMLMilitaryPlayerPosition : XMLPosition : XMLPosition;
 
 /**@ignore */
-export type PositionType<C extends PositionCategory, K extends PositionTypeEnum> = PositionInterface<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition : Position;
+export type PositionFetch<C extends PositionCategory, K extends PositionType> = XMLPositionFetch<C, K> extends XMLMilitaryPlayerPosition ? MilitaryPosition : Position;
 
 /**@ignore */
-export interface XMLPositionData<C extends PositionCategory, K extends PositionTypeEnum> extends APIAttributes {
+export interface XMLPositionData<C extends PositionCategory, K extends PositionType> extends APIAttributes {
 
     category: C;
     type: K;
-    player: Solo<PositionInterface<C, K>>;
+    player: Solo<XMLPositionFetch<C, K>>;
 
 };
 
-/**
- * @category positions
- * @utility
- */
-export const enum PositionCategory {
-
-    PLAYER = "1",
-    ALLIANCE = "2"
-
-}
