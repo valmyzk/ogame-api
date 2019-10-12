@@ -1,5 +1,5 @@
 import { Universe } from "../universe/universe";
-import { ExtendedLazyPlayer, XMLExtendedLazyPlayer } from "./lazyplayer";
+import { PlayerReference, XMLPlayerReference } from "./lazyplayer";
 import { Solo } from "../../typings/util";
 import { APIAttributes, resolveSolo } from "../xml";
 
@@ -12,7 +12,7 @@ export function parseXml(encodedData: XMLPlayerData, universe: Universe) {
 
     return playerArray.map(player => 
 
-        new ExtendedLazyPlayer(universe, player, encodedData.timestamp) 
+        new PlayerReference(universe, player, encodedData.timestamp) 
 
     );
 
@@ -21,6 +21,6 @@ export function parseXml(encodedData: XMLPlayerData, universe: Universe) {
 /**@ignore */
 export interface XMLPlayerData extends APIAttributes {
 
-    player: Solo<XMLExtendedLazyPlayer>;
+    player: Solo<XMLPlayerReference>;
 
 }

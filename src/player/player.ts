@@ -3,7 +3,7 @@ import { Planet, XMLPlayerPlanet } from "../planet/planet";
 import { LazyAlliance, XMLLazyAlliance } from "../alliance/lazyalliance";
 import { Solo } from "../../typings/util";
 import { Universe } from "../universe/universe";
-import { ExtendedLazyPlayer } from "./lazyplayer";
+import { PlayerReference } from "./lazyplayer";
 import { APIAttributes, resolveSolo } from "../xml";
 
 /**@category player */
@@ -76,7 +76,7 @@ export class Player {
     public async getStatus() {
 
         const playerData = await this.universe.getPlayerData();
-        const player = playerData.filter(player => player.id === this.id)[0] as ExtendedLazyPlayer;
+        const player = playerData.filter(player => player.id === this.id)[0] as PlayerReference;
 
         return (player && player.status) || "";
     

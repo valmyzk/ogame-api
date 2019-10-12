@@ -2,7 +2,7 @@ import test from "ava";
 import { Alliance, XMLAlliance } from "../../alliance/alliance";
 import { Universe } from "../..";
 import { XMLAllianceData } from "../../alliance/alliancedata";
-import { XMLLazyPlayer } from "../../player/lazyplayer";
+import { XMLLazyPlayerReference } from "../../player/lazyplayer";
 import { requireXml, XMLContext } from "..";
 
 type Context = XMLContext<XMLAllianceData>;
@@ -50,6 +50,6 @@ test.serial("parseMembers", t => {
     const members = Alliance.prototype["parseMembers"](encAlliance.player);
 
     t.truthy(members.length);
-    t.deepEqual(members[0].id, (encAlliance.player as XMLLazyPlayer).id);
+    t.deepEqual(members[0].id, (encAlliance.player as XMLLazyPlayerReference).id);
 
 });

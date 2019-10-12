@@ -7,7 +7,7 @@ import { parseXml as LocalizationData, XMLLocalizationData, LocalizationMap } fr
 import { parseXml as PositionData, XMLPositionData, PositionFetch } from "../position/positionData";
 import { PositionType, PositionCategory } from "../position/position";
 import { Player, XMLPlayer } from "../player/player";
-import { ExtendedLazyPlayer } from "../player/lazyplayer";
+import { PlayerReference } from "../player/lazyplayer";
 import { Alliance } from "../alliance/alliance";
 import { fetch } from "../xml";
 
@@ -38,7 +38,7 @@ export class Universe {
     }
 
     /**Gets universe's players */
-    public async getPlayerData(): Promise<ExtendedLazyPlayer[]> {
+    public async getPlayerData(): Promise<PlayerReference[]> {
 
         const playerData = await fetch<XMLPlayerData>(this.endpoint, "players");
         

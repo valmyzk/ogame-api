@@ -1,5 +1,5 @@
 import { Universe } from "../universe/universe";
-import { LazyPlayer } from "../player/lazyplayer";
+import { LazyPlayerReference } from "../player/lazyplayer";
 
 /**@ignore */
 export abstract class UniverseObject {
@@ -14,18 +14,18 @@ export abstract class UniverseObject {
     public readonly name: string;
 
     /**Reference to the object's player */
-    public readonly player: LazyPlayer;
+    public readonly player: LazyPlayerReference;
 
     public constructor(encodedData: XMLUniverseObject, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.coords = encodedData.coords;
         this.id = encodedData.id;
         this.name = encodedData.name;
-        this.player = new LazyPlayer(
-            universe,
+        this.player = new LazyPlayerReference(
             {
                 id: encodedData.player
             },
+            universe,
             timestamp
         );
     

@@ -2,29 +2,24 @@ import { Universe } from "../universe/universe";
 
 /**Player Reference
  * @category player
+
  */
-export class LazyPlayer {
+export class LazyPlayerReference {
 
     public readonly id: string;
-    public readonly universe: Universe;
-    public readonly timestamp: string;
 
-    public constructor(universe: Universe, data: XMLLazyPlayer, timestamp: string) {
+    public constructor(data: XMLLazyPlayerReference, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.id = data.id;
-        this.universe = universe;
-        this.timestamp = timestamp;
     
     }
-
-    public getPlayer = () => this.universe.getPlayer(this.id);
 
 }
 
 /**Player reference with additional features such as status, alliance and name
  * @category player
  */
-export class ExtendedLazyPlayer extends LazyPlayer {
+export class PlayerReference extends LazyPlayerReference {
 
     /**Player's name */
     public readonly name: string;
@@ -35,9 +30,9 @@ export class ExtendedLazyPlayer extends LazyPlayer {
     /**Player's account status */
     public readonly status?: string;
 
-    public constructor(universe: Universe, data: XMLExtendedLazyPlayer, timestamp: string) {
+    public constructor(universe: Universe, data: XMLPlayerReference, timestamp: string) {
 
-        super(universe, data, timestamp);
+        super(data, universe, timestamp);
         this.name = data.name;
 
         this.allianceId = data.alliance;
@@ -47,14 +42,15 @@ export class ExtendedLazyPlayer extends LazyPlayer {
 
 }
 
+
 /**@ignore */
-export interface XMLExtendedLazyPlayer extends XMLLazyPlayer {
+export interface XMLPlayerReference extends XMLLazyPlayerReference {
     name: string;
     alliance?: string;
     status?: string;
 }
 
 /**@ignore */
-export interface XMLLazyPlayer {
+export interface XMLLazyPlayerReference {
     id: string;
 }

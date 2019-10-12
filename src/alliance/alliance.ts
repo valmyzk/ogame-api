@@ -1,4 +1,4 @@
-import { LazyPlayer, XMLLazyPlayer } from "../player/lazyplayer";
+import { LazyPlayerReference, XMLLazyPlayerReference } from "../player/lazyplayer";
 import { Universe } from "../universe/universe";
 import { Solo } from "../../typings/util";
 import { resolveSolo } from "../xml";
@@ -17,7 +17,7 @@ export class Alliance {
     public readonly tag: string;
 
     /**Alliance founder */
-    public readonly founder: LazyPlayer;
+    public readonly founder: LazyPlayerReference;
 
     /**Alliance's found date represented in a UNIX timestamp */
     public readonly foundDate: string;
@@ -30,18 +30,18 @@ export class Alliance {
     public readonly homepage?: string;
 
     /**Array of members of alliance, including founder */
-    public readonly members: LazyPlayer[];
+    public readonly members: LazyPlayerReference[];
 
     public constructor(encodedData: XMLAlliance, public readonly universe: Universe, public readonly timestamp: string) {
 
         this.id = encodedData.id;
         this.name = encodedData.name;
         this.tag = encodedData.tag;
-        this.founder = new LazyPlayer(
-            universe,
+        this.founder = new LazyPlayerReference(
             {
                 id: encodedData.founder
             },
+            universe,
             timestamp
         );
 
@@ -54,13 +54,13 @@ export class Alliance {
     
     }
 
-    private parseMembers(members: Solo<XMLLazyPlayer>) {
+    private parseMembers(members: Solo<XMLLazyPlayerReference>) {
 
         const array = members && resolveSolo(members);
 
         return array ? array.map(member => {
 
-            return new LazyPlayer(this.universe, member, this.timestamp);
+            return new LazyPlayerReference(member, this.universe, this.timestamp);
 
         }) : [];
 
@@ -70,7 +70,7 @@ export class Alliance {
 
 /**@ignore */
 export interface XMLAlliance {
-    player: Solo<XMLLazyPlayer>;
+    player: Solo<XMLLazyPlayerReference>;
     id: string;
     name: string;
     tag: string;
