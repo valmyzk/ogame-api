@@ -38,12 +38,6 @@ test.serial("exports", t => {
 
 });
 
-export function newAbstract<T extends Newable>(newable: T, ...args: ConstructorParameters<T>): InstanceType<T> {
-
-    return new newable(...args);
-
-}
-
 interface Newable {
 
     new(...args: any[]): any;

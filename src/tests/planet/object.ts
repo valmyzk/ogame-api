@@ -1,5 +1,5 @@
 import test from "ava";
-import { XMLContext, requireXml, newAbstract } from "..";
+import { XMLContext, requireXml } from "..";
 import { XMLUniversePlanet } from "../../planet/planet";
 import { Universe } from "../../universe/universe";
 import { XMLPlanetData } from "../../planet/planetdata";

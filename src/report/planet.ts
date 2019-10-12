@@ -3,7 +3,7 @@ import { ID, Region } from "../universe/universe";
 import { Localization, LocalizationType } from "../localization/localization";
 import { Universe } from "../universe/universe";
 import { LocalizationMap } from "../localization/localizationData";
-import { Writable } from "../../typings/util";
+import { O } from "ts-toolbelt";
 
 type ReportMap = Map<string, ReportValue>;
 
@@ -48,7 +48,7 @@ export class PlanetReport {
         const sectioned = raw.split("|");
         const rawCoords = (sectioned.shift() as string).slice(7);
 
-        (this as Writable<this>).coords = new Coords(rawCoords);
+        (this as O.Writable<this>).coords = new Coords(rawCoords);
 
         //Fill this.props
         for(const valuePair of sectioned) {
