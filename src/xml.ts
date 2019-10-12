@@ -2,6 +2,19 @@ import ifetch from "isomorphic-fetch";
 import { parse } from "fast-xml-parser";
 import { ResolveSolo } from "../typings/util";
 
+const parsedCache = new Map<string, APIAttributes>();
+
+const UpdateInterval = {
+
+    players: 86400,
+    universe: 604800,
+    highscore: 3600,
+    alliances: 86400,
+    serverData: 86400,
+    playerData: 604800
+
+} as {[key: string]: number}
+
 /**@internal */
 export const parseXml = <T>(xmlContent: string) => {
 
@@ -28,9 +41,21 @@ export async function xml<T>(request: RequestInfo) {
 /**Downloads an xml and casts it to an XML type */
 export async function fetch<T>(endpoint: string, file: string, query = "") {
 
-    const download = await xml<{[key: string]: unknown}>(`${endpoint}/${file}.xml${query && "?"}${query}`);
-        
-    return download[file] as T;
+    const url = `${endpoint}/${file}.xml${query && "?"}${query}`;
+
+    const cached = parsedCache.get(url) as {[key: string]: unknown} | undefined;
+    const age = Date.now() - (cached ? Number.parseInt(cached.timestamp as string) : 0);
+
+    if(!cached || age >= UpdateInterval[file]) {
+
+        const download = await xml<{[key: string]: unknown} & APIAttributes>(url);
+        parsedCache.set(url, download);
+
+        return download[file] as T;
+
+    }
+    
+    else return cached[file] as T;
     
 }
 
