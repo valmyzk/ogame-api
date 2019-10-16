@@ -20,7 +20,6 @@ export class Player {
 
     /**Player's planets. First element will always be the homeplanet */
     public readonly planets: Planet[];
-    public readonly home: Planet;
 
     /**Reference to the player's alliance. May be undefined */
     public readonly alliance?: LazyAlliance;
@@ -36,7 +35,6 @@ export class Player {
 
         this.positions = this.parsePositions(encodedData.positions.position) as PlayerPositions;
         this.planets = this.parsePlanets(encodedData.planets.planet);
-        this.home = Player.getHomeplanet(this.planets);
         this.alliance = this.parseAlliance(encodedData.alliance);
     
     }
@@ -56,7 +54,8 @@ export class Player {
 
     private parsePlanets(planets: Solo<XMLPlayerPlanet>): Planet[] {
 
-        const planetArray = resolveSolo(planets);
+        const planetArray = resolveSolo(planets)
+                .sort((a, b) => a < b ? -1 : 1);
 
         return planetArray.map(planet => {
 
@@ -80,13 +79,6 @@ export class Player {
 
         return (player && player.status) || "";
     
-    }
-
-    /**@returns Earliest created planet of an array */
-    public static getHomeplanet(planets: Planet[]) {
-
-        return planets.sort((a, b) => a.id < b.id ? -1 : 1)[0];
-
     }
 
 }
