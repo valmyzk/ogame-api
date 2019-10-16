@@ -1,7 +1,6 @@
 import { Region } from "./universe";
 import { FlexibleMap, CustomMap, ReadonlyCustomMap } from "../../typings/map";
 import { xml } from "../xml";
-import { Union } from "ts-toolbelt";
 
 /**Parses XML Localization root file to ES6 LocalizationMap
  * @category serverData
@@ -74,6 +73,34 @@ interface ServerData {
     probeCargo: number;
     researchDurationDivisor: number;
     darkMatterNewAccount: number;
+    cargoHyperspaceTechMultiplier: number;
+    marketplaceEnabled: boolean;
+    marketplaceBasicTradeRatioMetal: number;
+    marketplaceBasicTradeRatioCrystal: number;
+    marketplaceBasicTradeRatioDeuterium: number;
+    marketplacePriceRangeLower: number;
+    marketplacePriceRangeUpper: number;
+    marketplaceTaxNormalUser: number;
+    marketplaceTaxAdmiral: number;
+    marketplaceTaxCancelOffer: number;
+    marketplaceTaxNotSold: number;
+    marketplaceOfferTimeout: number;
+    characterClassesEnabled: boolean;
+    minerBonusResourceProduction: number;
+    minerBonusFasterTradingShips: number;
+    minerBonusIncreasedCargoCapacityForTradingShips: number;
+    minerBonusAdditionalFleetSlots: number;
+    resourceBuggyProductionBoost: number;
+    resourceBuggyMaxProductionBoost: number;
+    resourceBuggyEnergyConsumptionPerUnit: number;
+    warriorBonusFasterCombatShips: number;
+    warriorBonusFasterRecyclers: number;
+    warriorBonusRecyclerFuelConsumption: number;
+    combatDebrisFieldLimit: number;
+    explorerBonusIncreasedResearchSpeed: number;
+    explorerBonusIncreasedExpeditionOutcome: number;
+    explorerBonusLargerPlanets: number;
+    explorerUnitItemsPerDay: number;
 
 }
 
@@ -84,12 +111,8 @@ export interface XMLServerData {
 
 }
 
-type XsdMap<N extends keyof ServerData, V = ServerData[N]> = V extends number ? "xs:integer" | "xs:float" | "xs:int" :
-                                                                   V extends string ? "xs:string" :
-                                                                   V extends boolean ? "xs:boolean" : any
-
-type XsdDescription<N extends keyof ServerData> = {name: N, type: XsdMap<N>}
-type XsdList = Union.TupleOf<{ [K in keyof ServerData]: XsdDescription<K> }[keyof ServerData]>
+type XsdType = "xs:integer" | "xs:float" | "xs:int" | "xs:string" | "xs:boolean";
+type XsdList = ({name: string, type: XsdType})[]
 
 /**ES6 Map mapped by server property to server value */
 export interface ServerMap extends FlexibleMap<ReadonlyCustomMap<ServerData>> {};
