@@ -74,3 +74,15 @@ export const resolveSolo = <T>(solo: T): ResolveSolo<T> => {
     return (Array.isArray(solo) ? solo : [solo]) as ResolveSolo<T>;
 
 };
+
+export const boolean = <T>(object: T, keys: Filter<T, boolean>[]) => {
+
+    for(const key of keys) {
+
+        (object as any)[key] = !!object[key];
+
+    }
+
+}
+
+type Filter<O, T> = { [K in keyof O]: O[K] extends T ? K : never }[keyof O];

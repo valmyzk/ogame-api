@@ -1,4 +1,4 @@
-import { Region } from "./universe";
+import { Region } from "../universe/universe";
 import { FlexibleMap, CustomMap, ReadonlyCustomMap } from "../../typings/map";
 import { xml } from "../xml";
 

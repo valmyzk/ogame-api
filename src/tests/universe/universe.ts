@@ -3,7 +3,7 @@ import { Universe } from "../..";
 import { parseXml as PlayerData } from "../../player/playerdata";
 import { parseXml as PlanetData } from "../../planet/planetdata";
 import { parseXml as AllianceData } from "../../alliance/alliancedata";
-import { parseXml as ServerData } from "../../universe/serverData";
+import { parseXml as ServerData } from "../../server/serverData";
 import { XMLContext, requireXml } from "..";
 import { XMLUniverse } from "../../universe/universe";
 import { XMLUniverses } from "../../universe/universes";

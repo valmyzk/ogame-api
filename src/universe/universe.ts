@@ -2,7 +2,7 @@ import { Planet } from "../planet/planet";
 import { parseXml as PlayerData, XMLPlayerData } from "../player/playerdata";
 import { parseXml as PlanetData, XMLPlanetData } from "../planet/planetdata";
 import { parseXml as AllianceData, XMLAllianceData } from "../alliance/alliancedata";
-import { parseXml as ServerData, XMLServerData, ServerMap, getXsd } from "./serverData";
+import { parseXml as ServerData, XMLServerData, ServerMap, getXsd } from "../server/serverData";
 import { parseXml as LocalizationData, XMLLocalizationData, LocalizationMap } from "../localization/localizationData";
 import { parseXml as PositionData, XMLPositionData, PositionFetch } from "../position/positionData";
 import { PositionType, PositionCategory } from "../position/position";
