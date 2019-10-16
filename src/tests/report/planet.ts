@@ -1,6 +1,5 @@
 import test from "ava";
 import { PlanetReport } from "../../report/planet";
-import { parseXml as LocalizationData } from "../../localization/localizationData";
 import { Coords } from "../../universe/coords";
 
 const sampleData = "coords;0:0:0|0;0|1;2";
@@ -33,23 +32,6 @@ test.serial("parseString", t => {
         id: "1",
         type: "unknown",
         value: 2
-
-    });
-
-});
-
-test.serial("getUniverseLocalizations", async t => {
-
-    const getUniverseLocalizations = () => PlanetReport.prototype["getUniverseLocalizations"](800, "en");
-    await t.notThrowsAsync(() => getUniverseLocalizations());
-
-    getUniverseLocalizations().then(data => {
-
-        if(!(data instanceof LocalizationData)) {
-
-            t.fail();
-
-        }
 
     });
 

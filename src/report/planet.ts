@@ -69,7 +69,6 @@ export class PlanetReport {
     }
 
     /**Used for getting universe localizations
-     * @todo Unlink planet report from Universe
      */
     protected getUniverseLocalizations<I extends ID>(id: I, region: Region) {
 

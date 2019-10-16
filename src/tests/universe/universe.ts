@@ -1,14 +1,9 @@
 import test from "ava";
 import { Universe } from "../..";
-import { parseXml as PlayerData } from "../../player/playerdata";
-import { parseXml as PlanetData } from "../../planet/planetdata";
-import { parseXml as AllianceData } from "../../alliance/alliancedata";
-import { parseXml as ServerData } from "../../server/serverData";
 import { XMLContext, requireXml } from "..";
 import { XMLUniverse } from "../../universe/universe";
 import { XMLUniverses } from "../../universe/universes";
 import { resolveSolo } from "../../xml";
-import { Position } from "../../position/position";
 
 type Context = XMLContext<XMLUniverse>;
 
@@ -55,85 +50,3 @@ test.serial("properties", t => {
     t.truthy(universe.endpoint);
 
 });
-
-test.serial("getPlayerData", async t => {
-
-    await t.notThrowsAsync(() => universe.getPlayerData());
-
-    universe.getPlayerData().then(data => {
-
-        if(!(data instanceof PlayerData)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial("getPlanetData", async t => {
-
-    await t.notThrowsAsync(() => universe.getPlayerData());
-
-    universe.getPlanetData().then(data => {
-
-        if(!(data instanceof PlanetData)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial("getAllianceData", async t => {
-
-    await t.notThrowsAsync(() => universe.getAllianceData());
-
-    universe.getPlayerData().then(data => {
-
-        if(!(data instanceof AllianceData)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial("getPlayerPositions", async t => {
-
-    await t.notThrowsAsync(() => universe.getPlayerData());
-
-    universe.getPlayerData().then(data => {
-
-        if(!Array.isArray(data) || !(data[0] instanceof Position)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial("getServerData", async t => {
-
-    await t.notThrowsAsync(() => universe.getPlayerData());
-
-    universe.getServerData().then(data => {
-
-        if(!(data instanceof ServerData)) {
-
-            t.fail();
-
-        }
-
-    });
-
-});
-
-test.serial.todo("getPlayer");
