@@ -74,7 +74,7 @@ export class Player {
     /**@returns Player's account status */
     public async getStatus() {
 
-        const playerData = await this.universe.getPlayerData();
+        const playerData = await this.universe.getPlayers();
         const player = playerData.filter(player => player.id === this.id)[0] as PlayerReference;
 
         return (player && player.status) || "";

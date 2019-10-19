@@ -38,7 +38,7 @@ export class Universe {
     }
 
     /**Gets universe's players */
-    public async getPlayerData(): Promise<PlayerReference[]> {
+    public async getPlayers(): Promise<PlayerReference[]> {
 
         const playerData = await fetch<XMLPlayerData>(this.endpoint, "players");
         
@@ -47,7 +47,7 @@ export class Universe {
     }
 
     /**Gets universe's planets */
-    public async getPlanetData(): Promise<Planet[]> {
+    public async getPlanets(): Promise<Planet[]> {
 
         const planetData = await fetch<XMLPlanetData>(this.endpoint, "universe");
         
@@ -56,7 +56,7 @@ export class Universe {
     }
 
     /**Gets universe's alliances */
-    public async getAllianceData(): Promise<Alliance[]> {
+    public async getAlliances(): Promise<Alliance[]> {
 
         const allianceData = await fetch<XMLAllianceData>(this.endpoint, "alliances");
         
@@ -87,7 +87,7 @@ export class Universe {
     }
 
     /**Gets universe's properties */
-    public async getServerData(): Promise<ServerMap> {
+    public async getServer(): Promise<ServerMap> {
 
         const serverData = await fetch<XMLServerData>(this.endpoint, "serverData");
         const xsd = await getXsd(this.endpoint);
