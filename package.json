@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "2.4.0",
     "ava": "2.4.0",
     "eslint": "6.5.1",
-    "ts-toolbelt": "4.7.24",
+    "ts-toolbelt": "4.8.20",
     "typedoc": "0.15.0",
     "typescript": "3.6.4"
   },
