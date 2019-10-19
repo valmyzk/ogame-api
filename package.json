@@ -19,14 +19,14 @@
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.35",
-    "@types/node": "12.7.9",
-    "@typescript-eslint/eslint-plugin": "2.3.2",
-    "@typescript-eslint/parser": "2.3.2",
+    "@types/node": "12.11.1",
+    "@typescript-eslint/eslint-plugin": "2.4.0",
+    "@typescript-eslint/parser": "2.4.0",
     "ava": "2.4.0",
     "eslint": "6.5.1",
     "ts-toolbelt": "^4.7.24",
     "typedoc": "0.15.0",
-    "typescript": "^3.7.0-beta"
+    "typescript": "3.6.4"
   },
   "scripts": {
     "lint": "eslint ./src/**/*.ts",
