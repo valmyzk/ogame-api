@@ -108,34 +108,9 @@ export class Localization {
     
     }
 
-    /**@returns Type of the localization */
-    public static getLocalizationType(id: string): LocalizationType {
-
-        const i = parseInt(id);
-        if ((i >= 115 && i <= 118) || (i >= 109 && i <= 111)) {
-    
-            return "techs";
-        
-        }
-        else if (i >= 202 && i <= 215) {
-    
-            return "fleet";
-        
-        }
-        else if (i >= 401 && i <= 503) {
-    
-            return "defense";
-        
-        }
-        else return "unknown";
-    
-    };
-
 }
 
 export interface XMLLocalization {
     text: string;
     id: string;
 }
-
-export type LocalizationType = "techs" | "fleet" | "defense" | "unknown";

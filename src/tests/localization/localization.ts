@@ -40,16 +40,3 @@ test.serial("properties", t => {
     t.deepEqual(localization.timestamp, timestamp);
 
 });
-
-test.serial("getLocalizationType", t => {
-
-    const m = Localization.getLocalizationType.bind(Localization);
-
-    t.deepEqual(m("115"), "techs");
-    t.deepEqual(m("111"), "techs");
-    t.deepEqual(m("202"), "fleet");
-    t.deepEqual(m("401"), "defense");
-    t.deepEqual(m("504"), "unknown");
-    t.deepEqual(m("1337"), "unknown");
-
-});
