@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Planet | ogame-api</title>
+	<title>PlayerReference | ogame-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_planet_planet_.html">&quot;planet/planet&quot;</a>
+					<a href="../modules/_player_lazyplayer_.html">&quot;player/lazyplayer&quot;</a>
 				</li>
 				<li>
-					<a href="_planet_planet_.planet.html">Planet</a>
+					<a href="_player_lazyplayer_.playerreference.html">PlayerReference</a>
 				</li>
 			</ul>
-			<h1>Class Planet</h1>
+			<h1>Class PlayerReference</h1>
 		</div>
 	</div>
 </header>
@@ -67,16 +67,19 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Player reference with additional features such as status, alliance and name</p>
+					</div>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">UniverseObject</span>
+						<a href="_player_lazyplayer_.lazyplayerreference.html" class="tsd-signature-type">LazyPlayerReference</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">Planet</span>
+								<span class="target">PlayerReference</span>
 							</li>
 						</ul>
 					</li>
@@ -89,19 +92,18 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_planet_planet_.planet.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_player_lazyplayer_.playerreference.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#coords" class="tsd-kind-icon">coords</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_planet_planet_.planet.html#moon" class="tsd-kind-icon">moon</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#player" class="tsd-kind-icon">player</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_planet_planet_.planet.html#universe" class="tsd-kind-icon">universe</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_lazyplayer_.playerreference.html#allianceid" class="tsd-kind-icon">alliance<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_player_lazyplayer_.playerreference.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_lazyplayer_.playerreference.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_lazyplayer_.playerreference.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_player_lazyplayer_.playerreference.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_player_lazyplayer_.playerreference.html#universe" class="tsd-kind-icon">universe</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,73 +115,47 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Planet<span class="tsd-signature-symbol">(</span>encodedData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_planet_planet_.xmluniverseplanet.html" class="tsd-signature-type">XMLUniversePlanet</a>, universe<span class="tsd-signature-symbol">: </span><a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a>, timestamp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Planet<span class="tsd-signature-symbol">(</span>encodedData<span class="tsd-signature-symbol">: </span><a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-signature-type">XMLPlayerPlanet</a>, universe<span class="tsd-signature-symbol">: </span><a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a>, timestamp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, player<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Player<wbr>Reference<span class="tsd-signature-symbol">(</span>universe<span class="tsd-signature-symbol">: </span><a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">XMLPlayerReference</span>, timestamp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_player_lazyplayer_.playerreference.html" class="tsd-signature-type">PlayerReference</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides UniverseObject.__constructor</p>
+								<p>Overrides <a href="_player_lazyplayer_.lazyplayerreference.html">LazyPlayerReference</a>.<a href="_player_lazyplayer_.lazyplayerreference.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/planet.ts#L9">planet/planet.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L31">player/lazyplayer.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>encodedData: <a href="../interfaces/_planet_planet_.xmluniverseplanet.html" class="tsd-signature-type">XMLUniversePlanet</a></h5>
+									<h5>universe: <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></h5>
 								</li>
 								<li>
-									<h5>universe: <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></h5>
+									<h5>data: <span class="tsd-signature-type">XMLPlayerReference</span></h5>
 								</li>
 								<li>
 									<h5>timestamp: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Overrides UniverseObject.__constructor</p>
-								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/planet.ts#L11">planet/planet.ts:11</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>encodedData: <a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-signature-type">XMLPlayerPlanet</a></h5>
-								</li>
-								<li>
-									<h5>universe: <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></h5>
-								</li>
-								<li>
-									<h5>timestamp: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>player: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_player_lazyplayer_.playerreference.html" class="tsd-signature-type">PlayerReference</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="coords" class="tsd-anchor"></a>
-					<h3>coords</h3>
-					<div class="tsd-signature tsd-kind-icon">coords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="allianceid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> alliance<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">alliance<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.coords</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L8">planet/object.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L28">player/lazyplayer.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Object&#39;s coordinates</p>
+							<p>Player&#39;s alliance</p>
 						</div>
 					</div>
 				</section>
@@ -188,61 +164,39 @@
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.id</p>
+						<p>Inherited from <a href="_player_lazyplayer_.lazyplayerreference.html">LazyPlayerReference</a>.<a href="_player_lazyplayer_.lazyplayerreference.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L11">planet/object.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L9">player/lazyplayer.ts:9</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Object&#39;s identifier</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="moon" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> moon</h3>
-					<div class="tsd-signature tsd-kind-icon">moon<span class="tsd-signature-symbol">:</span> <a href="_planet_moon_.moon.html" class="tsd-signature-type">Moon</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/planet.ts#L9">planet/planet.ts:9</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Planet&#39;s moon</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.name</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L14">planet/object.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L25">player/lazyplayer.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Object&#39;s name</p>
+							<p>Player&#39;s name</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="player" class="tsd-anchor"></a>
-					<h3>player</h3>
-					<div class="tsd-signature tsd-kind-icon">player<span class="tsd-signature-symbol">:</span> <a href="_player_lazyplayer_.lazyplayerreference.html" class="tsd-signature-type">LazyPlayerReference</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="status" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.player</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L17">planet/object.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L31">player/lazyplayer.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Reference to the object&#39;s player</p>
+							<p>Player&#39;s account status</p>
 						</div>
 					</div>
 				</section>
@@ -251,9 +205,9 @@
 					<h3>timestamp</h3>
 					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.timestamp</p>
+						<p>Inherited from <a href="_player_lazyplayer_.lazyplayerreference.html">LazyPlayerReference</a>.<a href="_player_lazyplayer_.lazyplayerreference.html#timestamp">timestamp</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L19">planet/object.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L11">player/lazyplayer.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -262,9 +216,9 @@
 					<h3>universe</h3>
 					<div class="tsd-signature tsd-kind-icon">universe<span class="tsd-signature-symbol">:</span> <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from UniverseObject.universe</p>
+						<p>Inherited from <a href="_player_lazyplayer_.lazyplayerreference.html">LazyPlayerReference</a>.<a href="_player_lazyplayer_.lazyplayerreference.html#universe">universe</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/planet/object.ts#L19">planet/object.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/lazyplayer.ts#L11">player/lazyplayer.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -300,13 +254,13 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_planet_object_.html">"planet/object"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_planet_planet_.html">"planet/planet"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_planet_planetdata_.html">"planet/planetdata"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_player_lazyplayer_.html">"player/lazyplayer"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -349,48 +303,39 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_player_lazyplayer_.lazyplayerreference.html" class="tsd-kind-icon">Lazy<wbr>Player<wbr>Reference</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_planet_planet_.planet.html" class="tsd-kind-icon">Planet</a>
+						<a href="_player_lazyplayer_.playerreference.html" class="tsd-kind-icon">Player<wbr>Reference</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_planet_planet_.planet.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#coords" class="tsd-kind-icon">coords</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#id" class="tsd-kind-icon">id</a>
+								<a href="_player_lazyplayer_.playerreference.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_planet_planet_.planet.html#moon" class="tsd-kind-icon">moon</a>
+								<a href="_player_lazyplayer_.playerreference.html#allianceid" class="tsd-kind-icon">alliance<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#name" class="tsd-kind-icon">name</a>
+								<a href="_player_lazyplayer_.playerreference.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_player_lazyplayer_.playerreference.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_player_lazyplayer_.playerreference.html#status" class="tsd-kind-icon">status</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#player" class="tsd-kind-icon">player</a>
+								<a href="_player_lazyplayer_.playerreference.html#timestamp" class="tsd-kind-icon">timestamp</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#timestamp" class="tsd-kind-icon">timestamp</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_planet_planet_.planet.html#universe" class="tsd-kind-icon">universe</a>
+								<a href="_player_lazyplayer_.playerreference.html#universe" class="tsd-kind-icon">universe</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_planet_planet_.xmluniverseplanet.html" class="tsd-kind-icon">XMLUniverse<wbr>Planet</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_planet_planet_.html#xmlplanet" class="tsd-kind-icon">XMLPlanet</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-kind-icon">XMLPlayer<wbr>Planet</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

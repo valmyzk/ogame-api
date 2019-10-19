@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>XMLUniverses | ogame-api</title>
+	<title>&quot;server/serverData&quot; | ogame-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,51 +52,97 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_universe_universe_.html">&quot;universe/universe&quot;</a>
-				</li>
-				<li>
-					<a href="_universe_universe_.xmluniverses.html">XMLUniverses</a>
+					<a href="_server_serverdata_.html">&quot;server/serverData&quot;</a>
 				</li>
 			</ul>
-			<h1>Interface XMLUniverses</h1>
+			<h1>External module &quot;server/serverData&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">XMLUniverses</span>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_universe_universe_.xmluniverses.html#universe" class="tsd-kind-icon">universe</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_server_serverdata_.servermap.html" class="tsd-kind-icon">Server<wbr>Map</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Other Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_server_serverdata_.html#getxsd" class="tsd-kind-icon">get<wbr>Xsd</a></li>
+							</ul>
+							<h3>serverData Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_server_serverdata_.html#parsexml" class="tsd-kind-icon">parse<wbr>Xml</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="universe" class="tsd-anchor"></a>
-					<h3>universe</h3>
-					<div class="tsd-signature tsd-kind-icon">universe<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Solo</span><span class="tsd-signature-symbol">&lt;</span><a href="_universe_universe_.xmluniverse.html" class="tsd-signature-type">XMLUniverse</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/universe/universe.ts#L223">universe/universe.ts:223</a></li>
-						</ul>
-					</aside>
+				<h2>Other Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="getxsd" class="tsd-anchor"></a>
+					<h3>get<wbr>Xsd</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Xsd<span class="tsd-signature-symbol">(</span>endpoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/server/serverData.ts#L31">server/serverData.ts:31</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>endpoint: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>serverData Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="parsexml" class="tsd-anchor"></a>
+					<h3>parse<wbr>Xml</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Xml<span class="tsd-signature-symbol">(</span>encodedData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">XMLServerData</span>, xsd<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">XsdList</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_server_serverdata_.servermap.html" class="tsd-signature-type">ServerMap</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/server/serverData.ts#L8">server/serverData.ts:8</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parses XML Localization root file to ES6 LocalizationMap</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>encodedData: <span class="tsd-signature-type">XMLServerData</span></h5>
+								</li>
+								<li>
+									<h5>xsd: <span class="tsd-signature-type">XsdList</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_server_serverdata_.servermap.html" class="tsd-signature-type">ServerMap</a></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -107,101 +153,86 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_alliance_alliance_.html">"alliance/alliance"</a>
+						<a href="_alliance_alliance_.html">"alliance/alliance"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_alliance_alliancedata_.html">"alliance/alliancedata"</a>
+						<a href="_alliance_alliancedata_.html">"alliance/alliancedata"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_alliance_lazyalliance_.html">"alliance/lazyalliance"</a>
+						<a href="_alliance_lazyalliance_.html">"alliance/lazyalliance"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+						<a href="_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_localization_localization_.html">"localization/localization"</a>
+						<a href="_localization_localization_.html">"localization/localization"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_localization_localizationdata_.html">"localization/localization<wbr>Data"</a>
+						<a href="_localization_localizationdata_.html">"localization/localization<wbr>Data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_planet_moon_.html">"planet/moon"</a>
+						<a href="_planet_moon_.html">"planet/moon"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_planet_object_.html">"planet/object"</a>
+						<a href="_planet_object_.html">"planet/object"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_planet_planet_.html">"planet/planet"</a>
+						<a href="_planet_planet_.html">"planet/planet"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_planet_planetdata_.html">"planet/planetdata"</a>
+						<a href="_planet_planetdata_.html">"planet/planetdata"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_player_lazyplayer_.html">"player/lazyplayer"</a>
+						<a href="_player_lazyplayer_.html">"player/lazyplayer"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_player_player_.html">"player/player"</a>
+						<a href="_player_player_.html">"player/player"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_player_playerdata_.html">"player/playerdata"</a>
+						<a href="_player_playerdata_.html">"player/playerdata"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_player_status_.html">"player/status"</a>
+						<a href="_player_status_.html">"player/status"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_position_position_.html">"position/position"</a>
+						<a href="_position_position_.html">"position/position"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_position_positiondata_.html">"position/position<wbr>Data"</a>
+						<a href="_position_positiondata_.html">"position/position<wbr>Data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_report_planet_.html">"report/planet"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_universe_coords_.html">"universe/coords"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_universe_serverdata_.html">"universe/server<wbr>Data"</a>
+						<a href="_report_planet_.html">"report/planet"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_universe_universe_.html">"universe/universe"</a>
+						<a href="_server_serverdata_.html">"server/server<wbr>Data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_server_servers_.html">"server/servers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_universe_coords_.html">"universe/coords"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_universe_universe_.html">"universe/universe"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_universe_universes_.html">"universe/universes"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_xml_.html">"xml"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_universe_universe_.universe.html" class="tsd-kind-icon">Universe</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_universe_universe_.xmluniverse.html" class="tsd-kind-icon">XMLUniverse</a>
+						<a href="../interfaces/_server_serverdata_.servermap.html" class="tsd-kind-icon">Server<wbr>Map</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_universe_universe_.xmluniverses.html" class="tsd-kind-icon">XMLUniverses</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_universe_universe_.xmluniverses.html#universe" class="tsd-kind-icon">universe</a>
-							</li>
-						</ul>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_server_serverdata_.html#getxsd" class="tsd-kind-icon">get<wbr>Xsd</a>
 					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_universe_universe_.html#id" class="tsd-kind-icon">ID</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_universe_universe_.html#region" class="tsd-kind-icon">Region</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_universe_universe_.html#downloadxml" class="tsd-kind-icon">download<wbr>Xml</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_universe_universe_.html#parsexml" class="tsd-kind-icon">parse<wbr>Xml</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_universe_universe_.html#resolvesolo" class="tsd-kind-icon">resolve<wbr>Solo</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_server_serverdata_.html#parsexml" class="tsd-kind-icon">parse<wbr>Xml</a>
 					</li>
 				</ul>
 			</nav>

@@ -58,7 +58,7 @@
 					<a href="_player_player_.player.html">Player</a>
 				</li>
 			</ul>
-			<h1>Class Player&lt;T&gt;</h1>
+			<h1>Class Player</h1>
 		</div>
 	</div>
 </header>
@@ -68,14 +68,6 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 				</div>
-			</section>
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T<span class="tsd-signature-symbol">: </span><a href="../modules/_universe_universe_.html#id" class="tsd-signature-type">ID</a></h4>
-					</li>
-				</ul>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
@@ -99,7 +91,6 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#alliance" class="tsd-kind-icon">alliance</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#home" class="tsd-kind-icon">home</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#planets" class="tsd-kind-icon">planets</a></li>
@@ -108,14 +99,12 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_player_player_.player.html#universe" class="tsd-kind-icon">universe</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_player_player_.player.html#getstatus" class="tsd-kind-icon">get<wbr>Status</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_player_player_.player.html#parsealliance" class="tsd-kind-icon">parse<wbr>Alliance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_player_player_.player.html#parseplanets" class="tsd-kind-icon">parse<wbr>Planets</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_player_player_.player.html#parsepositions" class="tsd-kind-icon">parse<wbr>Positions</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_player_player_.player.html#gethomeplanet" class="tsd-kind-icon">get<wbr>Homeplanet</a></li>
 							</ul>
 						</section>
 					</div>
@@ -127,13 +116,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Player<span class="tsd-signature-symbol">(</span>encodedData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">XMLPlayer</span>, universe<span class="tsd-signature-symbol">: </span><a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_player_player_.player.html" class="tsd-signature-type">Player</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Player<span class="tsd-signature-symbol">(</span>encodedData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">XMLPlayer</span>, universe<span class="tsd-signature-symbol">: </span><a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_player_player_.player.html" class="tsd-signature-type">Player</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L28">player/player.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L28">player/player.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -142,7 +131,7 @@
 									<h5>encodedData: <span class="tsd-signature-type">XMLPlayer</span></h5>
 								</li>
 								<li>
-									<h5>universe: <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>universe: <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_player_player_.player.html" class="tsd-signature-type">Player</a></h4>
@@ -155,10 +144,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="alliance" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> alliance</h3>
-					<div class="tsd-signature tsd-kind-icon">alliance<span class="tsd-signature-symbol">:</span> <a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">alliance<span class="tsd-signature-symbol">:</span> <a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L25">player/player.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L25">player/player.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,22 +157,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="home" class="tsd-anchor"></a>
-					<h3>home</h3>
-					<div class="tsd-signature tsd-kind-icon">home<span class="tsd-signature-symbol">:</span> <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L22">player/player.ts:22</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L15">player/player.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L16">player/player.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L12">player/player.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L13">player/player.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -210,10 +189,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="planets" class="tsd-anchor"></a>
 					<h3>planets</h3>
-					<div class="tsd-signature tsd-kind-icon">planets<span class="tsd-signature-symbol">:</span> <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">planets<span class="tsd-signature-symbol">:</span> <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L21">player/player.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L22">player/player.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -225,10 +204,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="positions" class="tsd-anchor"></a>
 					<h3>positions</h3>
-					<div class="tsd-signature tsd-kind-icon">positions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PlayerPositions</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">positions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PlayerPositions</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L18">player/player.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L19">player/player.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -243,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L28">player/player.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L28">player/player.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -255,47 +234,27 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="universe" class="tsd-anchor"></a>
 					<h3>universe</h3>
-					<div class="tsd-signature tsd-kind-icon">universe<span class="tsd-signature-symbol">:</span> <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">universe<span class="tsd-signature-symbol">:</span> <a href="_universe_universe_.universe.html" class="tsd-signature-type">Universe</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L30">player/player.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L30">player/player.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getstatus" class="tsd-anchor"></a>
-					<h3>get<wbr>Status</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Status<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L75">player/player.ts:75</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Player&#39;s account status</p>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="parsealliance" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Alliance</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Alliance<span class="tsd-signature-symbol">(</span>alliance<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_alliance_lazyalliance_.xmllazyalliance.html" class="tsd-signature-type">XMLLazyAlliance</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Alliance<span class="tsd-signature-symbol">(</span>alliance<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_alliance_lazyalliance_.xmllazyalliance.html" class="tsd-signature-type">XMLLazyAlliance</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L68">player/player.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L68">player/player.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -306,7 +265,7 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>
+								<a href="_alliance_lazyalliance_.lazyalliance.html" class="tsd-signature-type">LazyAlliance</a>
 							</h4>
 						</li>
 					</ul>
@@ -315,13 +274,13 @@
 					<a name="parseplanets" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Planets</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Planets<span class="tsd-signature-symbol">(</span>planets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Solo</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-signature-type">XMLPlayerPlanet</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Planets<span class="tsd-signature-symbol">(</span>planets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Solo</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-signature-type">XMLPlayerPlanet</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L56">player/player.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L55">player/player.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -330,7 +289,7 @@
 									<h5>planets: <span class="tsd-signature-type">Solo</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_planet_planet_.html#xmlplayerplanet" class="tsd-signature-type">XMLPlayerPlanet</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -338,13 +297,13 @@
 					<a name="parsepositions" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Positions</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Positions<span class="tsd-signature-symbol">(</span>positions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">XMLPlayerPosition</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">XMLMilitaryPlayerPosition</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Positions<span class="tsd-signature-symbol">(</span>positions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">XMLPlayerPosition</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">XMLMilitaryPlayerPosition</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L43">player/player.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/d888fb4/src/player/player.ts#L42">player/player.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -355,40 +314,8 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
 								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-symbol">[</span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">XMLMilitaryPlayerPosition</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span>
+								<span class="tsd-signature-symbol">[</span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">XMLMilitaryPlayerPosition</span><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">, </span><a href="_position_position_.position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">]</span>
 							</h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-					<a name="gethomeplanet" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Homeplanet</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Homeplanet&lt;T&gt;<span class="tsd-signature-symbol">(</span>planets<span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ValentiMS/ogame-api/blob/419e3b4/src/player/player.ts#L85">player/player.ts:85</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T<span class="tsd-signature-symbol">: </span><a href="../modules/_universe_universe_.html#id" class="tsd-signature-type">ID</a></h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>planets: <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_planet_planet_.planet.html" class="tsd-signature-type">Planet</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Earliest created planet of an array</p>
 						</li>
 					</ul>
 				</section>
@@ -452,13 +379,22 @@
 						<a href="../modules/_report_planet_.html">"report/planet"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_server_serverdata_.html">"server/server<wbr>Data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_server_servers_.html">"server/servers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_universe_coords_.html">"universe/coords"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_universe_serverdata_.html">"universe/server<wbr>Data"</a>
+						<a href="../modules/_universe_universe_.html">"universe/universe"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_universe_universe_.html">"universe/universe"</a>
+						<a href="../modules/_universe_universes_.html">"universe/universes"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_xml_.html">"xml"</a>
 					</li>
 				</ul>
 			</nav>
@@ -466,7 +402,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_player_player_.player.html" class="tsd-kind-icon">Player</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
@@ -474,9 +410,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_player_player_.player.html#alliance" class="tsd-kind-icon">alliance</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_player_player_.player.html#home" class="tsd-kind-icon">home</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_player_player_.player.html#id" class="tsd-kind-icon">id</a>
@@ -496,9 +429,6 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_player_player_.player.html#universe" class="tsd-kind-icon">universe</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_player_player_.player.html#getstatus" class="tsd-kind-icon">get<wbr>Status</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_player_player_.player.html#parsealliance" class="tsd-kind-icon">parse<wbr>Alliance</a>
 							</li>
@@ -507,9 +437,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_player_player_.player.html#parsepositions" class="tsd-kind-icon">parse<wbr>Positions</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-								<a href="_player_player_.player.html#gethomeplanet" class="tsd-kind-icon">get<wbr>Homeplanet</a>
 							</li>
 						</ul>
 					</li>
