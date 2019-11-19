@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.35",
-    "@types/node": "12.12.9",
+    "@types/node": "12.12.11",
     "@typescript-eslint/eslint-plugin": "2.8.0",
     "@typescript-eslint/parser": "2.8.0",
     "ava": "2.4.0",
