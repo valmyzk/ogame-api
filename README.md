@@ -35,7 +35,7 @@ yarn add ogame-api
    - Works in both node and browser environments
 
 ## Getting started
-To get started with ogame-api, check out our [auto-generated docs](https://valentims.github.io/ogame-api)!
+To get started with ogame-api, check out our [auto-generated docs](https://valmyzk.github.io/ogame-api)!
 
 
 ## License
